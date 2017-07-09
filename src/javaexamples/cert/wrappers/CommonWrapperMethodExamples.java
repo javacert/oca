@@ -15,6 +15,6 @@ public class CommonWrapperMethodExamples {
 
         // parseInt will parse the String into a primitive int
         Integer myWrappedInt = Integer.parseInt("7"); // Compiles fine, but value is boxed to an Integer
-        int myPrimInt2 = Integer.parseInt("7"); // Compiles fine
+        int myPrimInt2 = Integer.parseInt("7"); // Compiles fine, no need for the boxing feature!!
     }
 }

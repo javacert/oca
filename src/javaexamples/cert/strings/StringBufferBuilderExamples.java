@@ -1,4 +1,4 @@
-package javaexamples.cert;
+package javaexamples.cert.strings;
 
 import java.time.*;
 import java.time.format.DateTimeFormatter;

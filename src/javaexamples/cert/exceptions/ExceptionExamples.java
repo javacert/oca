@@ -2,7 +2,7 @@ package javaexamples.cert.exceptions;
 
 import javaexamples.cert.exceptions.SomeException;
 
-public class ExceptionsTest {
+public class ExceptionExamples {
 
     public static void main(String[] args) {
         try {

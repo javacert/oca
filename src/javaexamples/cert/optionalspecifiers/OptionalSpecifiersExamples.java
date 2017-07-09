@@ -1,6 +1,6 @@
-package javaexamples.cert;
+package javaexamples.cert.optionalspecifiers;
 
-public class OptionalSpecifiers {
+public class OptionalSpecifiersExamples {
 
     public static void main(String[] args) {
         optionalSpecifierTests();

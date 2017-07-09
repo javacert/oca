@@ -6,7 +6,7 @@ package javaexamples.cert.extend;
 // If we switch the main to the concrete class implementation, you can see that the method is not accessible
 // We need to switch the reference - remember reference is important when it comes to overriding
 
-public abstract class AccessingPrivate {
+public abstract class AccessingPrivateExamples {
 
     public int hiddenVariable;
 
@@ -15,7 +15,7 @@ public abstract class AccessingPrivate {
     }
 
     public void somePublicMethod() {
-        System.out.println("Let's practice overriding - AccessingPrivate");
+        System.out.println("Let's practice overriding - AccessingPrivateExamples");
     }
 
     protected int somePublicMethodToTryAndOverride() throws RuntimeException {
@@ -23,20 +23,20 @@ public abstract class AccessingPrivate {
     }
 
     public static void somePublicStaticMethod() {
-        System.out.println("Let's practice hiding - AccessingPrivate");
+        System.out.println("Let's practice hiding - AccessingPrivateExamples");
     }
 
     public static void someOtherPublicStaticMethod() {
-        System.out.println("Let's practice hiding - AccessingPrivate");
+        System.out.println("Let's practice hiding - AccessingPrivateExamples");
     }
 
     public static void main(String[] args){
-        AccessingPrivate accessingPrivate = new AccessingPrivateConcrete();
+        AccessingPrivateExamples accessingPrivate = new AccessingPrivateConcreteImpl();
         accessingPrivate.somePrivateMethod();
     }
 }
 
-class AccessingPrivateConcrete extends AccessingPrivate {
+class AccessingPrivateConcreteImpl extends AccessingPrivateExamples {
 
     public int hiddenVariable = 1;
 
@@ -45,7 +45,7 @@ class AccessingPrivateConcrete extends AccessingPrivate {
     }
 
     public void somePublicMethod() {
-        System.out.println("Let's practice overriding - AccessingPrivateConcrete");
+        System.out.println("Let's practice overriding - AccessingPrivateConcreteImpl");
         //super.somePublicMethod();
     }
 
@@ -61,29 +61,29 @@ class AccessingPrivateConcrete extends AccessingPrivate {
     }*/
 
     public static void somePublicStaticMethod() {
-        System.out.println("Let's practice hiding - AccessingPrivateConcrete");
+        System.out.println("Let's practice hiding - AccessingPrivateConcreteImpl");
     }
 
 //    public void someOtherPublicStaticMethod() {
-//        System.out.println("Let's practice hiding - AccessingPrivate");
+//        System.out.println("Let's practice hiding - AccessingPrivateExamples");
 //    }
     // ---> This will not compile since there is a static method with the same name!!!
 
     public static void main(String[] args){
-        AccessingPrivate accessingPrivate = new AccessingPrivateConcrete();
+        AccessingPrivateExamples accessingPrivate = new AccessingPrivateConcreteImpl();
         // accessingPrivate.somePrivateMethod(); // Method not accessible with this reference
 
         // We need to do...
-        AccessingPrivateConcrete accessingPrivateConcrete = new AccessingPrivateConcrete();
+        AccessingPrivateConcreteImpl accessingPrivateConcrete = new AccessingPrivateConcreteImpl();
         accessingPrivateConcrete.somePrivateMethod(); // Method not accessible with this reference
         // Output is: Is this some kind of trick?
 
-        accessingPrivate.somePublicMethod(); // Let's practice overriding - AccessingPrivateConcrete
-        accessingPrivateConcrete.somePublicMethod(); // Let's practice overriding - AccessingPrivateConcrete
+        accessingPrivate.somePublicMethod(); // Let's practice overriding - AccessingPrivateConcreteImpl
+        accessingPrivateConcrete.somePublicMethod(); // Let's practice overriding - AccessingPrivateConcreteImpl
         System.out.println(accessingPrivate.hiddenVariable); // 0 - accessing in parent class
         System.out.println(accessingPrivateConcrete.hiddenVariable); // 1 - variable is hidden
 
-        AccessingPrivate.somePublicStaticMethod(); // Let's practice hiding - AccessingPrivate
-        AccessingPrivateConcrete.somePublicStaticMethod(); // Let's practice hiding - AccessingPrivateConcrete
+        AccessingPrivateExamples.somePublicStaticMethod(); // Let's practice hiding - AccessingPrivateExamples
+        AccessingPrivateConcreteImpl.somePublicStaticMethod(); // Let's practice hiding - AccessingPrivateConcreteImpl
     }
 }

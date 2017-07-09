@@ -1,4 +1,4 @@
-package javaexamples.cert;
+package javaexamples.cert.binarysearch;
 
 import java.util.Arrays;
 

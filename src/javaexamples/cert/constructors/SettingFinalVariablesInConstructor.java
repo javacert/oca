@@ -1,4 +1,4 @@
-package javaexamples.cert;
+package javaexamples.cert.constructors;
 
 public class SettingFinalVariablesInConstructor {
 

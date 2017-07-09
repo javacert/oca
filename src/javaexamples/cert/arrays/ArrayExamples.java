@@ -1,6 +1,6 @@
-package javaexamples.cert;
+package javaexamples.cert.arrays;
 
-public class ArraysAndInitializers {
+public class ArrayExamples {
 
     private static final String someString; // static variables need initialized
     // If we add a static initializer block the compile error will go away

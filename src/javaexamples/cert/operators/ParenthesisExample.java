@@ -1,29 +1,14 @@
 package javaexamples.cert.operators;
 
-import java.math.BigDecimal;
-
 public class ParenthesisExample {
 
     public static void main(String[] args){
-        int whatIsThis = 2 / 5;
-        System.out.println(whatIsThis); // 0
+        parenthesisExample1();
+        parenthesisExample2();
+        parenthesisExample3();
+    }
 
-        float whatIsThisFloat = 2 / 5;
-        // The following will return 0.0 because the conversion to float happens after the division has been done
-        System.out.println(whatIsThisFloat); // 0.0
-        whatIsThisFloat = 2.0f / 5.0f;
-        System.out.println(whatIsThisFloat); // 0.4
-        System.out.println(String.format("%2.02f", whatIsThisFloat)); // 0.40
-
-        double whatIsThisDouble = 2 / 5;
-        System.out.println(whatIsThisDouble); // 0.0
-        whatIsThisDouble = 2.0 / 5.0;
-        System.out.println(whatIsThisDouble); // 0.4
-
-        BigDecimal whatIsThisBigDecimal = new BigDecimal(2 / 5);
-        System.out.println(whatIsThisBigDecimal.toString()); // 0
-        whatIsThisBigDecimal = new BigDecimal(2.0 / 5); // Expression will return a double
-        System.out.println(whatIsThisBigDecimal.toString()); // 0.40000000000000002220446049250313080847263336181640625
+    private static void parenthesisExample1() {
 
         // Remember expressions are evaluated left to right.
         // Parentheses just express grouping, they don't express ordering of evaluation.
@@ -39,5 +24,23 @@ public class ParenthesisExample {
         int d = 10;
         int yikes = 10 * (2 + ++d - --d) + ++d;
         System.out.println(yikes + " " + d); // 41 11
+    }
+
+    private static void parenthesisExample2() {
+        // Step 1: 10 * (2 + (5) / 5) --> Remember / takes precedence
+        // Step 2: 10 * (2 + 1) = 30
+        int turtle = 10 * (2 + (3 + 2) / 5); // 30
+        int hare = turtle < 5 ? 10 : 25; // hare = 25
+        System.out.println("turtle = " + turtle + " hare = " + hare);
+        System.out.println(turtle < hare ? "Hare Wins!" : "Turtle Wins!"); // Turtle Wins!
+    }
+
+    private static void parenthesisExample3() {
+        // int a = (5 + (!2 + 8) * 3 - 3 % 2) / 2; --> Doesn't compile because you can only apply ! to boolean values
+        // Step 1: (5 + ((10) * 3) - (3 % 2)) / 2
+        // Step 2: (5 + (30) - (1)) / 2
+        // Step 3: 34 / 2 = 17
+        int a = (5 + (2 + 8) * 3 - 3 % 2) / 2;
+        System.out.println(a); // 17
     }
 }

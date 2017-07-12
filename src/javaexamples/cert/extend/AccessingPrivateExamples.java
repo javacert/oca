@@ -1,7 +1,7 @@
 package javaexamples.cert.extend;
 
 // The output of this example is:
-// You would think this is not output in this example, but it is!!!
+// "You would think this is not output in this example, but it is!!!"
 // Reason is that we are accessing a private method from within the class.
 // If we switch the main to the concrete class implementation, you can see that the method is not accessible
 // We need to switch the reference - remember reference is important when it comes to overriding

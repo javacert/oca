@@ -24,11 +24,11 @@ public class AccessingZeroIndexedArraysExample {
     }
 
     private static void accessingZeroIndexExampleB(String[] args) {
-        System.out.println(args[0]);
+        System.out.println(args[0]); // java.lang.ArrayIndexOutOfBoundsException: 0
     }
 
     private static void accessingZeroIndexExampleC(String... args) {
         // String... array = new String[4]; --> only methods can use varargs
-        System.out.println(args[0]);
+        System.out.println(args[0]); // java.lang.ArrayIndexOutOfBoundsException: 0
     }
 }

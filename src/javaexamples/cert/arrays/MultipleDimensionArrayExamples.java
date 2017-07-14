@@ -8,6 +8,7 @@ public class MultipleDimensionArrayExamples {
         waysToInitializeAMultiDimensionArray();
         initializingOnTheOneLine();
         gettingTheLengthOfAMultiDimensionalArray();
+        determiningArrayLengthExample();
         reassigningArrayItemToAnother();
     }
 
@@ -51,11 +52,18 @@ public class MultipleDimensionArrayExamples {
 
     private static void gettingTheLengthOfAMultiDimensionalArray() {
         boolean[][] booleanArray[][][][] = new boolean[5][3][2][1][][];
-        System.out.println(booleanArray.length); // 5
-        System.out.println(booleanArray[0].length); // 3
+        System.out.println(booleanArray.length); // 5 - points to first array size
+        System.out.println(booleanArray[0].length); // 3 - points to second array size so the following are all the same!!
+        System.out.println(booleanArray[1].length); // 3
+        System.out.println(booleanArray[2].length); // 3
         System.out.println(booleanArray[3].length); // 3
-        System.out.println(booleanArray[3][2].length); // 2
+        System.out.println(booleanArray[4].length); // 3
+         // System.out.println(booleanArray[5].length); // ArrayIndexOutOfBoundsException
+        System.out.println(booleanArray[0][0].length); // 2 - points to third array size so the following are all the same!!
+        System.out.println(booleanArray[1][1].length); // 2
+        System.out.println(booleanArray[2][2].length); // 2
         // System.out.println(booleanArray[3][3].length); // ArrayIndexOutOfBoundsException
+        System.out.println(booleanArray[3][2][0].length); // 1 - points to fourth array size so the following are all the same!!
         System.out.println(booleanArray[3][2][1].length); // 1
         // System.out.println(booleanArray[3][2][1][0].length); // NullPointerException
         // System.out.println(booleanArray[5][3][2].length); // Runtime Exception ArrayIndexOutOfBoundsException
@@ -64,6 +72,24 @@ public class MultipleDimensionArrayExamples {
         // booleanArray.size;       // Nope
         // booleanArray.size();     // Nope
         // booleanArray.length();   // Nope
+    }
+
+    private static void determiningArrayLengthExample() {
+        //-------------------------listing     [0][0]      [1][0]  [1][1]
+        String[][] listing = new String[][]{ { "Book" }, { "Game", "29.99" } };
+        // THIS IS IMPORTANT - when you initialize using the following:
+        // boolean[][] booleanArray = new boolean[5][3];
+        // You are initializing all to that size which is why in the previous method gettingTheLengthOfAMultiDimensionalArray
+        // all where the same. But here, we are initializing the arrays so they will have
+        System.out.println("listing[0][0] " + listing[0][0]); // Book
+        System.out.println("listing[1][0] " + listing[1][0]); // Game
+        System.out.println("listing[1][1] " + listing[1][1]); // 29.99
+
+        // The primary array (as in listing) points to the first array which has 2 elements
+        // Then listing[0] points to the first array at listing[0] which only has Book, so size is 1
+        System.out.println(listing.length + " " + listing[0].length); // 2 1
+        // Then listing[0] points to the second array at listing[1] which has Game and 29.99, so size is 2
+        System.out.println(listing.length + " " + listing[1].length); // 2 2
     }
 
     private static void reassigningArrayItemToAnother() {

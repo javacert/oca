@@ -1,5 +1,7 @@
 package javaexamples.cert.arrays;
 
+import java.util.Arrays;
+
 public class ArrayExamples {
 
     private static final String someString; // static variables need initialized
@@ -9,10 +11,29 @@ public class ArrayExamples {
     }
 
     public static void main(String[] args) {
-        arrayDefinitions();
+        confirmAnArrayAnObject();
+        howToInitializeAnArrayOfPrimitives();
+        howToInitializeAnArrayOfObjects();
+        arrayDefinitionsAndVarargs();
+        outputtingTheContentsOfAStringArray();
     }
 
-    public static void arrayDefinitions(){
+    private static void confirmAnArrayAnObject() {
+        int[] somePrimitiveArray = new int[]{1, 2, 3};
+        if (somePrimitiveArray instanceof Object){
+            System.out.println("An array of primitives is of course an object!");
+        }
+
+        String[] someObjectArray = new String[]{"A"};
+        if (someObjectArray instanceof Object){
+            System.out.println("An array of Objects is of course an object!");
+        }
+
+        int somePrimitive = 0;
+        // if (somePrimitive instanceof Object){} --> Does not compile
+    }
+
+    public static void arrayDefinitionsAndVarargs(){
         // String array[] = new String()[5]; // Not valid
         String array[] = new String[5];
         String[] array2 = {"A", "B"};
@@ -33,5 +54,29 @@ public class ArrayExamples {
         for(Boolean object : varArg) {
             System.out.println(object);
         }
+    }
+
+    private static void howToInitializeAnArrayOfPrimitives() {
+        int[] myIntArrayA = new int[3];
+        int[] myIntArrayB = {1,2,3};
+        int[] myIntArrayC = new int[]{1,2,3};
+        // int[] myIntArrayD = new int[]; --> You need to set the size - this won't compile!!
+        // int[] myIntArrayE = new int[3]{1,2,3}; --> You can't do this!
+    }
+
+    private static void howToInitializeAnArrayOfObjects() {
+        String[] myStringArrayA = new String[3];
+        String[] myStringArrayB = {"a","b","c"};
+        String[] myStringArrayC = new String[]{"a","b","c"};
+    }
+
+    private static void outputtingTheContentsOfAStringArray() {
+
+        // Remember that you need to use Arrays.toString to print the contents ***
+        String[] strings = new String[2];
+        System.out.println(String[].class);             // class [Ljava.lang.String;
+        System.out.println(strings);                    // [Ljava.lang.String;@28d93b30
+        System.out.println(strings.toString());         // [Ljava.lang.String;@28d93b30
+        System.out.println(Arrays.toString(strings));   // [null, null]
     }
 }

@@ -1,15 +1,15 @@
 package javaexamples.cert.constructors;
 
-public class ConstructorExamples {
+public class PrivateConstructorScopeExamples {
 
     // Note that the constructor is private here, where can we access it?
-    private ConstructorExamples(){
+    private PrivateConstructorScopeExamples(){
         System.out.println("Accessing the constructor");
     }
 
     public static void main (String[] args){
         // Can access here!!!!
-        ConstructorExamples accessPrivateConstructorFromMain = new ConstructorExamples();
+        PrivateConstructorScopeExamples accessPrivateConstructorFromMain = new PrivateConstructorScopeExamples();
     }
 }
 

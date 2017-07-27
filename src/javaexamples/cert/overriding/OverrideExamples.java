@@ -3,6 +3,7 @@ package javaexamples.cert.overriding;
 import java.io.EOFException;
 import java.io.IOException;
 
+// Remember, must be as or more accessible, and the Exception must be the same or a subclass.
 public class OverrideExamples extends ClassToOverride {
 
     public static void main(String[] args) throws Exception{

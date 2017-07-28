@@ -1,10 +1,38 @@
 package javaexamples.cert.exceptions;
 
-import javaexamples.cert.exceptions.SomeException;
+// Exception Type: Runtime Exceptions - extends RuntimeException
+// 1) ArithmeticException - thrown by JVM
+// 2) ArrayIndexOutOfBoundsException - thrown by JVM
+// 3) ClassCastException - thrown by JVM
+// 4) IllegalArgumentException - tricky one, seems like a Checked exception since thrown by programmer
+// 5) NullPointerException - thrown by JVM
+// 6) NumberFormatException - tricky one, seems like a Checked exception since thrown by programmer
 
-public class ExceptionExamples {
+// Exception Type: Checked Exceptions - extends Exception
+// 1) FileNotFoundException - thrown programmatically - public class FileNotFoundException extends IOException
+// 2) IOException - thrown programmatically - class IOException extends Exception
+
+// Exception Type: Errors - extends Error
+// 1) ExceptionInInitializerError - thrown by JVM - class ExceptionInInitializerError extends LinkageError
+// 2) StackOverflowError - thrown by JVM - class StackOverflowError extends VirtualMachineError
+// 3) NoClassDefErrorFound - thrown by JVM - class NoClassDefFoundError extends LinkageError
+
+public class BasicExceptionExamples {
 
     public static void main(String[] args) {
+        basicTryCatchExamples();
+        orderOfExceptionsIsImportant();
+        throwingANewExceptionWithinATryCatch();
+    }
+
+    private static void basicTryCatchExamples() {
+
+        // A try block can have either a catch or a finally, or both.
+
+/*        try{
+            System.out.print("A try needs either a catch or a finally to compile ");
+        }*/
+
         try {
             System.out.print("A ");
         } finally {
@@ -26,9 +54,10 @@ public class ExceptionExamples {
             System.out.print("B ");
             System.out.println(e);
         } // Prints A B com.cert.SomeException: Some Message Text
+    }
 
+    private static void orderOfExceptionsIsImportant() {
         /*
-
         try {
             System.out.print("A ");
             throw new SomeException("Some Message Text");
@@ -39,7 +68,6 @@ public class ExceptionExamples {
             System.out.print("B ");
             System.out.println(e);
         }
-
         */
 
         try {
@@ -57,7 +85,9 @@ public class ExceptionExamples {
             System.out.print("C ");
             System.out.println(e);
         }// Prints A B com.cert.SomeException: Some Message Text
+    }
 
+    private static void throwingANewExceptionWithinATryCatch() {
         // When an new exception is thrown in a catch block or finally block that will propagate out of that block,
         // then the current exception will be aborted (and forgotten) as the new exception is propagated outward.
         // The new exception starts unwinding up the stack just like any other exception, aborting out of the current block
@@ -95,4 +125,12 @@ public class ExceptionExamples {
             throw new RuntimeException("3"); // This is the Exception that is actually thrown since it takes over from the previously thrown
         } // Prints A B E and throws Exception in thread "main" java.lang.RuntimeException: 3
     }
+}
+
+class SomeException extends Exception {
+
+    public SomeException(String msg){
+        super(msg);
+    }
+
 }

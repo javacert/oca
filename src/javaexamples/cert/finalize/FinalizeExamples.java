@@ -13,6 +13,10 @@ public class FinalizeExamples {
         System.out.println("I'm finalizing");
     }
 
+    public void finalize(String someString){
+        System.out.println("I'm not a valid finalize method since I have a parameter!");
+    }
+
     // This is the correct implementation
     // Note that finalize() exists in Object
     // Called by the garbage collector on an object when garbage collection determines that there are no more references to the object.

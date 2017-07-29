@@ -1,10 +1,5 @@
 package javaexamples.cert.strings;
 
-import java.time.*;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
-import java.util.Arrays;
-
 public class StringBufferBuilderExamples {
 
     public static void main(String[] args) {

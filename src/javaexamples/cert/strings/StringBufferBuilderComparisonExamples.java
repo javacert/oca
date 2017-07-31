@@ -1,6 +1,12 @@
 package javaexamples.cert.strings;
 
-public class StringBufferBuilderExamples {
+// These imports are not required since java.lang is imported automatically,
+// but they show that all 3 of these classes live in java.lang package
+import java.lang.String;
+import java.lang.StringBuffer;
+import java.lang.StringBuilder;
+
+public class StringBufferBuilderComparisonExamples {
 
     public static void main(String[] args) {
 

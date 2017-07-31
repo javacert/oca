@@ -1,9 +1,9 @@
 package javaexamples.cert.datetime;
 
+// Note that these exist in the java.time package
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
-import java.util.Arrays;
 
 public class DateTimeExamples {
 

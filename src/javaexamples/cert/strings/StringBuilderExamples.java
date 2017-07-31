@@ -3,7 +3,12 @@ package javaexamples.cert.strings;
 public class StringBuilderExamples {
 
     public static void main(String[] args){
-        builderExample1();
+        //builderExample1();
+        //insertBeyondSizeExample();
+        //toStringNotRequiredExample();
+        //methodChainingProblems();
+        //substringExample();
+        reverseExample();
     }
 
     private static void builderExample1() {
@@ -36,5 +41,63 @@ public class StringBuilderExamples {
         if(s1.toString() == "meow"){
             System.out.println("E"); // Not output
         }
+    }
+
+    private static void insertBeyondSizeExample() {
+        // Insert must be a valid index otherwise StringIndexOutOfBoundsException is thrown
+        StringBuilder sb = new StringBuilder("cl").insert(2, "own");
+        System.out.println(sb); // clown
+        sb = new StringBuilder("cl").insert(3, "own"); // StringIndexOutOfBoundsException
+        System.out.println(sb); // Never gets here
+    }
+
+    private static void toStringNotRequiredExample() {
+        System.out.println(new StringBuilder("You don't need to use toString with me!"));
+        // When you look at the underlying implementation you can see why println does not need to use the toString:
+        // public void println(Object x) {
+        //     String s = String.valueOf(x);
+        //     synchronized (this) {
+        //         print(s);
+        //         newLine();
+        //     }
+        // }
+
+        // public static String valueOf(Object obj) {
+        //     return (obj == null) ? "null" : obj.toString();
+        // }
+
+        String lookAtThis = new StringBuilder("But you do need toString when assigning to a String!").toString();
+    }
+
+    private static void methodChainingProblems() {
+        // The following line will NOT compile because the sb reference is not available until after the chained calls have completed.
+        //StringBuilder sb = new StringBuilder("radical").insert(sb.length(), "robots");
+
+        StringBuilder sb = new StringBuilder("radical");
+        sb.insert(sb.length(), "robots"); // Remember it inserts before the index, so at the end in this case
+        System.out.println(sb); // radicalrobots
+
+        sb.insert(sb.length() + 1, "arecool"); // StringIndexOutOfBoundsException because of the +1
+        System.out.println(sb); // radicalrobots
+    }
+
+    private static void substringExample() {
+        StringBuilder sb = new StringBuilder("radical");
+        // Again the index is from the position before 2, so r(0), a(1), d(2), so from d forward
+        // The parameter in this example is the start index
+        System.out.println(sb.substring(2)); // dical
+
+        sb = new StringBuilder("radical");
+        // The parameter in this example is the start and the end index
+        System.out.println(sb.substring(2, 4)); // di
+    }
+
+    private static void reverseExample() {
+        StringBuilder sb = new StringBuilder("radical");
+        System.out.println(sb.reverse()); // lacidar
+
+        // Note that reverse is NOT available for String
+        String a = "radical";
+        //a.reverse();
     }
 }

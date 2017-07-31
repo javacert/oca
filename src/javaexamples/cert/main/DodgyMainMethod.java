@@ -4,7 +4,7 @@ package javaexamples.cert.main;
 // 1) cd src\javaexamples\cert
 // 2) javac DodgyMainMethod.java
 // 3) java javaexamples.cert.main.DodgyMainMethod from C:\Dev\Workspaces\Reactive-Spring\JavaCert\src
-// 4) Output: Error: StringBufferBuilderExamples method not found in class javaexamples.cert.main.DodgyMainMethod, please define the main method as:
+// 4) Output: Error: StringBufferBuilderComparisonExamples method not found in class javaexamples.cert.main.DodgyMainMethod, please define the main method as:
 //                public static void main(String[] args)
 //            or a JavaFX application class must extend javafx.application.Application
 

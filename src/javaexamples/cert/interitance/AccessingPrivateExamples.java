@@ -1,4 +1,4 @@
-package javaexamples.cert.extend;
+package javaexamples.cert.interitance;
 
 // The output of this example is:
 // "You would think this is not output in this example, but it is!!!"

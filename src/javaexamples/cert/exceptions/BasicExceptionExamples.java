@@ -17,6 +17,9 @@ package javaexamples.cert.exceptions;
 // 2) StackOverflowError - thrown by JVM - class StackOverflowError extends VirtualMachineError
 // 3) NoClassDefErrorFound - thrown by JVM - class NoClassDefFoundError extends LinkageError
 
+// Main takeaways:
+// If you have a try statement and both the catch block and the finally block each throw an exception, then it is the
+// exception from the finally block that is propagated to the caller, with the one from the catch being dropped.
 public class BasicExceptionExamples {
 
     public static void main(String[] args) {
@@ -54,6 +57,15 @@ public class BasicExceptionExamples {
             System.out.print("B ");
             System.out.println(e);
         } // Prints A B com.cert.SomeException: Some Message Text
+
+        // Order is important, you can'y have finally and then catch.
+/*        try {
+            System.out.print("A ");
+        } finally {
+
+        } catch (Exception e) {
+
+        }*/
     }
 
     private static void orderOfExceptionsIsImportant() {

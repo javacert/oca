@@ -3,7 +3,7 @@ package javaexamples.cert.interitance;
 public class AssignmentsRequiringCastsExamples {
 
     // Rules:
-    // 1) A reference to a class CANNOT be assigned to a subclass reference without an explicit cast (A Dog is not necessarilt a Beagle)
+    // 1) A reference to a class CANNOT be assigned to a subclass reference without an explicit cast (A Dog is not necessarily a Beagle)
     // 2) A reference to a class CAN be assigned to a superclass reference without an explicit cast (A Beagle is always a Dog)
     // 3) A reference to an interface CANNOT be assigned to a reference of a class that implements the interface without an explicit cast
     //    ¦__ An interface does not inherit from a class

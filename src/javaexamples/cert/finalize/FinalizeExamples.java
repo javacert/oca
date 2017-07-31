@@ -18,9 +18,9 @@ public class FinalizeExamples {
     }
 
     // This is the correct implementation
-    // Note that finalize() exists in Object
+    // Note that finalize() exists in Object --> protected void finalize() throws Throwable { }
     // Called by the garbage collector on an object when garbage collection determines that there are no more references to the object.
-    public void finalize() throws Exception{
+    public void finalize() throws Exception {
         System.out.println("I'm finalizing");
     }
 }

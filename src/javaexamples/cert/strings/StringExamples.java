@@ -4,6 +4,8 @@ public class StringExamples {
 
     public static void main(String[] args){
         stringHasStartsWithMethod();
+        stringReplaceMethodSupport();
+        stringWithCharExample();
     }
 
     private static void stringHasStartsWithMethod() {
@@ -16,5 +18,37 @@ public class StringExamples {
 
         boolean endsWith = "abc".endsWith("d");
         System.out.println(endsWith); // false
+    }
+
+    private static void stringReplaceMethodSupport() {
+        String s = "abc";
+
+        s.replace("a", "z");
+        System.out.println(s); // abc - Remember String is immutable!
+
+        s.replace(new StringBuilder("b"), new StringBuilder("y"));
+        System.out.println(s); // abc
+
+        s.replace('c', 'x');
+        System.out.println(s); // abc
+
+        String a = s.replace("a", "z");
+        System.out.println(a); // zbc
+
+        String b = s.replace(new StringBuilder("b"), new StringBuilder("y"));
+        System.out.println(b); // ayc
+
+        String c = s.replace('c', 'x');
+        System.out.println(c); // abx
+    }
+
+    private static void stringWithCharExample() {
+        // String witch = 'b'; --> You cannot assign a char to a String
+        // String witch = new String('b'); --> Nor can you do this!
+
+        String witch = Character.toString('b');
+        String tail = "lack";
+        witch = witch.concat(tail);
+        System.out.println(witch); // black
     }
 }

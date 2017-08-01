@@ -11,7 +11,6 @@ public class BasicGenericExamples {
         genericInitializationExamples();
         genericsWithArraysAsListExample();
         diamondOperatorOnlyNeededOnRightExample();
-
     }
 
     private static void genericInitializationExamples() {

@@ -8,7 +8,7 @@ public class FinalizeExamples {
         System.gc(); // finalize may or may not be called!
     }
 
-    // Watch out of incorrecty named finalize methods
+    // Watch out of incorrectly named finalize methods
     public void finalizer(){
         System.out.println("I'm finalizing");
     }

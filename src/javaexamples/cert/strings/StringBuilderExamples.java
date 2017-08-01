@@ -3,12 +3,13 @@ package javaexamples.cert.strings;
 public class StringBuilderExamples {
 
     public static void main(String[] args){
-        //builderExample1();
-        //insertBeyondSizeExample();
-        //toStringNotRequiredExample();
-        //methodChainingProblems();
-        //substringExample();
+        builderExample1();
+        insertBeyondSizeExample();
+        toStringNotRequiredExample();
+        methodChainingProblems();
+        substringExample();
         reverseExample();
+        someOtherStringBuilderMethods();
     }
 
     private static void builderExample1() {
@@ -90,6 +91,30 @@ public class StringBuilderExamples {
         sb = new StringBuilder("radical");
         // The parameter in this example is the start and the end index
         System.out.println(sb.substring(2, 4)); // di
+
+        // Now be Careful here!
+        sb = new StringBuilder("radical");
+        sb.substring(2, 4);
+        System.out.println(sb); // "radical"
+
+        // StringBuilder subString returns a new String which makes sense, you would remove characters for the original
+        // if you wanted to modify the original StringBuilder value (append, delete, deleteCharAt all return existing ref)
+        // From StringBuilder:
+        //public String substring(int start, int end) {
+        //    if (start < 0)
+        //        throw new StringIndexOutOfBoundsException(start);
+        //    if (end > count)
+        //        throw new StringIndexOutOfBoundsException(end);
+        //    if (start > end)
+        //        throw new StringIndexOutOfBoundsException(end - start);
+        //    return new String(value, start, end - start);
+        //}
+
+        // StringBuilder has a delete which returns reference to current StringBuilder
+        //public StringBuilder delete(int start, int end) {
+        //    super.delete(start, end);
+        //    return this;
+        //}
     }
 
     private static void reverseExample() {
@@ -99,5 +124,21 @@ public class StringBuilderExamples {
         // Note that reverse is NOT available for String
         String a = "radical";
         //a.reverse();
+    }
+
+    private static void someOtherStringBuilderMethods() {
+        StringBuilder sb = new StringBuilder("abc");
+        char c = sb.charAt(1);
+        sb.insert(1, "def"); // Does not exist in String
+        int num = sb.length();
+
+        System.out.println(c); // b
+        System.out.println(sb); // adefbc
+        System.out.println(num); // 6
+
+        // Returning the reference like this makes no difference
+        // sb.insert(1, "def"); would apply the changes either way
+        sb = sb.insert(1, "def"); // Does not exist in String
+        System.out.println(sb); // adefdefbc
     }
 }

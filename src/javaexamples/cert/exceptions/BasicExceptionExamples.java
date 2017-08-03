@@ -11,6 +11,7 @@ package javaexamples.cert.exceptions;
 // Exception Type: Checked Exceptions - extends Exception
 // 1) FileNotFoundException - thrown programmatically - public class FileNotFoundException extends IOException
 // 2) IOException - thrown programmatically - class IOException extends Exception
+// 3) ClassNotFoundException - thrown programmatically - using reflection and class doesn't exist
 
 // Exception Type: Errors - extends Error
 // 1) ExceptionInInitializerError - thrown by JVM - class ExceptionInInitializerError extends LinkageError

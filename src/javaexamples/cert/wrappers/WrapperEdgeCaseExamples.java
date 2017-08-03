@@ -14,6 +14,12 @@ public class WrapperEdgeCaseExamples {
         Long myLongA = new Long(4); // public Long(long value) {
         // Long myLongB = new Long(2.0); // --> Won't compile since the constructor expects a long and not a double
         Long myLongB = new Long((long)2.0);
+
+        // Watch out for float since you can assign an int to those
+        float floatAsInt = 0;
+        Object myDoubleObject = new Double(3); // Constructor accepts an int value
+        Number num = (Number) myDoubleObject; // Number is an abstract class - note that this still prints the number.
+        System.out.println(num); // 3.0
     }
 
     // You MUST remember these rules:

@@ -5,6 +5,7 @@ package javaexamples.cert.initializers;
     I'm a static initialization block in the top most parent class and I'm called in order I appear!
     I'm a static initialization block in the parent class
     I'm a static initialization block in the child class
+    I'm a static variable in the child class and you will notice I'm called in order 10
     I'm an instance initialization block in the top most parent class
     I'm the constructor in the top most parent class
     I'm an instance initialization block in the parent class
@@ -44,6 +45,12 @@ public class InitializationOrderExamples extends AbstractClassToTestInitializati
 
     static {
         System.out.println("I'm a static initialization block in the child class");
+    }
+
+    static int staticVariable = 10;
+
+    static {
+        System.out.println("I'm a static variable in the child class and you will notice I'm called in order " +  staticVariable);
     }
 
     public static void main(String[] args){

@@ -1,5 +1,8 @@
 package javaexamples.cert.namingrules;
 
+// The name must begin with a letter or the symbol $ or _
+// Subsequent characters may also be numbers
+// You cannot use reserved words
 public class NamingRuleExamples {
 
     public static void main(String[] args){

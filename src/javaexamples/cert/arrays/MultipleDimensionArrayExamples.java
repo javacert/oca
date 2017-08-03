@@ -10,6 +10,7 @@ public class MultipleDimensionArrayExamples {
         gettingTheLengthOfAMultiDimensionalArray();
         determiningArrayLengthExample();
         reassigningArrayItemToAnother();
+        sortingMultiDimensionalArray();
     }
 
     private static void waysToInitializeAMultiDimensionArray() {
@@ -114,5 +115,21 @@ public class MultipleDimensionArrayExamples {
         // because the reference is more generic. Throws a runtime exception because it is the wrong type.
         obj[3] = "X"; // Can't put a String in an int array --> java.lang.ArrayStoreException: java.lang.String
         System.out.println(game[3][3]);
+    }
+
+    private static void sortingMultiDimensionalArray() {
+        String[][] strings = {{"A", "Z"}, {"C", "D", "S"}, {"L"}};
+
+        // Watch here - Arrays has an overloaded method which takes Object[]
+        // String implements comparable, but when it tries to cast a multi-dimensional array to Comparable,
+        // It tries to cast String[] and not String, so it throws a ClassCastException
+        Arrays.sort(strings); // public static void sort(Object[] a)
+        System.out.println(strings);
+
+        for(String[] str : strings){
+            for(String s : str){
+                System.out.println(s);
+            }
+        }
     }
 }

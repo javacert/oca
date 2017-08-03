@@ -22,6 +22,11 @@ public class ForLoopExamples {
         for(int type = 0; type < 10;){
             type++;
         }
+
+        // for(int x = 10, y = 6; x < y; System.out.println(x--);){ // Can only have 1 statement so semi-colon not allowed
+        for(int x = 10, y = 6; x < y; System.out.println(x--)){ // 2 10
+
+        }
     }
 
     private static void addingMultipleTermsToForStatement() {

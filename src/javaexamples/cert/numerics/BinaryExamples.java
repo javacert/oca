@@ -15,6 +15,9 @@ public class BinaryExamples {
         System.out.println(anInt1); //
         System.out.println(anInt2); //
         System.out.println(anInt3); //
+
+        // Watch out for invalid binary values - they can only have 0 or 1
+        // int invalidBinary = 0B021; // Integer value too large
     }
 
     private static void binaryConversionToDecimal() {

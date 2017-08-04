@@ -3,6 +3,7 @@ package javaexamples.cert.strings;
 public class StringConcatenationExamples {
 
     // IMPORTANT TO REMEMBER!!!!!
+    // String concatenation and addition have the same precedence.
     // Java evaluates the + operator from left to right - therefore if you have numeric additions
     // followed by String concatenation, then the numeric values will be added together!
 

@@ -13,12 +13,14 @@ public class HexExamples {
         int hexValue3 = 0xDEAF;
         int hexValue4 = 0xCAB;
         int hexValue5 = 0XCAB; // Note Capital X makes no difference
+        int hexValue6 = 0XE;
 
         System.out.println(hexValue1); // 256
         System.out.println(hexValue2); // 4660
         System.out.println(hexValue3); // 57007
         System.out.println(hexValue4); // 3243
         System.out.println(hexValue5); // 3243
+        System.out.println(hexValue6); // 14
     }
 
     private static void hexConversionToDecimal() {

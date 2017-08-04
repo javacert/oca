@@ -5,6 +5,7 @@ public class WrapperEdgeCaseExamples {
     public static void main(String[] args){
         usingWrapperConstructors();
         wrapperPromotionExample();
+        doubleDivisionByZeroExample();
     }
 
     private static void usingWrapperConstructors() {
@@ -58,5 +59,25 @@ public class WrapperEdgeCaseExamples {
 
     private static Long getScorePrimitiveLong(long someLong){
         return 2 * someLong;
+    }
+
+    // NOTE: Float/Double point primitives do not throw Arithmetic Exception when divided by zero
+    private static void doubleDivisionByZeroExample() {
+        double thisIsAValidCalculationA = 0.0/0.0;
+        Double thisIsAValidCalculationB = 0.0/0.0;
+        Double thisIsAValidCalculationC = new Double(0.0/0.0);
+
+        System.out.println(thisIsAValidCalculationA); // NaN
+        System.out.println(thisIsAValidCalculationB); // NaN
+        System.out.println(thisIsAValidCalculationC); // NaN
+
+        boolean isNaNAlt = thisIsAValidCalculationB.isNaN();
+        System.out.println(isNaNAlt); // true
+
+        boolean isNaN = Double.isNaN(thisIsAValidCalculationC);
+        System.out.println(isNaN); // true
+
+        boolean isInfinite = Double.isInfinite(thisIsAValidCalculationC);
+        System.out.println(isNaN); // true
     }
 }

@@ -1,5 +1,9 @@
 package javaexamples.cert.casting;
 
+// Up-casting is casting to a supertype, while down-casting is casting to a subtype.
+// Remember Up to Parent, Down to Child
+// ClassCastException is possible when you downcast to a child class
+// Up-casting can be occurred implicitly, while Down-casting should be done explicitly (you provide the cast)
 public class BasicCastingExample {
 
     public static void main(String[] args){

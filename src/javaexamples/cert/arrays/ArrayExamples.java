@@ -11,11 +11,21 @@ public class ArrayExamples {
     }
 
     public static void main(String[] args) {
+        anonymousInitializer();
         confirmAnArrayAnObject();
         howToInitializeAnArrayOfPrimitives();
         howToInitializeAnArrayOfObjects();
         arrayDefinitionsAndVarargs();
         outputtingTheContentsOfAStringArray();
+        gettingTheLengthOfAnArray();
+        trickLengthExample();
+    }
+
+    private static void anonymousInitializer() {
+        // Anonymous Initializer is only allowed in the declaration
+        String [] grades = {"A", "B", "C", "D", "E", "F"}; // This is fine
+        String [] moreGrades;
+        // moreGrades = {"A", "B", "C", "D", "E", "F"}; // This is NOT fine
     }
 
     private static void confirmAnArrayAnObject() {
@@ -78,5 +88,19 @@ public class ArrayExamples {
         System.out.println(strings);                    // [Ljava.lang.String;@28d93b30
         System.out.println(strings.toString());         // [Ljava.lang.String;@28d93b30
         System.out.println(Arrays.toString(strings));   // [null, null]
+    }
+
+    public static void gettingTheLengthOfAnArray() {
+        String[] strings = new String[2];
+        System.out.println("Length is " + strings.length);
+    }
+
+    public static void trickLengthExample() {
+        int x = 0;
+
+        String[] animal = new String[3];
+        do {
+            animal[x] = "Dog";
+        } while (x > animal[x++].length()); // This length is the String length method!!
     }
 }

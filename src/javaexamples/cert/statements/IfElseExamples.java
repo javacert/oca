@@ -20,7 +20,7 @@ public class IfElseExamples {
         boolean someBoolean = false;
         if (someBoolean){
             return true;
-        } else {
+        } else { // REMEMBER YOU CANNOT HAVE A CONDITION WITH THE ELSE!
             return false; // This compiles because there is no conditional logic!
         }
     }

@@ -9,9 +9,14 @@ public class ForLoopExamples {
         usingIncompatibleDataTypesInInitializationBlock();
         usingLoopVariablesOutsideForLoop();
         usingBreakToPreventAnInfiniteLoop();
+        crazyLoopConstruct();
+        isUpdateStatementRunWhenBreakHit();
     }
 
     private static void validConstructsForAForLoop() {
+
+        // Remember in a for loop, all three blocks are optional. This means we can skip
+        // initialization, the middle boolean expression, or the update statement at the end.
 
         // for(;;);             // Valid, but will create an infinite loop
         // for(;;){}            // Valid, but will create an infinite loop
@@ -67,5 +72,22 @@ public class ForLoopExamples {
             // Note that continue would not help break the infinite loop!
             // continue;
         }
+    }
+
+    private static void crazyLoopConstruct() {
+        // Observe the comma operator that is permitted in the for loop in the update statement
+        // We can put virtually any arbitrary code statements that you want in the update statement - it is sometimes
+        // incorrectly referred to as the 'increment expression', but it can do much more.
+        for(int i = 0, j = 0; i < 3; i++, System.out.println("This works!"), System.out.println("This also works!"), ++j);
+    }
+
+    public static void isUpdateStatementRunWhenBreakHit() {
+        // When the break statement is encountered inside a loop, the loop is immediately terminated,
+        // and program control resumes at the next statement following the loop.
+        int i = 0;
+        for(; i < 1; System.out.println("If I break, then I won't be run"), i++) {
+            break;
+        }
+        System.out.println(i); // 0 -  we break the loop and so the update statement in the for loop is NOT run
     }
 }

@@ -6,7 +6,8 @@ package javaexamples.cert.exceptions;
 // 3) ClassCastException - thrown by JVM
 // 4) IllegalArgumentException - tricky one, seems like a Checked exception since thrown by programmer
 // 5) NullPointerException - thrown by JVM
-// 6) NumberFormatException - tricky one, seems like a Checked exception since thrown by programmer
+// 6) NumberFormatException - tricky one, seems like a Checked exception since thrown by programmer -
+//         --> also note that NumberFormatException extends IllegalArgumentException extends RuntimeException
 
 // Exception Type: Checked Exceptions - extends Exception
 // 1) FileNotFoundException - thrown programmatically - public class FileNotFoundException extends IOException

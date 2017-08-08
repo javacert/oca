@@ -42,6 +42,14 @@ public class DateTimeExamples {
         System.out.println(localDate); // 2015-05-21 - remember plusDays returns a new LocalDate object
         LocalDate avoidTheTrick = localDate.plusDays(3);
         System.out.println(avoidTheTrick); // 2015-05-24 - remember plusDays returns a new LocalDate object
+
+        LocalDate localDateYearDay = LocalDate.ofYearDay(2015, 363);
+        System.out.println("ofYearDay " + localDateYearDay); // ofYearDay 2015-12-29
+        LocalDate localDateEpochDay = LocalDate.ofEpochDay(123456);
+        System.out.println("ofEpochDay " + localDateEpochDay); // ofEpochDay 2308-01-06
+
+        System.out.println(localDateYearDay.lengthOfMonth()); // 31
+        System.out.println(localDateYearDay.lengthOfYear()); // 365
     }
 
     private static void localDateTimeExamples() {

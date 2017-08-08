@@ -9,12 +9,30 @@ public class WrapperEdgeCaseExamples {
     }
 
     private static void usingWrapperConstructors() {
+
+        // IMPORTANT - literals in int range are considered as int implicitly (do not need a cast). This means that we can assign
+        // an int to a short and it will compile since within int range (int = 2.147483648E9 - 2.147483647E9),
+        // but see on down, we can't do this for anything bigger than an int without an explicit cast
+        Short myShortB = 3;
+
         // Short myShort = new Short(4); // --> Won't compile since the constructor expects a short
-        Short myShort = new Short((short)4); // public Short(short value) {
+        Short myShortA = new Short((short)4); // public Short(short value) {
 
         Long myLongA = new Long(4); // public Long(long value) {
         // Long myLongB = new Long(2.0); // --> Won't compile since the constructor expects a long and not a double
         Long myLongB = new Long((long)2.0);
+        Long myLongC = new Long(2L);
+        Long myLongD = new Long((long)2);
+
+        Integer myIntegerA = 3; // This will call Integer.valueOf()
+
+        // As described above for short, we can't do the following assignments
+        // Long myLongC = 3; // Incompatible Types - Required: java.lang.Long, Found: int
+        Long myLongE = (long)3; // This works fine and will call Long.valueOf()
+        Long myLongF = 3L; // Also compiles fine and will call Long.valueOf()
+
+        // Double myDoubleA = 10; // Incompatible Types - Required: java.lang.Double, Found: int
+        Double myDoubleA = (double)10; // This works fine with the explicit cast
 
         // Watch out for float since you can assign an int to those
         float floatAsInt = 0;
@@ -78,6 +96,6 @@ public class WrapperEdgeCaseExamples {
         System.out.println(isNaN); // true
 
         boolean isInfinite = Double.isInfinite(thisIsAValidCalculationC);
-        System.out.println(isNaN); // true
+        System.out.println(isInfinite); // true
     }
 }

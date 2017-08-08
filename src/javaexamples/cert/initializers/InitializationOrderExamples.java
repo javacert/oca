@@ -30,8 +30,6 @@ package javaexamples.cert.initializers;
     This calls all the way to the top of the chain and then initializes the top most parent class by initializing all instance members
     Remaining body of constructor after super() is executed (since child classes will rely on attributes from the parent)
     Moves up the hierarchy (parent to child) repeating instance initialization and constructor execution.
-
-
 */
 
 public class InitializationOrderExamples extends AbstractClassToTestInitializationOrder {

@@ -1,15 +1,18 @@
 package javaexamples.cert.strings;
 
+// Notes
+// StringBuilder does NOT override the equals method, so it will always be a reference comparison.
 public class StringBuilderExamples {
 
     public static void main(String[] args){
-        builderExample1();
+/*        builderExample1();
         insertBeyondSizeExample();
         toStringNotRequiredExample();
         methodChainingProblems();
         substringExample();
         reverseExample();
-        someOtherStringBuilderMethods();
+        someOtherStringBuilderMethods();*/
+        stringBuilderCapacity();
     }
 
     private static void builderExample1() {
@@ -140,5 +143,19 @@ public class StringBuilderExamples {
         // sb.insert(1, "def"); would apply the changes either way
         sb = sb.insert(1, "def"); // Does not exist in String
         System.out.println(sb); // adefdefbc
+    }
+
+    // The initial capacity of a StringBuilder is 16, plus the length of the String Argument
+    private static void stringBuilderCapacity() {
+        StringBuilder s = new StringBuilder("1Z0");
+        s.append("-808"); // This will not factor into the initial capacity
+        System.out.println("StringBuilder length() is " + s.length()); // StringBuilder length() is 7
+        System.out.println("StringBuilder capacity() is " + s.capacity()); // StringBuilder capacity() is 19
+
+        s = new StringBuilder("1234567890");
+        System.out.println("StringBuilder capacity() is " + s.capacity()); // StringBuilder capacity() is 26 (10 + 16)
+        s.append("12345678901234567890"); // Let's bust the current capacity
+        // New capacity is calculated using: Twice the old capacity, plus 2.
+        System.out.println("StringBuilder capacity() is " + s.capacity()); // StringBuilder capacity() is 54 ((26 *2) + 2)
     }
 }

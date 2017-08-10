@@ -8,6 +8,7 @@ package javaexamples.cert.exceptions;
 // 5) NullPointerException - thrown by JVM
 // 6) NumberFormatException - tricky one, seems like a Checked exception since thrown by programmer -
 //         --> also note that NumberFormatException extends IllegalArgumentException extends RuntimeException
+// 7) NegativeArraySizeException - thrown by JVM when array initialized with a negative number
 
 // Exception Type: Checked Exceptions - extends Exception
 // 1) FileNotFoundException - thrown programmatically - public class FileNotFoundException extends IOException

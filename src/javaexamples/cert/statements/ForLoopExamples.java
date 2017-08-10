@@ -11,6 +11,7 @@ public class ForLoopExamples {
         usingBreakToPreventAnInfiniteLoop();
         crazyLoopConstruct();
         isUpdateStatementRunWhenBreakHit();
+        forLoopOrdering();
     }
 
     private static void validConstructsForAForLoop() {
@@ -89,5 +90,24 @@ public class ForLoopExamples {
             break;
         }
         System.out.println(i); // 0 -  we break the loop and so the update statement in the for loop is NOT run
+    }
+
+    // This example shows the order of the for loop
+    // 1) Initialization statement int x = 0
+    // 2) Loop termination statement x < 1
+    // 3) If termination statement has not been met, then execute the code in the for block, x++
+    // 4) If break does not exist, then go to the update statement
+    // 5) Loop termination statement x < 1
+    private static void forLoopOrdering() {
+        for(int x = 0; x < 1; System.out.println("x in the update statement = " + x)) {
+            System.out.println("x initial value = " + x);
+            x++;
+            System.out.println("x incremented value = " + x);
+        }
+
+        // OUTPUT
+        // x initial value = 0
+        // x incremented value = 1
+        // x in the update statement = 1
     }
 }

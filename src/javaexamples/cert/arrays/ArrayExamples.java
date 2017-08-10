@@ -26,6 +26,20 @@ public class ArrayExamples {
         String [] grades = {"A", "B", "C", "D", "E", "F"}; // This is fine
         String [] moreGrades;
         // moreGrades = {"A", "B", "C", "D", "E", "F"}; // This is NOT fine
+
+        // Compare the following anonymous arrays as well...
+        Integer [] integerArray = { 1, 2, 3 };
+        Integer [] integerArrayAlt = new Integer[]{ 1, 2, 3 };
+
+        // Be careful, you cannot do this
+        int[][]ints = new int[3][2];
+        //ints[2] = {1, 2, 3}; // Array initializer not allowed here
+        ints[2] = new int[3];
+        ints[2] = new int[]{1, 2, 3}; // This works because we are creating a new array object
+
+        Integer[][]intsB = new Integer[3][2];
+        // intsB[2] = {1, 2, 3}; // nope!
+        intsB[2] = new Integer[]{1, 2, 3}; // This works because we are creating a new array object
     }
 
     private static void confirmAnArrayAnObject() {

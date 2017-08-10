@@ -2,6 +2,11 @@ package javaexamples.cert.statements;
 
 // Data types supported are int/Integer, byte/Byte, short/Short, char/Character, String, enum values
 // You cannot use long/Long, double/Double
+// You cannot have duplicate case values
+// case values must be compile time constants, as in they should be final or enums
+// A final array contains variables which may not be compile time constants - watch for final arrays.
+// You can nest switch statements
+// Switch statements are more efficient than a set of nested if statements
 public class SwitchExamples {
 
     public static void main(String[] args){

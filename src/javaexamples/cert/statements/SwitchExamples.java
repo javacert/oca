@@ -1,7 +1,7 @@
 package javaexamples.cert.statements;
 
 // Data types supported are int/Integer, byte/Byte, short/Short, char/Character, String, enum values
-// You cannot use long/Long, double/Double
+// You cannot use long/Long, double/Double, float/Float (due to exact values of float and double being difficult)
 // You cannot have duplicate case values
 // case values must be compile time constants, as in they should be final or enums
 // A final array contains variables which may not be compile time constants - watch for final arrays.

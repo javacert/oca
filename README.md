@@ -15,6 +15,12 @@ General Tips:
         and composition - reliance on another class which have not been declared private, not using an interface.
 - static and instance class member variables get initialized with reasonable default values as determined by the compiler.
 - Method local variables need to be initialized before using them.
+- The signature of a method is used to uniquely identify a method - it consists of:
+    --> Method Name
+    --> Number of parameters
+    --> Type of Parameters
+    --> Order of the parameters
+- Return types and thrown exceptions are not considered to be a part of the method signature.
 
 Interesting discussions:
 __________________________________________________________________

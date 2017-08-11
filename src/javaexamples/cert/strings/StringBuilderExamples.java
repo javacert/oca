@@ -11,8 +11,9 @@ public class StringBuilderExamples {
         methodChainingProblems();
         substringExample();
         reverseExample();
-        someOtherStringBuilderMethods();*/
-        stringBuilderCapacity();
+        someOtherStringBuilderMethods();
+        stringBuilderCapacity();*/
+        appendExample();
     }
 
     private static void builderExample1() {
@@ -157,5 +158,29 @@ public class StringBuilderExamples {
         s.append("12345678901234567890"); // Let's bust the current capacity
         // New capacity is calculated using: Twice the old capacity, plus 2.
         System.out.println("StringBuilder capacity() is " + s.capacity()); // StringBuilder capacity() is 54 ((26 *2) + 2)
+    }
+
+    private static void appendExample() {
+        char[] chars = {'1', 'Z', '0', '-', '8', '1'};
+        StringBuilder sb = new StringBuilder();
+        sb.append(chars, 0, chars.length-1); // 0 - 5 (remember starting from 5!!)
+        System.out.println(sb); // 1Z0-8
+        sb.append('0'); // NOTE HERE - this is fine!
+        System.out.println(sb); // 1Z0-80
+        sb.append("8");
+        System.out.println(sb); // 1Z0-808
+
+        // These are the overloaded methods for append - all return a StringBuilder reference
+        //public StringBuilder append(StringBuffer sb) {
+        //public StringBuilder append(boolean b) {
+        //public StringBuilder append(char c) {
+        //public StringBuilder append(int i) {
+        //public StringBuilder append(long lng) {
+        //public StringBuilder append(float f) {
+        //public StringBuilder append(double d) {
+        //public StringBuilder append(char[] str, int offset, int len) {
+        //public StringBuilder append(char[] str) {
+        //public StringBuilder append(CharSequence s, int start, int end) {
+        //public StringBuilder append(CharSequence s) {
     }
 }

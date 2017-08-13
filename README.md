@@ -21,6 +21,20 @@ General Tips:
     --> Type of Parameters
     --> Order of the parameters
 - Return types and thrown exceptions are not considered to be a part of the method signature.
+- Java Math package exists in java.lang.Math
+- Precedence Rules (highest to lowest precedence):
+    --> Post-unary operators: expression++, expression--
+    --> Pre-unary operators: ++expression, --expression
+    --> Other unary operators: +, -, !
+    --> Multiplication/Division/Modulas: *, /, %
+    --> Addition/Subtraction: +, -
+    --> Shift Operators: <<, >>, >>>
+    --> Relational Operators: <, >, <=, >=
+    --> Equal to, not equal to: ==, !=
+    --> Logical Operators: &, ^, |
+    --> Short-circuit logical operators: &&, ||
+    --> Ternary operators: something ? true : false ;
+    --> Assignment operators: =, +=, -=, *=, /+, %=, &=, ^=, !=, <<=, >>=, >>>=
 
 Interesting discussions:
 __________________________________________________________________

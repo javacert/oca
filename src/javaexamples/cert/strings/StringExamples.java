@@ -6,6 +6,7 @@ public class StringExamples {
         stringHasStartsWithMethod();
         stringReplaceMethodSupport();
         stringWithCharExample();
+        stringJoinExample();
     }
 
     private static void stringHasStartsWithMethod() {
@@ -50,5 +51,12 @@ public class StringExamples {
         String tail = "lack";
         witch = witch.concat(tail);
         System.out.println(witch); // black
+    }
+
+    private static void stringJoinExample() {
+        // join is a new method that was released with Java 8
+        // public static String join(CharSequence delimiter, CharSequence... elements)
+        String message = String.join("-", "Any", "Number", "Of", "Elements");
+        System.out.println(message); // Any-Number-Of-Elements
     }
 }

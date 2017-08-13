@@ -5,6 +5,7 @@ public class DoWhileExamples {
     public static void main(String[] args){
         watchDoWhileScopeCarefully();
         watchDoWhileConstructionCarefully();
+        doWhileScopeExample();
     }
 
     private static void watchDoWhileScopeCarefully() {
@@ -25,5 +26,12 @@ public class DoWhileExamples {
         do {
             System.out.println("Hello");
         } while (false);
+    }
+
+    private static void doWhileScopeExample() {
+        // Watch for variable scope with the do while loop
+        //do {
+        //    int x = 3;
+        //} while (x < 10); // x is not in scope at this point since defined in the do block!
     }
 }

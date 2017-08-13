@@ -5,7 +5,6 @@ package javaexamples.cert.overloading;
 // 2) Remember that the return type of method is not part of method signature, so just changing the return type will not overload a method in Java.
 // 3) The method name must be the same.
 // 4) We cannot overload two methods in Java if they differ only by static keyword, but you can have a static and instance overload
-
 public class OverloadingExamples {
 
     public static void main(String[] args){}
@@ -23,4 +22,12 @@ public class OverloadingExamples {
     int buzz(boolean someBool, boolean someOtherBool, boolean anotherBool){ return 1; }
 
     int buzz(boolean someBool, boolean someOtherBool, int someInt){ return 1; }
+}
+
+class OverLoadingExamplesSubClass extends OverloadingExamples {
+    // Note you can overload and make it private. If the method signature matched and you were overriding,
+    // you would end up with a compilation issue since private is a more restrictive access modifier.
+    private int buzz(boolean someBool, boolean someOtherBool, int someInt, int someOtherInt){
+        return 1;
+    }
 }

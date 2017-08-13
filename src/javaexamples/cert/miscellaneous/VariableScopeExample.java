@@ -1,7 +1,27 @@
 package javaexamples.cert.miscellaneous;
 
-
 public class VariableScopeExample {
+
+    // Example A: Test the initialization order
+    static int testTheOrderBefore;
+    static {
+        testTheOrder = 1; // We can assign and use the static variable before its definition in the class
+        testTheOrder = testTheOrderBefore;
+        // testTheOrder = testTheStaticAssignment; // Illegal forward reference
+        // testTheOrder = testTheInstanceAssignment; // Non-static field referenced from a static context
+    }
+    // Same with instance initialization
+    {
+        testTheInstanceAssignment = 1;
+        testTheInstanceAssignment = testTheStaticAssignment;
+    }
+    static int testTheOrder;
+    static int testTheStaticAssignment;
+    int testTheInstanceAssignment;
+    static {
+        testTheOrder = testTheStaticAssignment; // Illegal forward reference
+        // testTheOrder = testTheInstanceAssignment; // Non-static field referenced from a static context
+    }
 
     static int testTheScope;
     static int accessMeWithoutChangingScope = 50;

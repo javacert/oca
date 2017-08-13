@@ -9,10 +9,25 @@ public class BasicConstructorExamples extends ParentConstructorExample {
         super(someString);
         // super(); --> Compiler would insert this and compilation would fail :-(
     }
+
+    private BasicConstructorExamples(){
+        //super(); // Won't compile since parent doesn't have a no-argument constructor
+        super("Some Non-default constructor");
+    }; // You can have a semi-colon here but unnecessary
+
+    public static void main(String[] args){
+        new BasicConstructorExamples(); // Can reference the private constructor from within the class only
+    }
 }
 
 class ParentConstructorExample {
     ParentConstructorExample(String someString){
 
+    }
+}
+
+class SomeClassToInstantiateClass {
+    public static void main(String[] args){
+        //new BasicConstructorExamples(); // Can't do this since constructor is marked as private
     }
 }

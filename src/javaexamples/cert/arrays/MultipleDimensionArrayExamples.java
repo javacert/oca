@@ -11,6 +11,7 @@ public class MultipleDimensionArrayExamples {
         determiningArrayLengthExample();
         reassigningArrayItemToAnother();
         sortingMultiDimensionalArray();
+        accessingNotInitializedArray();
     }
 
     private static void waysToInitializeAMultiDimensionArray() {
@@ -131,5 +132,20 @@ public class MultipleDimensionArrayExamples {
                 System.out.println(s);
             }
         }
+    }
+
+    private static void accessingNotInitializedArray() {
+        int [][]ints = new int[2][];
+        System.out.println(Arrays.toString(ints[1])); // null
+
+        // We can't do an Arrays.sort on it - null pointer will be thrown
+        //Arrays.sort(ints[1]); // Exception in thread "main" java.lang.NullPointerException
+
+        // If we had initialized it and then sorted the array...
+        ints[1] = new int[]{5, 2, 1, 3};
+        Arrays.sort(ints[1]);
+        System.out.println(Arrays.toString(ints)); // [null, [I@28d93b30]
+        System.out.println(Arrays.toString(ints[0])); // null
+        System.out.println(Arrays.toString(ints[1])); // [1, 2, 3, 5]
     }
 }

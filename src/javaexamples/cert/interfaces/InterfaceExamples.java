@@ -43,6 +43,6 @@ interface TryingToOverrideObjectMethodsInADefault {
     // default boolean equals(Object e){ return true; }
 }
 
-interface SomeStandardInterface {
-    void someStandardMethod();
+abstract interface SomeStandardInterface { // abstract implied if not provided since all interfaces are abstract
+    abstract void someStandardMethod(); // other than default and static methods, other methods are all abstract
 }

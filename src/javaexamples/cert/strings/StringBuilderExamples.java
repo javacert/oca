@@ -2,17 +2,20 @@ package javaexamples.cert.strings;
 
 // Notes
 // StringBuilder does NOT override the equals method, so it will always be a reference comparison.
+// StringBuilder does NOT have a toCharArray method.
+// String does have that method and also has a constructor that accepts a char array.
 public class StringBuilderExamples {
 
     public static void main(String[] args){
-/*        builderExample1();
+        builderExample1();
+        insertBooleanExample();
         insertBeyondSizeExample();
         toStringNotRequiredExample();
         methodChainingProblems();
         substringExample();
         reverseExample();
         someOtherStringBuilderMethods();
-        stringBuilderCapacity();*/
+        stringBuilderCapacity();
         appendExample();
     }
 
@@ -46,6 +49,13 @@ public class StringBuilderExamples {
         if(s1.toString() == "meow"){
             System.out.println("E"); // Not output
         }
+    }
+
+    private static void insertBooleanExample() {
+        StringBuilder sb = new StringBuilder("aAaA");
+        System.out.println("Last Index of A = " + sb.lastIndexOf("A")); // Last Index of A = 3
+        sb.insert(sb.lastIndexOf("A"), true); // remember insert inserts before the index
+        System.out.println("insertBooleanExample = " + sb); // insertBooleanExample = aAatrueA
     }
 
     private static void insertBeyondSizeExample() {

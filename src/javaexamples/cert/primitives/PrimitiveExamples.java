@@ -1,5 +1,26 @@
 package javaexamples.cert.primitives;
 
+// Important to remember the following:
+// Why can I assign an integer literal to a short type variable but not to a short type method parameter?
+// In order to understand why the assignment type-conversion works whilst the invocation one is rejected,
+// one has to refer to the Java Language Specification topic for both narrowing primitive conversions and
+// the context of that conversion: assignment context and invocation context.
+// According to the JLS, the narrowing primitive conversion is allowed in assignment context if:
+// 'A narrowing primitive conversion may be used if the type of the variable is byte, short, or char,
+// and the value of the constant expression is representable in the type of the variable.'
+// No such narrowing primitive conversion is allowed in the invocation context.
+// But why if the compiler knows I'm passing a constant that a short can hold (as in the assignment) it doesn't
+// let it compile? I mean, what is the difference between them?
+// The JLS must not have wanted to burden compilers with this additional logic.
+// In the invocation case, the argument which is type-matched to the formal parameter is an expression -
+// the compiler already has to determine the type, but it shouldn't need to also check if the expression's
+// value can also safely be narrowed. In this case, being a constant, it is clear to us that it can be,
+// but in execution context the compiler is allowed to not bother with that check, and is in-fact correct to disallow it.
+// It should be fairly clear that when expressions are allowed, it would be much easier for bugs to creep in where
+// narrowing cannot be done without losing precision, so the JLS and compilers just disallow it in all cases.
+// The same is true in numeric context, so the declaration:
+// short a = 5; short b = a * 5;
+// ... is similarly not allowed, despite being clearly comprised of constants which narrow correctly.
 public class PrimitiveExamples {
 
     // Capacities:
@@ -11,10 +32,26 @@ public class PrimitiveExamples {
 
     public static void main(String[] args){
         byteExamples();
+        shortExamples();
         charExamples();
         floatExamples();
         doubleExamples();
         longExamples();
+
+        // passIntToShortMethod(10); // Can't pass an int to a method expecting a short - see text above for why.
+        passIntToShortMethod((short)10);
+
+        passIntToLongMethod(10); // Both work fine since long can hold a short and an int
+        passIntToLongMethod((short)10);
+
+        passIntToFloatMethod(10);
+        passIntToFloatMethod((short)10);
+        passIntToFloatMethod(1.1f);
+        // passIntToFloatMethod(1.1d);
+
+        passIntToDoubleMethod(10);
+        passIntToDoubleMethod((short)10);
+        passIntToDoubleMethod(1.1f);
     }
 
     private static void floatExamples() {
@@ -22,6 +59,11 @@ public class PrimitiveExamples {
         float b = 1.1f; // You can have lower or upper case, both are the same
         System.out.println(a); // 1.1
         System.out.println(b); // 1.1
+    }
+
+    private static void shortExamples() {
+        short a = 10;
+        //short b = 99999; // Cannot fit this int value
     }
 
     private static void charExamples() {
@@ -73,6 +115,18 @@ public class PrimitiveExamples {
         System.out.println(l2); // 630780
         long l3 = 0x99ffCL; // L is for long here
         System.out.println(l3); // 630780
+    }
+
+    private static void passIntToShortMethod(short x) {
+    }
+
+    private static void passIntToLongMethod(long x) {
+    }
+
+    private static void passIntToFloatMethod(float x) {
+    }
+
+    private static void passIntToDoubleMethod(double x) {
     }
 }
 

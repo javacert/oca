@@ -19,6 +19,8 @@ public class ArrayExamples {
         outputtingTheContentsOfAStringArray();
         gettingTheLengthOfAnArray();
         trickLengthExample();
+        invalidArrayInitialization();
+        arraySubSetSort();
     }
 
     private static void anonymousInitializer() {
@@ -116,5 +118,26 @@ public class ArrayExamples {
         do {
             animal[x] = "Dog";
         } while (x > animal[x++].length()); // This length is the String length method!!
+    }
+
+    private static void invalidArrayInitialization() {
+        long size = 0xB;
+        System.out.println(size); // 11
+        // int [] array = new int[size]; // Incompatible types on size - expected int, received long
+        // long [] array = new long[size]; // Incompatible types on size - expected int, received long
+
+        int intSize = 0xB;
+        int [] array = new int[intSize];
+        array[10] = 1;
+    }
+
+    private static void arraySubSetSort() {
+        int[] ints = {3, 6, 1, 4, 0};
+        Arrays.sort(ints, 2, 4);
+
+        System.out.println(Arrays.toString(ints)); // [3, 6, 1, 4, 0]
+
+        Arrays.sort(ints, 1, 4);
+        System.out.println(Arrays.toString(ints)); // [3, 1, 4, 6, 0]
     }
 }

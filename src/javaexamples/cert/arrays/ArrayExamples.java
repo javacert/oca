@@ -21,6 +21,7 @@ public class ArrayExamples {
         trickLengthExample();
         invalidArrayInitialization();
         arraySubSetSort();
+        arraysFillExample();
     }
 
     private static void anonymousInitializer() {
@@ -139,5 +140,11 @@ public class ArrayExamples {
 
         Arrays.sort(ints, 1, 4);
         System.out.println(Arrays.toString(ints)); // [3, 1, 4, 6, 0]
+    }
+
+    private static void arraysFillExample() {
+        int x [] = new int [3];
+        Arrays.fill(x, 1); // assigns a value to all array entries
+        System.out.println(x[2]); // 1
     }
 }

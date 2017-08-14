@@ -129,6 +129,11 @@ public class StringBuilderExamples {
         //    super.delete(start, end);
         //    return this;
         //}
+
+        // And even more careful here!
+        sb = new StringBuilder("radical");
+        sb.append("more").insert(5, "Hello").substring(2, 4); // append and insert modify original, but not substring
+        System.out.println(sb); // "radicHelloalmore"
     }
 
     private static void reverseExample() {

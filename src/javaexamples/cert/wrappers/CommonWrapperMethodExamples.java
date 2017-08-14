@@ -16,5 +16,13 @@ public class CommonWrapperMethodExamples {
         // parseInt will parse the String into a primitive int
         Integer myWrappedInt = Integer.parseInt("7"); // Compiles fine, but value is boxed to an Integer
         int myPrimInt2 = Integer.parseInt("7"); // Compiles fine, no need for the boxing feature!!
+
+        Boolean b = Boolean.valueOf(true); // Creates a boolean wrapper without autoboxing
+        b = Boolean.parseBoolean("yes"); // Yes is not valid
+        System.out.println(b); // false
+        b = Boolean.parseBoolean("true"); // Returns a boolean primitive (autoboxing required for assignment)
+        System.out.println(b); // true
+        b = Boolean.getBoolean("FALSE"); // Returns a boolean primitive (autoboxing required for assignment)
+        System.out.println(b); // false
     }
 }

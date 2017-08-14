@@ -11,8 +11,10 @@ General Tips:
 - Watch for questions on Cohesion vs Coupling
     --> Cohesion measures the strength of relationship between pieces of functionality within a given module.
         For example, in highly cohesive systems functionality is strongly related.
+        Low cohesion would mean that the class does a great variety of things but is not focused on what it should do.
     --> Coupling - how much change in one class would bring about a change in another class. Watch for access modifier
         and composition - reliance on another class which have not been declared private, not using an interface.
+    --> High cohesion and Loose coupling are good design.
 - static and instance class member variables get initialized with reasonable default values as determined by the compiler.
 - Method local variables need to be initialized before using them.
 - The signature of a method is used to uniquely identify a method - it consists of:

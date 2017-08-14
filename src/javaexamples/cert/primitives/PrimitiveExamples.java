@@ -52,6 +52,10 @@ public class PrimitiveExamples {
         passIntToDoubleMethod(10);
         passIntToDoubleMethod((short)10);
         passIntToDoubleMethod(1.1f);
+
+        double someIntReturnA = returnShortFromIntMethod();
+        double someDoubleReturnA = returnShortFromDoubleMethod();
+        double someDoubleReturnB = returnIntFromDoubleMethod();
     }
 
     private static void floatExamples() {
@@ -127,6 +131,22 @@ public class PrimitiveExamples {
     }
 
     private static void passIntToDoubleMethod(double x) {
+    }
+
+    private static int returnShortFromIntMethod() {
+        // You can return an short since we are assigning a short to an int
+        // return (long)(10 * Math.random()); // This doesn't compile
+        return (short)(10 * Math.random());
+    }
+
+    private static double returnShortFromDoubleMethod() {
+        // You can return an short since we are assigning a short to a double
+        return (short)(10 * Math.random());
+    }
+
+    private static double returnIntFromDoubleMethod() {
+        // You can return an int since we are assigning an int to a double
+        return 10 * Math.random();
     }
 }
 

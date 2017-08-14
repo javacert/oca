@@ -11,6 +11,7 @@ public class CollectionExamples {
     public static void main(String[] args){
         List myList = new ArrayList();
         spliteratorExample();
+        setExample();
     }
 
     private static void spliteratorExample() {
@@ -29,5 +30,15 @@ public class CollectionExamples {
 
         // Characteristics Of Spliterator are : 16464
         System.out.println("Characteristics Of Spliterator are : " + mySpliterator.characteristics());
+    }
+
+    private static void setExample() {
+        List<String> list = new ArrayList<>();
+        list.add("A");
+        list.add("B");
+        list.add("C");
+        list.add("D");
+        System.out.println(list.set(3, "E")); // D - remember that set replaces an element and then returns the removed element
+        System.out.println(list.set(4, "E")); // Exception in thread "main" java.lang.IndexOutOfBoundsException: Index: 4, Size: 4
     }
 }

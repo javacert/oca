@@ -9,6 +9,8 @@ public class PrintStatementExamples {
         passingAnObjectToPrint();
         passingAPrimitiveToPrint();
         passingAWrapperToPrint();
+        printNullExample();
+        printAClassExample();
     }
 
     private static void printExamples() {
@@ -74,5 +76,28 @@ public class PrintStatementExamples {
         System.out.println(e); // 5.0
         System.out.println(f); // 6.0
         System.out.println(g); // 6.123
+    }
+
+    private static void printNullExample() {
+        String someString = null;
+        Integer someInteger = null;
+        System.out.println(someString); // null
+        System.out.println(someInteger); // null
+    }
+
+    private static void printAClassExample() {
+        // When a class (or the superclass) of an object does not override the toString method,
+        // Object class's toString is used, which prints the name of the class + @ sign + hash code of the object.
+        System.out.println(new Integer(5)); // Integer overrides object toString and returns 5
+        System.out.println(new PrintStatementExamples()); // javaexamples.cert.miscellaneous.PrintStatementExamples@1540e19d
+
+        // Now, in case of an array, the name of the class is a little complicated.
+        // The internal form of the name consists of the name of the element type preceded by one or
+        // more '[' characters representing the depth of the array nesting.
+        String[] stringArray = { "A", "B", "C" };
+        System.out.println(stringArray); // [Ljava.lang.String;@677327b6
+
+        String[][] stringArrayB = {{ "A", "B", "C" }};
+        System.out.println(stringArrayB); // [[Ljava.lang.String;@14ae5a5
     }
 }

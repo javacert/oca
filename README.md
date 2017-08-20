@@ -37,6 +37,7 @@ General Tips:
     --> Short-circuit logical operators: &&, ||
     --> Ternary operators: something ? true : false ;
     --> Assignment operators: =, +=, -=, *=, /+, %=, &=, ^=, !=, <<=, >>=, >>>=
+- Default package is not really a package, so not every class has to belong to a package.
 
 Interesting discussions:
 __________________________________________________________________

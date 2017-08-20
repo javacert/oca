@@ -5,6 +5,7 @@ public class IfElseExamples {
         basicIfElseExample();
         ifElseWithReturnExampleWhichCompiles();
         trickIfElseWithReturnExample();
+        danglingElseProblem(new String[]{"Only 1"});
     }
 
     private static void basicIfElseExample() {
@@ -36,5 +37,16 @@ public class IfElseExamples {
 
         // We must add the following to remove the compilation error from above.
         return true;
+    }
+
+    private static void danglingElseProblem(String[] args) {
+
+        // The following if/else will print nothing -
+        // The else statement actually belongs to the inner if statement (known as dangling if) since
+        // we cannot be sure what statement the else was actually intended for!
+        if(args[0].equals("open"))
+            if(args[1].equals("someone"))
+                System.out.println("Hello!");
+        else System.out.println("Go Away " + args[1]);
     }
 }

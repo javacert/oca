@@ -3,7 +3,7 @@ package javaexamples.cert.overriding;
 import java.io.EOFException;
 import java.io.IOException;
 
-// Remember, must be as or more accessible, and the Exception must be the same or a subclass.
+// Remember, must be as or more accessible, and the Exception must be the same or a subclass (or dropped altogether).
 public class OverrideExamples extends ClassToOverride {
 
     public static void main(String[] args) throws Exception{
@@ -24,6 +24,7 @@ public class OverrideExamples extends ClassToOverride {
     }*/
 
     // Not valid - return type is different and is not covariant
+    // The overriding method must have same return type in case of primitives (a subclass is allowed in case of classes)
 /*    public int someMethodToOverride() throws EOFException {
         return 10;
     }*/
@@ -34,6 +35,7 @@ public class OverrideExamples extends ClassToOverride {
     }*/
 
     // Not valid - exception thrown is broader
+    // The overriding method can throw a subset of the exception (if it throws more than 1 exception) or subclass of the exceptions thrown by the overridden class.
 /*    public Integer someMethodToOverride() throws Exception {
         return 10;
     }*/

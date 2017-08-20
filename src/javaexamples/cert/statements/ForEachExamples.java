@@ -1,6 +1,7 @@
 package javaexamples.cert.statements;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8,6 +9,8 @@ public class ForEachExamples {
 
     public static void main(String[] args){
         whatCanYouUseWithAForEach();
+        cannotUsePredefinedVariable();
+        arrayNotCorrectlyInitialized(null);
     }
 
     private static void whatCanYouUseWithAForEach() {
@@ -36,6 +39,23 @@ public class ForEachExamples {
         hm.put("A", "A");
         for(Map.Entry<String, String> entry : hm.entrySet()) {
             System.out.println(entry); // A=A
+        }
+    }
+
+    private static void cannotUsePredefinedVariable() {
+        Object o = null;
+        Collection c = new ArrayList();
+        c.add("A");
+        c.add("B");
+        // for (o : c) {} // INVALID!! Cannot use an existing / pre-defined variable in the declaration part
+        for (Object other : c) {}
+        for (final Object another : c) {} // Note that final is the only modifier that is allowed here
+    }
+
+    private static void arrayNotCorrectlyInitialized(int[][] ia) {
+        // Would throw a Runtime Exception if ia is not properly initialized
+        for(int i : ia[0]){
+
         }
     }
 }

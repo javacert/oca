@@ -1,5 +1,14 @@
 package javaexamples.cert.primitives;
 
+
+// An implicit narrowing primitive conversion may be used if all of the following conditions are satisfied:
+// 1. The expression is a compile time constant expression of type byte, char, short, or int.
+// 2. The type of the variable is byte, short, or char.
+// 3. The value of the expression (which is known at compile time, because it is a constant expression) is
+// representable in the type of the variable.
+// Note that implicit narrowing conversion does not apply to long or double.
+// So, char ch = 30L; will fail even though 30 is representable in char.
+
 // Important to remember the following:
 // Why can I assign an integer literal to a short type variable but not to a short type method parameter?
 // In order to understand why the assignment type-conversion works whilst the invocation one is rejected,
@@ -63,6 +72,8 @@ public class PrimitiveExamples {
         float b = 1.1f; // You can have lower or upper case, both are the same
         System.out.println(a); // 1.1
         System.out.println(b); // 1.1
+
+        // float c = 43e1; // Does not compile - 43e1 is a double with value 430.0
     }
 
     private static void shortExamples() {
@@ -98,8 +109,12 @@ public class PrimitiveExamples {
     private static void doubleExamples() {
         double a = 1.1d;
         double b = 1.1D; // You can have lower or upper case, both are the same
+        double c = 43e1; // 430.0 - watch for this one!
+        double d = 290e2; // 29000.0 - watch for this one as well!
         System.out.println(a); // 1.1
         System.out.println(b); // 1.1
+        System.out.println(c); // 1.1
+        System.out.println(d); // 1.1
     }
 
     private static void byteExamples() {
@@ -119,6 +134,8 @@ public class PrimitiveExamples {
         System.out.println(l2); // 630780
         long l3 = 0x99ffCL; // L is for long here
         System.out.println(l3); // 630780
+        long l4 = 012; // Octals can be assigned to longs
+        System.out.println(l4); // 10
     }
 
     private static void passIntToShortMethod(short x) {

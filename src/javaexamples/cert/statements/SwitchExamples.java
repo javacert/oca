@@ -1,12 +1,21 @@
 package javaexamples.cert.statements;
 
 // Data types supported are int/Integer, byte/Byte, short/Short, char/Character, String, enum values
-// You cannot use long/Long, double/Double, float/Float (due to exact values of float and double being difficult)
+// You cannot use long/Long, double/Double, float/Float, boolean/Boolean (due to exact values of float and double being difficult)
 // You cannot have duplicate case values
-// case values must be compile time constants, as in they should be final or enums
+// Case values must be compile time constants, as in they should be final or enums
+// The switch variable must be big enough to hold all the case constants. For example, if the switch variable is of type char,
+//    then none of the case constants can be greater than 65535 because a char's range is from 0 to 65535, or -128 to 127 for a byte
+// No two of the case constant expressions associated with a switch statement may have the same value.
+// At most one default label may be associated with the same switch statement.
 // A final array contains variables which may not be compile time constants - watch for final arrays.
 // You can nest switch statements
 // Switch statements are more efficient than a set of nested if statements
+// The switch statement compares the String object in its expression with the expressions associated
+//    with each case label as if it were using the String.equals method; consequently, the comparison of String
+//    objects in switch statements is case sensitive.
+// The Java compiler generates generally more efficient bytecode from switch statements that use String objects than
+//    from chained if-then-else statements.
 public class SwitchExamples {
 
     public static void main(String[] args){

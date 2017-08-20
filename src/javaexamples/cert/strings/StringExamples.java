@@ -1,5 +1,6 @@
 package javaexamples.cert.strings;
 
+// String, StringBuilder, and StringBuffer - all are final classes.
 public class StringExamples {
 
     public static void main(String[] args){

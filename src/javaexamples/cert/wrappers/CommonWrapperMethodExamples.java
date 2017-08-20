@@ -1,5 +1,9 @@
 package javaexamples.cert.wrappers;
 
+// Remember that wrapper classes for primitives (java.lang.Boolean, java.lang.Integer, java.lang.Long,
+// java.lang.Short etc.) are final and so they cannot be extended.
+// java.lang.Number, is not final. Integer, Long, Double etc. extend Number.
+// java.lang.System is final
 public class CommonWrapperMethodExamples {
 
     public static void main(String[] args){

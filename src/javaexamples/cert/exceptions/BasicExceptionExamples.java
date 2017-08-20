@@ -9,6 +9,7 @@ package javaexamples.cert.exceptions;
 // 6) NumberFormatException - tricky one, seems like a Checked exception since thrown by programmer -
 //         --> also note that NumberFormatException extends IllegalArgumentException extends RuntimeException
 // 7) NegativeArraySizeException - thrown by JVM when array initialized with a negative number
+// 8) SecurityException - thrown by the programmer - tricky one again since not thrown by JVM
 
 // Exception Type: Checked Exceptions - extends Exception
 // 1) FileNotFoundException - thrown programmatically - public class FileNotFoundException extends IOException
@@ -23,6 +24,9 @@ package javaexamples.cert.exceptions;
 // Main takeaways:
 // If you have a try statement and both the catch block and the finally block each throw an exception, then it is the
 // exception from the finally block that is propagated to the caller, with the one from the catch being dropped.
+
+// When you use System.out.println(exception), a stack trace is not printed. Just the name of the exception class and the message is printed.
+// When you use exception.printStackTrace(), a complete chain of the names of the methods called, along with the line numbers, is printed.
 public class BasicExceptionExamples {
 
     public static void main(String[] args) {

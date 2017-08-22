@@ -1,5 +1,9 @@
 package javaexamples.cert.constructors;
 
+// Notes
+// According to Enthuware, a default constructor is only the constructor that the compiler adds itself, if it
+// hasn't already been defined by the programmer. If you add a no-arg constructor manually, then it is not considered
+// a default constructor.
 public class BasicConstructorExamples extends ParentConstructorExample {
 
     public BasicConstructorExamples(String someString){

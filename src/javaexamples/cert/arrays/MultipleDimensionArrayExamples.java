@@ -2,6 +2,10 @@ package javaexamples.cert.arrays;
 
 import java.util.Arrays;
 
+// Notes
+// Each dimension expression is fully evaluated before any part of any dimension expression to its right.
+// Note that if evaluation of a dimension expression completes abruptly, no part of any dimension expression
+// to its right will appear to have been evaluated e.g. new int[i][i = 3][i]; (evaluate left to right)
 public class MultipleDimensionArrayExamples {
 
     public static void main(String[] args){

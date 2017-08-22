@@ -27,6 +27,8 @@ package javaexamples.cert.exceptions;
 
 // When you use System.out.println(exception), a stack trace is not printed. Just the name of the exception class and the message is printed.
 // When you use exception.printStackTrace(), a complete chain of the names of the methods called, along with the line numbers, is printed.
+
+// Exception handling in Java improves code because error handling code is clearly separated from the main program logic.
 public class BasicExceptionExamples {
 
     public static void main(String[] args) {

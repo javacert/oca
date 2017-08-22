@@ -1,5 +1,7 @@
 package javaexamples.cert.miscellaneous;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class PrintStatementExamples {
@@ -11,6 +13,12 @@ public class PrintStatementExamples {
         passingAWrapperToPrint();
         printNullExample();
         printAClassExample();
+        printAShortExample();
+        printAFloatExample();
+        printADoubleExample();
+        printAObjectExample();
+        printACharExample();
+        printALocalDateExample();
     }
 
     private static void printExamples() {
@@ -99,5 +107,45 @@ public class PrintStatementExamples {
 
         String[][] stringArrayB = {{ "A", "B", "C" }};
         System.out.println(stringArrayB); // [[Ljava.lang.String;@14ae5a5
+    }
+
+    private static void printAShortExample() {
+        System.out.println((short)10); // 10 - public void println(int x)
+        System.out.println((short)10 + 3.2); // 13.2 - public void println(double x)
+    }
+
+    private static void printAFloatExample() {
+        System.out.println(3.1f); // 3.1 (same as how double is output)
+    }
+
+    private static void printADoubleExample() {
+        System.out.println(3.2); // 3.2
+        System.out.println(3.2 + 1); // 4.2 - public void println(double x)
+        System.out.println(3.2 + 'c'); // 102.2 - public void println(double x)
+    }
+
+    private static void printAObjectExample() {
+        System.out.println(new Object()); // java.lang.Object@7f31245a - public void println(Object x)
+    }
+
+    private static void printACharExample() {
+        System.out.println('b'); // b - public void println(char x)
+        System.out.println('b' + 123); // 221 - public void println(int x) - widened to an int
+        System.out.println("b" + 'b'); // bb - public void println(String x) - String concatenation
+        System.out.println("b" + 'b' + 12); // bb12 - public void println(String x) - String concatenation
+        System.out.println(12 + "b" + 'b'); // 12bb - public void println(String x) - String concatenation
+        System.out.println(12 + 3 + "b" + 'b'); // 15bb - public void println(String x) - String concatenation
+    }
+
+    private static void printALocalDateExample() {
+        LocalDate d1 = LocalDate.parse("2015-02-05", DateTimeFormatter.ISO_DATE);
+        LocalDate d2 = LocalDate.of(2015, 2, 5);
+        LocalDate d3 = LocalDate.now();
+
+        // LocalDate overrides toString to output the date in the following format.
+        // For other formats you need to use format with DateTimeFormatter
+        System.out.println(d1); // 2015-02-05
+        System.out.println(d2); // 2015-02-05
+        System.out.println(d3); // 2017-08-22
     }
 }

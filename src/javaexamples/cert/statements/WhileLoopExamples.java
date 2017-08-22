@@ -13,5 +13,10 @@ public class WhileLoopExamples {
         //while(false) {
             // Unreachable Statement
         //}
+
+        // Note that while (true) is permitted.
+        while(true) {
+
+        }
     }
 }

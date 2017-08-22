@@ -2,7 +2,7 @@ package javaexamples.cert.interfaces;
 
 // Note in this example we are implementing 2 interfaces with the same default method.
 // For this to compile we needed to add an overridden version of the method.
-public class AmbiguousDefaultMethodExample implements SomeInterfaceA, SomeInterfaceB {
+public class AmbiguousDefaultMethodExampleA implements SomeInterfaceA, SomeInterfaceB {
 
     // int someAmbiguousMethod(){ return 10; } // --> Won't compile since access modifier is more restrictive
 

@@ -29,6 +29,14 @@ package javaexamples.cert.exceptions;
 // When you use exception.printStackTrace(), a complete chain of the names of the methods called, along with the line numbers, is printed.
 
 // Exception handling in Java improves code because error handling code is clearly separated from the main program logic.
+// A try block may be followed by multiple catch blocks, and the catch blocks may be followed by a single finally block.
+// A try block may be followed by either a catch or a finally block or both. But a finally block alone won't suffice
+// if code in the try block throws a checked exception. In this case, you need to catch the checked exception or declare
+// it to be thrown by your method. Otherwise, your code won't compile.
+// The try, catch, and finally blocks can't exist independently.
+// The finally block can't appear before a catch block.
+// A finally block always executes, regardless of whether the code throws an exception.
+// If you rethrow a checked exception you must ensure the method declares a throws for the checked exception.
 public class BasicExceptionExamples {
 
     public static void main(String[] args) {

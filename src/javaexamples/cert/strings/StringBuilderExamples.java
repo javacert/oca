@@ -17,6 +17,7 @@ public class StringBuilderExamples {
         someOtherStringBuilderMethods();
         stringBuilderCapacity();
         appendExample();
+        clearingAStringBuilder();
     }
 
     private static void builderExample1() {
@@ -197,5 +198,19 @@ public class StringBuilderExamples {
         //public StringBuilder append(char[] str) {
         //public StringBuilder append(CharSequence s, int start, int end) {
         //public StringBuilder append(CharSequence s) {
+    }
+
+    private static void clearingAStringBuilder() {
+        StringBuilder sb = new StringBuilder("ABCDEF");
+        sb.delete(0, sb.length());
+        System.out.println(sb.length()); // 0
+
+        sb = new StringBuilder("ABCDEF");
+        sb.setLength(0);
+        System.out.println(sb.length()); // 0
+
+        sb = new StringBuilder("ABCDEF");
+        sb = new StringBuilder();
+        System.out.println(sb.length()); // 0
     }
 }

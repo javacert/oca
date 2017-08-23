@@ -14,11 +14,14 @@ public class PrintStatementExamples {
         printNullExample();
         printAClassExample();
         printAShortExample();
+        printAIntExample();
         printAFloatExample();
         printADoubleExample();
         printAObjectExample();
         printACharExample();
         printALocalDateExample();
+        printAStringExample();
+        printABooleanExample();
     }
 
     private static void printExamples() {
@@ -91,6 +94,8 @@ public class PrintStatementExamples {
         Integer someInteger = null;
         System.out.println(someString); // null
         System.out.println(someInteger); // null
+        //System.out.println(null); // Can't do this - ambiguous method call to println
+        //System.out.println(null + null); // Can't do this either
     }
 
     private static void printAClassExample() {
@@ -114,8 +119,14 @@ public class PrintStatementExamples {
         System.out.println((short)10 + 3.2); // 13.2 - public void println(double x)
     }
 
+    private static void printAIntExample() {
+        System.out.println('b' + new Integer(63)); // 161
+        System.out.println('a' + 1 ); // This does NOT print B, char promoted to an int - 98
+    }
+
     private static void printAFloatExample() {
         System.out.println(3.1f); // 3.1 (same as how double is output)
+        System.out.println(4 + 1.7f); // 5.7
     }
 
     private static void printADoubleExample() {
@@ -147,5 +158,19 @@ public class PrintStatementExamples {
         System.out.println(d1); // 2015-02-05
         System.out.println(d2); // 2015-02-05
         System.out.println(d3); // 2017-08-22
+    }
+
+    private static void printAStringExample() {
+        // Both method println(char[]) in java.io.PrintStream and method println(java.lang.String) in java.io.PrintStream match
+        //System.out.println(null + true); // Operator + cannot be applied to null, boolean
+        //System.out.println(true + null); // Operator + cannot be applied to null, boolean
+    }
+
+    private static void printABooleanExample() {
+        System.out.println(true); // true - public void println(boolean x)
+        System.out.println(false); // false - public void println(boolean x)
+        System.out.println(new Boolean("true")); // true - public void println(Object x)
+        System.out.println(new Boolean("false")); // false - public void println(Object x)
+        //System.out.println(true + new Boolean("false")); // Operator + cannot be applied to boolean, java.lang.Boolean
     }
 }

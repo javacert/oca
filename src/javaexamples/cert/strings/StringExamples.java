@@ -1,6 +1,8 @@
 package javaexamples.cert.strings;
 
 // String, StringBuilder, and StringBuffer - all are final classes.
+// + is overloaded such that if any one of its two operands is a String then it will convert the other
+// operand to a String and create a new string by concatenating the two.
 public class StringExamples {
 
     public static void main(String[] args){
@@ -8,6 +10,7 @@ public class StringExamples {
         stringReplaceMethodSupport();
         stringWithCharExample();
         stringJoinExample();
+        stringCharAtExample();
     }
 
     private static void stringHasStartsWithMethod() {
@@ -59,5 +62,9 @@ public class StringExamples {
         // public static String join(CharSequence delimiter, CharSequence... elements)
         String message = String.join("-", "Any", "Number", "Of", "Elements");
         System.out.println(message); // Any-Number-Of-Elements
+    }
+
+    private static void stringCharAtExample() {
+        int charIndex = "ABCDE".charAt('a'); // char promoted to int! java.lang.StringIndexOutOfBoundsException: String index out of range: 97
     }
 }

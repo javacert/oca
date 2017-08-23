@@ -38,6 +38,7 @@ General Tips:
     --> Ternary operators: something ? true : false ;
     --> Assignment operators: =, +=, -=, *=, /+, %=, &=, ^=, !=, <<=, >>=, >>>=
 - Default package is not really a package, so not every class has to belong to a package.
+- Which packages are automatically imported? java.lang & The package with no name (default) (contrary to above statement).
 
 Interesting discussions:
 __________________________________________________________________

@@ -12,7 +12,7 @@ public class TrickyOverrideExceptionExample extends OverrideExceptionClass {
         // (determined at runtime) so it thinks we are trying to call the version which throws a checked exception
         // Remember, the compiler looks at the reference and sees that o method throws a checked exception. The
         // compiler doesn't care that it may be overridden at runtime.
-        // o.eat();
+        // o.eat(); // --> Would need to be surrounded by a try/catch!
     }
 
     public void eat(){

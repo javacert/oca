@@ -18,8 +18,13 @@ package javaexamples.cert.exceptions;
 
 // Exception Type: Errors - extends Error
 // 1) ExceptionInInitializerError - thrown by JVM - class ExceptionInInitializerError extends LinkageError
+//         --> Runtime exceptions arising from any of the following will throw this error (can be caused by an object of RuntimeException only:
+//              1) Execution of an anonymous static block
+//              2) Initialization of a static variable
+//              3) Execution of a static method (called from either of the previous two items)
 // 2) StackOverflowError - thrown by JVM - class StackOverflowError extends VirtualMachineError
 // 3) NoClassDefErrorFound - thrown by JVM - class NoClassDefFoundError extends LinkageError
+//         --> When JVM class loader cannot locate a class on the classpath
 
 // Main takeaways:
 // If you have a try statement and both the catch block and the finally block each throw an exception, then it is the
@@ -37,6 +42,8 @@ package javaexamples.cert.exceptions;
 // The finally block can't appear before a catch block.
 // A finally block always executes, regardless of whether the code throws an exception.
 // If you rethrow a checked exception you must ensure the method declares a throws for the checked exception.
+// Exception has 4 public constructors and 1 protected constructor.
+// The first line of printStackTrace() is the output of the toString() method for the object, printing a description of the message.
 public class BasicExceptionExamples {
 
     public static void main(String[] args) {

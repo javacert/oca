@@ -39,6 +39,11 @@ General Tips:
     --> Assignment operators: =, +=, -=, *=, /+, %=, &=, ^=, !=, <<=, >>=, >>>=
 - Default package is not really a package, so not every class has to belong to a package.
 - Which packages are automatically imported? java.lang & The package with no name (default) (contrary to above statement).
+- Always check that a wrapper object has been initialized before being operated on (++ or -- etc) as it will throw a runtime exception.
+- Member variables refer to class variables.
+- Watch out in loops for continue or break and possible unreachable statements.
+- Watch for out of alignment if/else statements so that it looks as though the else applies to another if/else block.
+- Using an interface is always more appropriate if it can be used because it allows the class to extend another class when needed.
 
 Interesting discussions:
 __________________________________________________________________

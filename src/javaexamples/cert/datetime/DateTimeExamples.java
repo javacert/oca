@@ -4,6 +4,7 @@ package javaexamples.cert.datetime;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+import java.time.temporal.ChronoUnit;
 
 // Valid classes in the java.date package for OCA are:
 // - LocalDate
@@ -16,6 +17,12 @@ import java.time.format.FormatStyle;
 //      --> hh (h - hour, hh - include the leading zero)
 //      --> mm - represents the minute!!! WATCH FOR THIS and don't mix up with MMMM!!!
 //          --> ofLocalizedDate, ofLocalizedDateTime, orLocalizedTime
+
+// An epoch day is 0 at 1970-01-01
+
+// ChronoUnit - A standard set of date periods units.
+// This set of units provide unit-based access to manipulate a date, time or date-time.
+// The standard set of units can be extended by implementing TemporalUnit.
 public class DateTimeExamples {
 
     public static void main(String[] args) {
@@ -29,6 +36,7 @@ public class DateTimeExamples {
         trickPeriodExample();
         invalidPeriodExample();
         smallestTimeInLocalTime();
+        chronoUnitExamples();
     }
 
     private static void localDateExamples() {
@@ -168,5 +176,35 @@ public class DateTimeExamples {
     private static void smallestTimeInLocalTime() {
         // (hour, minute, second, nanoOfSecond) = nano second
         LocalTime.of(1, 2, 3, 4);
+    }
+
+    private static void chronoUnitExamples() {
+
+        LocalDateTime oldDate = LocalDateTime.of(1982, Month.AUGUST, 31, 10, 20, 55);
+        LocalDateTime newDate = LocalDateTime.of(2016, Month.NOVEMBER, 9, 10, 21, 56);
+
+        System.out.println(oldDate);    // 1982-08-31T10:20:55
+        System.out.println(newDate);    // 2016-11-09T10:21:56
+
+        // count between dates
+        long years = ChronoUnit.YEARS.between(oldDate, newDate);
+        long months = ChronoUnit.MONTHS.between(oldDate, newDate);
+        long weeks = ChronoUnit.WEEKS.between(oldDate, newDate);
+        long days = ChronoUnit.DAYS.between(oldDate, newDate);
+        long hours = ChronoUnit.HOURS.between(oldDate, newDate);
+        long minutes = ChronoUnit.MINUTES.between(oldDate, newDate);
+        long seconds = ChronoUnit.SECONDS.between(oldDate, newDate);
+        long millis = ChronoUnit.MILLIS.between(oldDate, newDate);
+        long nano = ChronoUnit.NANOS.between(oldDate, newDate);
+
+        System.out.println(years + " years");       // 34 years
+        System.out.println(months + " months");     // 410 months
+        System.out.println(weeks + " weeks");       // 1784 weeks
+        System.out.println(days + " days");         // 12489 days
+        System.out.println(hours + " hours");       // 299736 hours
+        System.out.println(minutes + " minutes");   // 17984161 minutes
+        System.out.println(seconds + " seconds");   // 1079049661 seconds
+        System.out.println(millis + " millis");     // 1079049661000 millis
+        System.out.println(nano + " nano");         // 1079049661000000000 nano
     }
 }

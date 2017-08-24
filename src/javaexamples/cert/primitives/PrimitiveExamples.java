@@ -136,6 +136,7 @@ public class PrimitiveExamples {
         System.out.println(l3); // 630780
         long l4 = 012; // Octals can be assigned to longs
         System.out.println(l4); // 10
+        System.out.println(2L * 2l * 2); // 8 - public void println(long x)
     }
 
     private static void passIntToShortMethod(short x) {

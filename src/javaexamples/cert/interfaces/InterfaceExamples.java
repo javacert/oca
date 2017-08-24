@@ -1,6 +1,6 @@
 package javaexamples.cert.interfaces;
 
-// Interface rules to note
+// Interface rules to note:
 // 1) In Java 8, we can have static and default methods in interfaces but there are some rules
 //    -- you cannot override Object class methods using the default method
 // 2) Both static and default methods are public
@@ -11,7 +11,7 @@ package javaexamples.cert.interfaces;
 // 5) A Top-level interface can’t be defined as private or protected.
 // 6) All members of an interface - variables, methods, inner interfaces, and inner classes (yes, an interface can define
 //    a class within it) are inherently public because that’s the only modifier they can accept.
-// 7) the variables of an interface are implicitly public, final, and static. You must initialize all variables in
+// 7) The variables of an interface are implicitly public, final, and static. You must initialize all variables in
 //    an interface, or your code won’t compile.
 // 8) Interface methods are implicitly abstract. To define default or static methods, you must explicitly use the
 //    keyword default or static with the method declaration in an interface.
@@ -22,11 +22,11 @@ package javaexamples.cert.interfaces;
 // 11) The static methods in a class and the interface that it implements are not related to each other.
 //     A static method in a class does not hide or override the static method in the interface that it implements
 //     like it would in a standard class.
-public strictfp class InterfaceExamples {
+public strictfp class InterfaceExamples { // only abstract and strictfp are valid non-access modifiers.
 
     public static void main(String[] args){
 
-        // This demonstrates an anonymous interface implementation
+        // This demonstrates an anonymous interface implementation. If InterfaceExamples was abstract, it would not compile.
         SomeStandardInterface i = new SomeStandardInterface() {
             @Override
             public void someStandardMethod() {

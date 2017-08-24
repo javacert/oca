@@ -11,6 +11,7 @@ public class ForEachExamples {
         whatCanYouUseWithAForEach();
         cannotUsePredefinedVariable();
         arrayNotCorrectlyInitialized(null);
+        watchForUnreachableCodeWithContinueBreak();
     }
 
     private static void whatCanYouUseWithAForEach() {
@@ -56,6 +57,19 @@ public class ForEachExamples {
         // Would throw a Runtime Exception if ia is not properly initialized
         for(int i : ia[0]){
 
+        }
+    }
+
+    private static void watchForUnreachableCodeWithContinueBreak() {
+        String [] someArray = {"A", "B", "C"};
+        for (String s : someArray){
+            continue;
+            // System.out.println("Can't reach me here!"); // Unreachable Statement
+        }
+
+        for (String s : someArray){
+            break;
+            // System.out.println("Can't reach me here!"); // Unreachable Statement
         }
     }
 }

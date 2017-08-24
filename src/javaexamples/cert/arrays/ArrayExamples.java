@@ -22,6 +22,7 @@ public class ArrayExamples {
         invalidArrayInitialization();
         arraySubSetSort();
         arraysFillExample();
+        doFinalConstantsThrowCompileError();
     }
 
     private static void anonymousInitializer() {
@@ -146,5 +147,12 @@ public class ArrayExamples {
         int x [] = new int [3];
         Arrays.fill(x, 1); // assigns a value to all array entries
         System.out.println(x[2]); // 1
+    }
+
+    private static void doFinalConstantsThrowCompileError() {
+        final int x = 10;
+        int[] someArray = new int[] {1, 2, 3};
+        someArray[7] = 5; // No compilation error
+        someArray[x] = 5; // No compilation error even with final variable!!
     }
 }

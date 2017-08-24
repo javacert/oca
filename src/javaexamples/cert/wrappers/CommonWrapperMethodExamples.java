@@ -4,6 +4,7 @@ package javaexamples.cert.wrappers;
 // java.lang.Short etc.) are final and so they cannot be extended.
 // java.lang.Number, is not final. Integer, Long, Double etc. extend Number.
 // java.lang.System is final
+// Watch out for null wrapper references with ++ or -- etc - throw RuntimeException
 public class CommonWrapperMethodExamples {
 
     public static void main(String[] args){
@@ -16,6 +17,9 @@ public class CommonWrapperMethodExamples {
         System.out.println(myPrimInt); // Prints 6
         System.out.println(++myPrimInt); // Prints 7
         Integer myIntegerWrapper = Integer.valueOf(5); // Compiler shows an error with unnecessary boxing
+
+        System.out.println(Integer.parseInt("123ABCD", 16)); // 19114957 - parseInt(String s, int radix)
+        System.out.println(Integer.parseInt("123_45")); // java.lang.NumberFormatException: For input string: "123_45"
 
         // parseInt will parse the String into a primitive int
         Integer myWrappedInt = Integer.parseInt("7"); // Compiles fine, but value is boxed to an Integer

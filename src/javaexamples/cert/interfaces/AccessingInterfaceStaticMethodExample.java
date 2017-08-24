@@ -16,6 +16,9 @@ public class AccessingInterfaceStaticMethodExample {
         // pgr.someStaticMethod(); // Static method may be invoked on containing interface class only
         SomeInterfaceWithAStaticMethod.someStaticMethod(); // Can ONLY call static methods this way when contained in an interface!
         // Programmer.someStaticMethod(); // Static method may be invoked on containing interface class only
+
+        SomeInterfaceWithAStaticMethod anInterfaceReference;
+        // anInterfaceReference.someStaticMethod(); // --> Can't access the static method in this way.
     }
 }
 

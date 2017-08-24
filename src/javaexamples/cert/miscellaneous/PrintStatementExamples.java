@@ -22,6 +22,7 @@ public class PrintStatementExamples {
         printALocalDateExample();
         printAStringExample();
         printABooleanExample();
+        printANewLineInAString();
     }
 
     private static void printExamples() {
@@ -172,5 +173,11 @@ public class PrintStatementExamples {
         System.out.println(new Boolean("true")); // true - public void println(Object x)
         System.out.println(new Boolean("false")); // false - public void println(Object x)
         //System.out.println(true + new Boolean("false")); // Operator + cannot be applied to boolean, java.lang.Boolean
+    }
+
+    private static void printANewLineInAString() {
+        System.out.println("Hello\nWorld"); // Outputs over 2 lines:
+        //Hello
+        //World
     }
 }

@@ -1,16 +1,32 @@
 package javaexamples.cert.strings;
 
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+
 // String, StringBuilder, and StringBuffer - all are final classes.
 // + is overloaded such that if any one of its two operands is a String then it will convert the other
 // operand to a String and create a new string by concatenating the two.
 public class StringExamples {
 
     public static void main(String[] args){
+        stringConstructors();
         stringHasStartsWithMethod();
+        stringHasCompareToMethod();
         stringReplaceMethodSupport();
         stringWithCharExample();
         stringJoinExample();
         stringCharAtExample();
+    }
+
+    private static void stringConstructors() {
+        // These are a few examples, but not all String constructors
+        String someString1 = "abc";
+        String someString2 = new String("abc");
+        String someString3 = new String(new StringBuilder("abc"));
+        String someString4 = new String(new StringBuffer("abc"));
+        String someString5 = new String(new char[]{'a', 'b', 'c'});
+        String someString6 = new String(new byte[]{1, 2, 3}, StandardCharsets.ISO_8859_1);
+        String someString7 = new String(new char[]{'a', 'b', 'c'}, 1, 1);
     }
 
     private static void stringHasStartsWithMethod() {
@@ -23,6 +39,24 @@ public class StringExamples {
 
         boolean endsWith = "abc".endsWith("d");
         System.out.println(endsWith); // false
+    }
+
+    private static void stringHasCompareToMethod() {
+        String someString = "abcdef";
+        String someOtherString = "abcdef";
+
+        int returnValue1 = someString.compareTo("ab");
+        int returnValue2 = someString.compareTo(someOtherString);
+        int returnValue3 = "ab".compareTo(someString);
+        int returnValue4 = "abc".compareTo(someString);
+
+        // The result is zero if the strings are equal
+        // The result is a positive integer if this {@code String} object lexicographically follows the argument string.
+        // The result is a negative integer if this {@code String} object lexicographically precedes the argument string.
+        System.out.println(returnValue1);   // 4 (difference of 4 characters)
+        System.out.println(returnValue2);   // 0 (difference of zero characters)
+        System.out.println(returnValue3);   // -4 (difference of - 4 characters)
+        System.out.println(returnValue4);   // -3 (difference of - 4 characters)
     }
 
     private static void stringReplaceMethodSupport() {

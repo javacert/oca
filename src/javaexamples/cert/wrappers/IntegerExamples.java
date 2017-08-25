@@ -1,47 +1,48 @@
 package javaexamples.cert.wrappers;
 
-// When you create an Integer using the new keyword, it creates a new Integer every time. However, Integer caches
-// values between -128 and 127.
+// When you create an Integer using the new keyword, it creates a new Integer every time.
+// However, Integer caches values between -128 and 127.
 public class IntegerExamples {
 
     public static void main(String[] args){
-        integerCachingExample();
         workingWithNullIntegerWrapper();
-    }
-
-    private static void integerCachingExample() {
-        Integer a = new Integer(127);
-        Integer b = new Integer(127);
-
-        System.out.println(a == b); // false - reference comparison
-
-        Integer c = 127;
-        Integer d = 127;
-
-        System.out.println(c == d); // true - cached so comparing the same reference to the same object for auto-boxed int primitive
-
-        Integer e = new Integer(200);
-        Integer f = new Integer(200);
-
-        System.out.println(e == f); // false - reference comparison
-
-        Integer g = 200;
-        Integer h = 200;
-
-        System.out.println(g == h); // false - above 127, so these are not cached!
-
-        // Caching implementation is Integer
-        //public static Integer valueOf(int i) {
-        //    if (i >= IntegerCache.low && i <= IntegerCache.high)
-        //        return IntegerCache.cache[i + (-IntegerCache.low)];
-        //    return new Integer(i);
-        //}
+        passingNullToAMethodWithAnIntegerWrapper(null);
+        usingEqualsWithDifferentWrapperClasses();
     }
 
     private static void workingWithNullIntegerWrapper() {
         Integer imNull = null;
         imNull++; // java.lang.NullPointerException
         imNull--; // java.lang.NullPointerException
+    }
 
+    private static int passingNullToAMethodWithAnIntegerWrapper(Integer someInteger) {
+        return someInteger++; // java.lang.NullPointerException when someInteger is null
+
+        // Why?
+        // Because the Java compiler would call obj.intValue() to get object's int value, passing
+        // null to the increment() method will throw a NullPointerException
+    }
+
+    // You can’t compare wrapper instances for equality using equals() or ==, if they are not of the same class
+    private static void usingEqualsWithDifferentWrapperClasses() {
+        Integer a = new Integer(100);
+        Integer b = new Integer(100);
+
+        System.out.println(a.equals(b)); // true
+
+        Short c = new Short((short)100); // Remember the cast!
+        System.out.println(c.equals(b)); // false
+        System.out.println(a.equals(c)); // false
+
+        // System.out.println((a == c)); // cannot compare since different objects
+
+
+        //public boolean equals(Object obj) {
+        //    if (obj instanceof Short) {
+        //        return value == ((Short)obj).shortValue();
+        //    }
+        //    return false;
+        //}
     }
 }

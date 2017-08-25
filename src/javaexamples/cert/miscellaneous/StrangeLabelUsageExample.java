@@ -7,11 +7,19 @@ public class StrangeLabelUsageExample {
         JACK: while(c<8){
             JILL: System.out.println(c);
 
-            // if(c > 3) break JILL; // Undefined label since out of scope
+            // if(c > 3) break JILL; // Undefined label since out of scope - need to be within the JILL block {   }
         }
 
         // Observe how you can create labels for any singular statement.
         // Watch when this happens and there is a break or a continue - it won't compile if the label is out of scope of the loop.
         SOME_RANDOM_LABEL: if(true)System.out.println("This one statement works fine");
+
+        // In the following case the label is for a block (above it was for a statement i.e. no curly braces)
+        LABEL_FOR_A_BLOCK: {
+            if (true){
+                break LABEL_FOR_A_BLOCK; // Break out of entire block and continue with the println statement below.
+            }
+        }
+        System.out.println("I broke out of the LABEL_FOR_A_BLOCK block");
     }
 }

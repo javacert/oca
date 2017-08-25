@@ -2,7 +2,7 @@ package javaexamples.cert.wideningandboxing;
 
 public class AutoBoxingExamples {
 
-    // This will compile since dAsPrim will be autoboxed to Double
+    // This will compile since dAsPrim will be unboxed to double
     double dAsPrim = new Double(1_000_000.00);
 
     Double dAsWrapper = new Double(1_000_000.00);

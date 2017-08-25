@@ -4,6 +4,7 @@ package javaexamples.cert.datetime;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+import java.time.temporal.ChronoField;
 import java.time.temporal.ChronoUnit;
 
 // Valid classes in the java.date package for OCA are:
@@ -14,9 +15,19 @@ import java.time.temporal.ChronoUnit;
 //      --> MMMM (M - 1, MM - 01, MMM - Jan, MMMM - January) - Month
 //      --> dd - (d - date, dd - include leading zero) - Date in the month, the more ds you have, the more verbose
 //      --> yyyy (y - year, yy - two digit year, yyyy - four digit year)
+//      --> uuuu (y - year, yy - two digit year, yyyy - four digit year) - safer than yyyy
 //      --> hh (h - hour, hh - include the leading zero)
 //      --> mm - represents the minute!!! WATCH FOR THIS and don't mix up with MMMM!!!
-//          --> ofLocalizedDate, ofLocalizedDateTime, orLocalizedTime
+//          --> ofLocalizedDate, ofLocalizedDateTime, ofLocalizedTime
+
+//      Symbol  Meaning        Presentation  Examples
+//      ------  -------        ------------  -------
+//      G       era            text          AD; Anno Domini; A
+//      u       year           year          2004; 04
+//      y       year-of-era    year          2004; 04
+//      D       day-of-year    number        189
+//      d       day-of-month   number        10
+//      E       day-of-week    text          Tue; Tuesday; T
 
 // An epoch day is 0 at 1970-01-01
 
@@ -27,6 +38,7 @@ public class DateTimeExamples {
 
     public static void main(String[] args) {
 
+        localTimeExamples();
         localDateExamples();
         localDateTimeExamples();
         zoneDateTimeExamples();
@@ -37,6 +49,11 @@ public class DateTimeExamples {
         invalidPeriodExample();
         smallestTimeInLocalTime();
         chronoUnitExamples();
+    }
+
+    private static void localTimeExamples() {
+        LocalTime lt = LocalTime.of(22, 10);
+        System.out.println(lt);
     }
 
     private static void localDateExamples() {
@@ -58,6 +75,11 @@ public class DateTimeExamples {
 
         System.out.println(localDateYearDay.lengthOfMonth()); // 31
         System.out.println(localDateYearDay.lengthOfYear()); // 365
+
+        LocalDate localDateOfYearDay = LocalDate.ofYearDay(2016, 22);
+        System.out.println(localDateOfYearDay); // 2016-01-22
+        System.out.println(localDateOfYearDay.getDayOfMonth()); // 22
+        System.out.println(localDateOfYearDay.getMonthValue()); // 1 - 22nd day is in January
     }
 
     private static void localDateTimeExamples() {
@@ -206,5 +228,18 @@ public class DateTimeExamples {
         System.out.println(seconds + " seconds");   // 1079049661 seconds
         System.out.println(millis + " millis");     // 1079049661000 millis
         System.out.println(nano + " nano");         // 1079049661000000000 nano
+
+        LocalTime lt = LocalTime.of(22, 10);
+        lt = lt.truncatedTo(ChronoUnit.HALF_DAYS); // last half day of current time passed. It's either 12:00 or 00:00, so appears to be closest in the past.
+        System.out.println(lt); // 12:00
+
+        lt = LocalTime.of(11, 30);
+        lt = lt.truncatedTo(ChronoUnit.HALF_DAYS); // Unit that represents the concept of half a day, as used in AM/PM.
+        System.out.println(lt); // 00:00
+
+        lt = LocalTime.of(2, 2, 15);
+        System.out.println(lt.getLong(ChronoField.valueOf("MINUTE_OF_DAY"))); // 122 (2*60) + 2 = 122
+        System.out.println(lt.getLong(ChronoField.valueOf("SECOND_OF_DAY"))); // 7335
+        System.out.println(lt.getLong(ChronoField.valueOf("SECONDOFDAY"))); // No output, invalid chrono
     }
 }

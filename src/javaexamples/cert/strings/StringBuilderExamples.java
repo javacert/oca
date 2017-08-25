@@ -1,6 +1,6 @@
 package javaexamples.cert.strings;
 
-// Notes
+// Notes:
 // StringBuilder does NOT override the equals method, so it will always be a reference comparison.
 // StringBuilder does NOT have a toCharArray method.
 // String does have that method and also has a constructor that accepts a char array.
@@ -179,8 +179,8 @@ public class StringBuilderExamples {
     private static void appendExample() {
         char[] chars = {'1', 'Z', '0', '-', '8', '1'};
         StringBuilder sb = new StringBuilder();
-        sb.append(chars, 0, chars.length-1); // 0 - 5 (remember starting from 5!!)
-        System.out.println(sb); // 1Z0-8
+        sb.append(chars, 0, chars.length-1); // Start at index 0, include 5 characters (note output should always match the length paramater)
+        System.out.println(sb); // 1Z0-8 (Note the output is 5 characters matching the length)
         sb.append('0'); // NOTE HERE - this is fine!
         System.out.println(sb); // 1Z0-80
         sb.append("8");
@@ -198,11 +198,23 @@ public class StringBuilderExamples {
         //public StringBuilder append(char[] str) {
         //public StringBuilder append(CharSequence s, int start, int end) {
         //public StringBuilder append(CharSequence s) {
+
+        StringBuilder goingBeyond = new StringBuilder();
+        goingBeyond.append(new char[]{'d', 'a', 'v', 'i', 'd'}, 2, 4); // java.lang.ArrayIndexOutOfBoundsException - 4 characters not available
+        System.out.println(goingBeyond);
+
+        StringBuilder anotherSb = new StringBuilder();
+        anotherSb.append(new char[]{'d', 'a', 'v', 'i', 'd'}, 2, 3); // start at index 2, include 3 characters
+        System.out.println(anotherSb); // vid
+
+        anotherSb = new StringBuilder();
+        anotherSb.append(new char[]{'d', 'a', 'v', 'i', 'd'}, 0, 4); // start at position 0, include 4 characters
+        System.out.println(anotherSb); // davi
     }
 
     private static void clearingAStringBuilder() {
         StringBuilder sb = new StringBuilder("ABCDEF");
-        sb.delete(0, sb.length());
+        sb.delete(0, sb.length()); // start - end index (length is 6 so delete 0 thru index 6)
         System.out.println(sb.length()); // 0
 
         sb = new StringBuilder("ABCDEF");
@@ -212,5 +224,11 @@ public class StringBuilderExamples {
         sb = new StringBuilder("ABCDEF");
         sb = new StringBuilder();
         System.out.println(sb.length()); // 0
+
+        // Edge Case
+        sb = new StringBuilder("START");
+        sb.setLength(30);
+        sb.append("END");
+        System.out.println(sb + " " + sb.length()); // START                         END 33
     }
 }

@@ -31,15 +31,16 @@ public class WhileLoopExamples {
         while (x-- < 10) {
             continue;
         }
-        System.out.println("Can you believe I am printed?" + x); // I am!
+        System.out.println("Can you believe I am printed? " + x); // I am! x = 126 (max capacity 127)
     }
 
     private static void charRangeEdgeCase() {
         char x = 'a';
-        while (x-- < 10) {
+        while (x-- < 'b') {
+            System.out.println(x);
             continue;
         }
-        System.out.println("Can you believe I am printed?" + x); // I am!
+        System.out.println("Can you believe I am printed?"); // I am!
     }
 
     private static void shortRangeEdgeCase() {
@@ -47,7 +48,7 @@ public class WhileLoopExamples {
         while (x-- < 10) {
             continue;
         }
-        System.out.println("Can you believe I am printed?" + x); // I am!
+        System.out.println("Can you believe I am printed? " + x); // I am! x = 32766 (max capacity 32767)
     }
 
     private static void integerRangeEdgeCase() {
@@ -55,6 +56,6 @@ public class WhileLoopExamples {
         while (x-- < 10) { // Will eventually hit -2147483648 and shift to the maximum value: 2147483647
             continue;
         }
-        System.out.println("Can you believe I am printed?" + x); // I am!
+        System.out.println("Can you believe I am printed? " + x); // I am! x = 2147483646 (max capacity 2147483647)
     }
 }

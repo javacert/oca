@@ -33,6 +33,9 @@ package javaexamples.cert.exceptions;
 // When you use System.out.println(exception), a stack trace is not printed. Just the name of the exception class and the message is printed.
 // When you use exception.printStackTrace(), a complete chain of the names of the methods called, along with the line numbers, is printed.
 
+// Any checked exceptions must either be handled using a try block or the method that generates the exception must declare that it throws that exception.
+// The main(String[] args) method is the last point in your program where any unhandled checked exception can bubble up to.
+// After that the exception is thrown to the JVM and the JVM kills the thread.
 // Exception handling in Java improves code because error handling code is clearly separated from the main program logic.
 // A try block may be followed by multiple catch blocks, and the catch blocks may be followed by a single finally block.
 // A try block may be followed by either a catch or a finally block or both. But a finally block alone won't suffice

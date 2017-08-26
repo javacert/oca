@@ -1,5 +1,6 @@
 package javaexamples.cert.lambdas;
 
+// Valid functional interfaces have exactly one abstract method.
 public class SamplePredicateImplementationExample {
 
     public static void main(String[] args){

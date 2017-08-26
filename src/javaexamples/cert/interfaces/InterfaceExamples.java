@@ -4,15 +4,15 @@ package javaexamples.cert.interfaces;
 // 1) In Java 8, we can have static and default methods in interfaces but there are some rules
 //    -- you cannot override Object class methods using the default method
 // 2) Both static and default methods are public
-// 3) A static method in an interface can’t be called using a reference variable. It must be called using the interface name.
+// 3) A static method in an interface can't be called using a reference variable. It must be called using the interface name.
 //    -- Unlike an interface, if you define a static method in a base class, it can be accessed using either a reference
 //       variable or the class name.
 // 4) You can declare a top-level interface with only the following non-access modifiers: abstract & strictfp
-// 5) A Top-level interface can’t be defined as private or protected.
+// 5) A Top-level interface can't be defined as private or protected.
 // 6) All members of an interface - variables, methods, inner interfaces, and inner classes (yes, an interface can define
-//    a class within it) are inherently public because that’s the only modifier they can accept.
+//    a class within it) are inherently public because that's the only modifier they can accept.
 // 7) The variables of an interface are implicitly public, final, and static. You must initialize all variables in
-//    an interface, or your code won’t compile.
+//    an interface, or your code won't compile.
 // 8) Interface methods are implicitly abstract. To define default or static methods, you must explicitly use the
 //    keyword default or static with the method declaration in an interface.
 // 9) You must implement an abstract method of an interface using the explicit access modifier public. Remember you are
@@ -22,6 +22,8 @@ package javaexamples.cert.interfaces;
 // 11) The static methods in a class and the interface that it implements are not related to each other.
 //     A static method in a class does not hide or override the static method in the interface that it implements
 //     like it would in a standard class.
+// 12) You cannot use super keyword in an interface's method to invoke a method defined in its super interface.
+//      -- To invoke an interface's default method, you need to use the name of that interface as well. Interface.super.getId();
 public strictfp class InterfaceExamples { // only abstract and strictfp are valid non-access modifiers.
 
     public static void main(String[] args){

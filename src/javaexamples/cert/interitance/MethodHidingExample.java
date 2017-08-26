@@ -3,6 +3,8 @@ package javaexamples.cert.interitance;
 // In method hiding we can call a static method based on the reference.
 // With overridden instance methods we can never hide, method is called dynamically at run time based on polymorphic
 // argument, whereas static method calls are determined at compile time based on the reference.
+// You cannot override/hide a static method with a non static method and vice versa, i.e. You cannot have a static method
+// and an instance method with the same method signature and name.
 public class MethodHidingExample {
 
     public static void main(String[] args){

@@ -23,6 +23,7 @@ public class ArrayExamples {
         arraySubSetSort();
         arraysFillExample();
         doFinalConstantsThrowCompileError();
+        getClassIsArrayMethod();
     }
 
     private static void anonymousInitializer() {
@@ -154,5 +155,10 @@ public class ArrayExamples {
         int[] someArray = new int[] {1, 2, 3};
         someArray[7] = 5; // No compilation error
         someArray[x] = 5; // No compilation error even with final variable!!
+    }
+
+    public static void getClassIsArrayMethod() {
+        int[] someArray = new int[]{1, 2, 3};
+        System.out.println(someArray.getClass().isArray()); // true
     }
 }

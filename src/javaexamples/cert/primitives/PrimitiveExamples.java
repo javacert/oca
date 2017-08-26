@@ -81,6 +81,8 @@ public class PrimitiveExamples {
         //short b = 99999; // Cannot fit this int value
     }
 
+    // Although it is not required for the exam to know the integral values of characters, it is good to know that all
+    // English letters (upper case as well as lower case) as well as 0-9 are below 127 and so are assignable to byte.
     private static void charExamples() {
         //char a = 'BF'; // char can only have one letter
         char a = 'B';

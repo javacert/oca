@@ -22,6 +22,8 @@ public class SwitchExamples {
         testingDataTypes();
         performingCalculationsInSwitchExpression();
         usingContinueWithSwitch();
+        switchWithDefaultOnly();
+        switchWithNoCasesOrDefault();
     }
 
     // The compiler needs the expression to be known at compile time in order to compile a switch
@@ -119,5 +121,13 @@ public class SwitchExamples {
 /*            case 1 : System.out.println("Got me too!"); continue;
             default : System.out.println("defaultE");*/
         }
+    }
+
+    private static void switchWithDefaultOnly() {
+        switch (1) { default : break; }
+    }
+
+    private static void switchWithNoCasesOrDefault() {
+        switch (1) { }
     }
 }

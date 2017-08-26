@@ -8,6 +8,7 @@ public class StringBuilderExamples {
 
     public static void main(String[] args){
         builderExample1();
+        insertExample();
         insertBooleanExample();
         insertBeyondSizeExample();
         toStringNotRequiredExample();
@@ -18,6 +19,7 @@ public class StringBuilderExamples {
         stringBuilderCapacity();
         appendExample();
         clearingAStringBuilder();
+        concatenateStringBuilderWithString();
     }
 
     private static void builderExample1() {
@@ -57,6 +59,15 @@ public class StringBuilderExamples {
         System.out.println("Last Index of A = " + sb.lastIndexOf("A")); // Last Index of A = 3
         sb.insert(sb.lastIndexOf("A"), true); // remember insert inserts before the index
         System.out.println("insertBooleanExample = " + sb); // insertBooleanExample = aAatrueA
+    }
+
+
+    private static void insertExample() {
+        StringBuilder sb = new StringBuilder("123");
+        char[] name = {'J', 'a', 'v', 'a'}; // (int index, char[] str, int offset, int len)
+        // Remember when we have a length parameter as below, the number of characters inserted should match that length, so 3 in this case
+        sb.insert(1, name, 1, 3);
+        System.out.println(sb); // 1ava23
     }
 
     private static void insertBeyondSizeExample() {
@@ -210,6 +221,10 @@ public class StringBuilderExamples {
         anotherSb = new StringBuilder();
         anotherSb.append(new char[]{'d', 'a', 'v', 'i', 'd'}, 0, 4); // start at position 0, include 4 characters
         System.out.println(anotherSb); // davi
+
+        anotherSb = new StringBuilder();
+        anotherSb.append("hello", 0, 4); // append character from string "hello" between 0-4 (4 characters)
+        System.out.println(anotherSb); // hell
     }
 
     private static void clearingAStringBuilder() {
@@ -230,5 +245,12 @@ public class StringBuilderExamples {
         sb.setLength(30);
         sb.append("END");
         System.out.println(sb + " " + sb.length()); // START                         END 33
+    }
+
+    private static void concatenateStringBuilderWithString() {
+        // You can concatenate a StringBuilder with String directly without using toString method since that happens
+        // implicitly.
+        String someString = new StringBuilder("ABC") + "DEF";
+        System.out.println(someString);
     }
 }

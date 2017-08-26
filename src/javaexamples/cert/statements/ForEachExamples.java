@@ -71,5 +71,14 @@ public class ForEachExamples {
             break;
             // System.out.println("Can't reach me here!"); // Unreachable Statement
         }
+
+        for (String s : someArray){
+            if(true){
+                continue;
+            } else {
+                break;
+            }
+            //System.out.println("You can never reach me so I will throw a compiler error!"); // Unreachable Statement!
+        }
     }
 }

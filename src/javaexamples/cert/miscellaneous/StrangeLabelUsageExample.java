@@ -1,5 +1,9 @@
 package javaexamples.cert.miscellaneous;
 
+// Note that for is a keyword and so cannot be used as a label (or any other keywords). But you can use any other
+// identifier as a label. For example the following would be valid:
+//      String String = "";   // This is valid.
+//      String : for(int i = 0; i< 10; i++) // This is valid too!
 public class StrangeLabelUsageExample {
 
     public static void main(String[] args){

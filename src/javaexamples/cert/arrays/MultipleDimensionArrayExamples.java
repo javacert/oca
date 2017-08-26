@@ -16,6 +16,7 @@ public class MultipleDimensionArrayExamples {
         reassigningArrayItemToAnother();
         sortingMultiDimensionalArray();
         accessingNotInitializedArray();
+        accessingMultiDimensionalArrayWithNull();
     }
 
     private static void waysToInitializeAMultiDimensionArray() {
@@ -151,5 +152,11 @@ public class MultipleDimensionArrayExamples {
         System.out.println(Arrays.toString(ints)); // [null, [I@28d93b30]
         System.out.println(Arrays.toString(ints[0])); // null
         System.out.println(Arrays.toString(ints[1])); // [1, 2, 3, 5]
+    }
+
+
+    private static void accessingMultiDimensionalArrayWithNull() {
+        int ia[][] = { {1, 2}, null };
+        System.out.println(ia[1][1]); // java.lang.NullPointerException
     }
 }

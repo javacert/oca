@@ -4,6 +4,8 @@ package javaexamples.cert.constructors;
 // According to Enthuware, a default constructor is only the constructor that the compiler adds itself, if it
 // hasn't already been defined by the programmer. If you add a no-arg constructor manually, then it is not considered
 // a default constructor.
+// A constructor cannot be final, static or abstract.
+// A constructor cannot return anything. Not even void.
 public class BasicConstructorExamples extends ParentConstructorExample {
 
     public BasicConstructorExamples(String someString){

@@ -16,6 +16,8 @@ public class StringExamples {
         stringWithCharExample();
         stringJoinExample();
         stringCharAtExample();
+        stringTrimMethod();
+        stringSubStringMethod();
     }
 
     private static void stringConstructors() {
@@ -53,10 +55,26 @@ public class StringExamples {
         // The result is zero if the strings are equal
         // The result is a positive integer if this {@code String} object lexicographically follows the argument string.
         // The result is a negative integer if this {@code String} object lexicographically precedes the argument string.
+        // compareTo() stops at the first place where the strings have different letters
+        // Lexicographical order is similar to alphabetical order, so A comes before B comes before C.
+        // Capital letters are ordered before lowercase ones
+        // Special character like "é" could be ordered after all the normal letters and numbers.
+        // Digits precede letters, and uppercase letters precede lowercase ones.
         System.out.println(returnValue1);   // 4 (difference of 4 characters)
         System.out.println(returnValue2);   // 0 (difference of zero characters)
         System.out.println(returnValue3);   // -4 (difference of - 4 characters)
         System.out.println(returnValue4);   // -3 (difference of - 4 characters)
+
+        // The result is a positive integer if the object lexicographically follows the argument string.
+        // Digits precede letters, and uppercase letters precede lowercase ones, therefore h lexographically follows H
+        System.out.println('h' + 0); // 104
+        System.out.println('H' + 0); // 72
+        System.out.println("hello world".compareTo("Hello world")); // 32
+        System.out.println("Hello world".compareTo("hello world")); // -32
+        System.out.println('d' + 0); // 100
+        System.out.println('D' + 0); // 68
+        System.out.println("d".compareTo("D")); // 32
+        System.out.println("D".compareTo("d")); // -32
     }
 
     private static void stringReplaceMethodSupport() {
@@ -100,5 +118,15 @@ public class StringExamples {
 
     private static void stringCharAtExample() {
         int charIndex = "ABCDE".charAt('a'); // char promoted to int! java.lang.StringIndexOutOfBoundsException: String index out of range: 97
+        // charAt throws IndexOutOfBoundsException per the documentation (although in practice it throws StringIndexOutOfBoundsException).
+    }
+
+    private static void stringTrimMethod() {
+        // trim removes whitespace from front and end of the String (leading and trailing)
+        System.out.println("    hello java guru   ".trim()); // "hello java guru"
+    }
+
+    private static void stringSubStringMethod() {
+        System.out.println("ABCDEF".substring(3, 4)); // start and end index (remember last index not included) 4-3 = 1 char = D
     }
 }

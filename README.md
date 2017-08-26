@@ -44,10 +44,17 @@ General Tips:
 - Watch out in loops for continue or break and possible unreachable statements.
 - Watch for out of alignment if/else statements so that it looks as though the else applies to another if/else block.
 - Using an interface is always more appropriate if it can be used because it allows the class to extend another class when needed.
+- Remember when you are given a file name, e.g. "in file Test.java", then if you have a public class definition it must have the same name!
+- Always check constructors are actually constructors (look for return types)
+- For methods that have a start and end index e.g. substring - The same pattern is used for almost all other methods in standard java 
+    library classes. The first index is included but the last one is not. (In some cases we will have length, and so output should
+    always match the length parameter (StringBuilder append(char[], start, length), insert(index, char[], offset, length)))
+- Take extra care when determining reference assignments. Think is-a relationship. If b is-a a and so b extends a, then you can assign
+    b to a reference variable of either a or b.
 
 Interesting discussions:
 __________________________________________________________________
-When a method is returned, the variables on its stack are always immediately freed(Of course, by freed I mean that the
+When a method is returned, the variables on its stack are always immediately freed (Of course, by freed I mean that the
 stack frame gets destroyed, and so does all memory attached to it like local variables).
 However, if that variable is an object, then its value is a pointer. The actual memory containing the object
 (which may have pointers to other objects as well) would be on the heap. When the reference on the stack gets freed,

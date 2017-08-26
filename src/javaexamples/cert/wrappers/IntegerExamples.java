@@ -8,6 +8,7 @@ public class IntegerExamples {
         workingWithNullIntegerWrapper();
         passingNullToAMethodWithAnIntegerWrapper(null);
         usingEqualsWithDifferentWrapperClasses();
+        parsingADoubleValue();
     }
 
     private static void workingWithNullIntegerWrapper() {
@@ -44,5 +45,10 @@ public class IntegerExamples {
         //    }
         //    return false;
         //}
+    }
+
+    private static void parsingADoubleValue() {
+        System.out.println(Integer.parseInt("12.3")); // java.lang.NumberFormatException: For input string: "12.3"
+        System.out.println(Double.parseDouble("12.3")); // 12.3
     }
 }

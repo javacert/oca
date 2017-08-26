@@ -1,5 +1,8 @@
 package javaexamples.cert.exceptions;
 
+// Notes:
+// The class of the common exception reference e will be the closest common super class of all the exceptions in the
+// catch block. In the catch below it will be Exception since all 3 exceptions extends Exception.
 public class MultiCatchBlockExamples {
 
     public static void main(String [] args){

@@ -97,6 +97,18 @@ public class StringExamples {
 
         String c = s.replace('c', 'x');
         System.out.println(c); // abx
+
+        // Some important rules with replace:
+        // 1) replace(char oldChar, char newChar) method returns the same String object if both the parameters are same,
+        //    i.e. if there is no change. Thus, "String" == "String".replace('g', 'g') will return true.
+        // 2) replace(CharSequence oldSeq,  CharSequence newSeq) method returns a new String object even if there is
+        //    no change after replacement. Thus, "String" == "String".replace("g", "g") will return false.
+        System.out.println("String".replace('g','g') == "String"); // true
+        System.out.println("String".replace('g','G') == "String"); // false
+        System.out.println("String".replace("r", "r") == "String"); // false
+        System.out.println("String".replace("r", "R") == "String"); // false
+        System.out.println("String".replace(new StringBuilder("r"), new StringBuilder("r")) == "String"); // false
+        System.out.println("String".replace(new StringBuilder("r"), new StringBuilder("R")) == "String"); // false
     }
 
     private static void stringWithCharExample() {

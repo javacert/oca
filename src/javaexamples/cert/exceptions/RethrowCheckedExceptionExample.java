@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 
 // This example shows that if you rethrow a checked exception, then you also need to declare that exception and
 // surround the calling code in a try/catch.
+// In general, if a catch block is throwing a checked exception (i.e. non-RuntimeException) which must be
+// handled by either a try catch block or declared in the throws clause of the enclosing method.
 public class RethrowCheckedExceptionExample {
 
     public static void main(String args[]) {

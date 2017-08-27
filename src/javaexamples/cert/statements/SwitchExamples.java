@@ -24,6 +24,7 @@ public class SwitchExamples {
         usingContinueWithSwitch();
         switchWithDefaultOnly();
         switchWithNoCasesOrDefault();
+        switchStatementWithComplexStatements();
     }
 
     // The compiler needs the expression to be known at compile time in order to compile a switch
@@ -129,5 +130,22 @@ public class SwitchExamples {
 
     private static void switchWithNoCasesOrDefault() {
         switch (1) { }
+    }
+
+    private static void switchStatementWithComplexStatements() {
+        // You can have complex statements within a switch statement.
+        int k = 9, s = 5;
+        switch (k) {
+            default:
+                if (k == 10) {
+                    s = s * 2;
+                } else {
+                    s = s + 4;
+                    break;
+                }
+            case 7:
+                s = s + 3;
+        }
+        System.out.println(s); // 9
     }
 }

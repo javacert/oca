@@ -51,21 +51,24 @@ General Tips:
     always match the length parameter (StringBuilder append(char[], start, length), insert(index, char[], offset, length)))
 - Take extra care when determining reference assignments. Think is-a relationship. If b is-a a and so b extends a, then you can assign
     b to a reference variable of either a or b.
-
-Interesting discussions:
-__________________________________________________________________
-When a method is returned, the variables on its stack are always immediately freed (Of course, by freed I mean that the
-stack frame gets destroyed, and so does all memory attached to it like local variables).
-However, if that variable is an object, then its value is a pointer. The actual memory containing the object
-(which may have pointers to other objects as well) would be on the heap. When the reference on the stack gets freed,
-the object is just sitting around without anybody referencing it(unless you put a reference somewhere else).
-That is when java may come in and garbage collect. That is the object gets flagged for collection,
-and the next time the collector runs it will clean up this object.
-Primitives have a raw value, and are not pointers. So there is no need to GC them.
-This is very much analogous to malloc and free in C.
-When you malloc some memory in to a variable in C and your function returns, the memory for that pointer is freed
-but not the memory it was pointing to.
-When you create an object in java (presumably with the new keyword) you are allocating memory for it.
-However, you never explicitly call free in java. The JVM will detect when the freeing needs to be done.
-You can set references to null to tell the JVM that you don't need it anymore, but it's often better to just use minimal scope.
-__________________________________________________________________
+- State vs Type:
+    1) Interfaces, classes, and enums are all "types". Java allows a class to implement multiple interfaces. 
+       In this way, Java supports multiple inheritance of types.
+    2) "State", on the other hand, is represented by instance fields. 
+       Only a class can have instance fields and therefore, only a class can have a state.
+       Interfaces are always implicitly static, even if you don't specify the keyword static explicitly. Therefore, an interface does not have any state.
+    --> This means the following 2 statements are true:
+    1) Multiple inheritance of state includes ability to inherit instance fields from multiple classes.
+    2) Multiple inheritance of type includes ability to implement multiple interfaces and/or ability to extend from multiple classes.
+- Widening conversions are:
+    1) From a byte to a short, an int, a long, a float, or a double
+    2) From a short to an int, a long, a float, or a double
+    3) From a char to an int, a long, a float, or a double
+    4) From an int to a long, a float, or a double
+    5) From a long to a float or a double
+    6) From a float to a double
+- Type Promotion Rules:
+    1) All byte and short values are promoted to int.
+    2) If one operand is a long, the whole expression is promoted to long.
+    3) If one operand is a float, the entire expression is promoted to float.
+    4) If any of the operands is double, the result is double.

@@ -12,6 +12,7 @@ import java.util.List;
 public class ArrayListExamples {
     public static void main(String[] args){
         arrayListCanAcceptPrimitives();
+        arrayListAddBeyondRange();
     }
 
     private static void arrayListCanAcceptPrimitives() {
@@ -20,5 +21,13 @@ public class ArrayListExamples {
         al.add(111); // Autoboxed to an Integer
         al.add(10.2); // Autoboxed to an Double
         System.out.println(al.get(al.size())); // IndexOutOfBoundsException: Index: 2, Size: 2
+    }
+
+    private static void arrayListAddBeyondRange() {
+        List list = new ArrayList();
+        list.add("val1");
+        list.add(2, "val2"); // java.lang.IndexOutOfBoundsException: Index: 2, Size: 2
+        list.add(1, "val3");
+        System.out.println(list);
     }
 }

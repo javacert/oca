@@ -1,0 +1,18 @@
+Interesting discussions:
+________________________________________________________________________________________________________________________
+Relating to Garbage Collection:
+When a method is returned, the variables on its stack are always immediately freed (Of course, by freed I mean that the
+stack frame gets destroyed, and so does all memory attached to it like local variables).
+However, if that variable is an object, then its value is a pointer. The actual memory containing the object
+(which may have pointers to other objects as well) would be on the heap. When the reference on the stack gets freed,
+the object is just sitting around without anybody referencing it(unless you put a reference somewhere else).
+That is when java may come in and garbage collect. That is the object gets flagged for collection,
+and the next time the collector runs it will clean up this object.
+Primitives have a raw value, and are not pointers. So there is no need to GC them.
+This is very much analogous to malloc and free in C.
+When you malloc some memory in to a variable in C and your function returns, the memory for that pointer is freed
+but not the memory it was pointing to.
+When you create an object in java (presumably with the new keyword) you are allocating memory for it.
+However, you never explicitly call free in java. The JVM will detect when the freeing needs to be done.
+You can set references to null to tell the JVM that you don't need it anymore, but it's often better to just use minimal scope.
+________________________________________________________________________________________________________________________

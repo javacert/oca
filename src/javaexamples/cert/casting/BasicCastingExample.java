@@ -4,6 +4,10 @@ package javaexamples.cert.casting;
 // Remember Up to Parent, Down to Child
 // ClassCastException is possible when you downcast to a child class
 // Up-casting can be occurred implicitly, while Down-casting should be done explicitly (you provide the cast)
+
+// Reference type should be the same as the object type, or a class in the objects class hierarchy.
+// This is an up cast assignment and won't need an explicit cast.
+// Reference type can never be a direct assignment to a superclass object. In this case an explicit cast is required.
 public class BasicCastingExample {
 
     public static void main(String[] args){

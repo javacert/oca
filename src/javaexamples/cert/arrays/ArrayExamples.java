@@ -2,6 +2,10 @@ package javaexamples.cert.arrays;
 
 import java.util.Arrays;
 
+// Notes:
+// The size of the array must evaluate to an int value.
+// Java accepts an expression to specify the size of an array, as long as it evaluates to an int value.
+// Code to access an array index will fail to compile if you don’t use a char, byte, short, or int.
 public class ArrayExamples {
 
     private static final String someString; // static variables need initialized
@@ -130,8 +134,24 @@ public class ArrayExamples {
         // long [] array = new long[size]; // Incompatible types on size - expected int, received long
 
         int intSize = 0xB;
-        int [] array = new int[intSize];
-        array[10] = 1;
+        int [] arrayA = new int[intSize];
+        arrayA[10] = 1;
+
+        char c = 'a';
+        int [] arrayB = new int[c];
+        arrayB[c] = 1; // Fine although it will throw a RuntimeException due to an index of 97.
+
+        byte b = 1;
+        int [] arrayC = new int[b];
+        arrayC[b] = 1;
+
+        Byte wrapperByte = 1;
+        int [] arrayD = new int[wrapperByte];
+        arrayD[wrapperByte] = 1;
+
+        double d = 1.0;
+        // int [] arrayE = new int[d]; // Required int, received double
+        // arrayE[d] = 1; // Will not compile, can't access array using a double!
     }
 
     private static void arraySubSetSort() {

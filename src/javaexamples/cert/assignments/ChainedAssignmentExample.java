@@ -6,6 +6,8 @@ package javaexamples.cert.assignments;
 //    2 Evaluate Operands before Operation
 //    3 Evaluation Respects Parentheses and Precedence
 //    4 Argument Lists are Evaluated Left-to-Right
+// Note: Operators are special tokens that represent computations like addition, multiplication and division.
+//       The values the operator works on are called operands.
 public class ChainedAssignmentExample {
 
     public static void main(String[] args){

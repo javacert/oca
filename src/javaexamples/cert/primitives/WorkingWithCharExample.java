@@ -9,6 +9,7 @@ public class WorkingWithCharExample {
         trickyLoopExample();
         incrementingAChar();
         ambiguousCharExample();
+        assigningCharAVeryLargeInt();
     }
 
     private static void charsAsInts() {
@@ -69,5 +70,14 @@ public class WorkingWithCharExample {
             case 'a': System.out.println("I'm actually printed!"); break; // This is printed!
             // case 97: System.out.println("B"); break; // Also duplicate label
         }
+    }
+
+    private static void assigningCharAVeryLargeInt() {
+        char c = 65535; // capcity of a char is 65535
+        // char d = 65536; // Won't compile - Required char, found int
+        System.out.println((int)++c); // 0 - loop back to the start again!
+        System.out.println((int)++c); // 1
+        System.out.println((int)--c); // 0
+        System.out.println((int)--c); // 65535
     }
 }

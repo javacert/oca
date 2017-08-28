@@ -3,6 +3,7 @@ package javaexamples.cert.strings;
 // Notes:
 // StringBuilder does NOT override the equals method, so it will always be a reference comparison.
 // StringBuilder does NOT have a toCharArray method.
+// StringBuiler does NOT have trim method.
 // String does have that method and also has a constructor that accepts a char array.
 public class StringBuilderExamples {
 

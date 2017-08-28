@@ -20,20 +20,45 @@ import java.time.temporal.ChronoUnit;
 //      --> mm - represents the minute!!! WATCH FOR THIS and don't mix up with MMMM!!!
 //          --> ofLocalizedDate, ofLocalizedDateTime, ofLocalizedTime
 
-//      Symbol  Meaning        Presentation  Examples
-//      ------  -------        ------------  -------
-//      G       era            text          AD; Anno Domini; A
-//      u       year           year          2004; 04
-//      y       year-of-era    year          2004; 04
-//      D       day-of-year    number        189
-//      d       day-of-month   number        10
-//      E       day-of-week    text          Tue; Tuesday; T
+//      Symbol  Meaning             Presentation  Examples
+//      ------  -------             ------------  -------
+//      G       era                 text          AD; Anno Domini; A
+//      u       year                year          2004; 04
+//      y       year-of-era         year          2004; 04
+//      M       month-of-year       number        01
+//      D       day-of-year         number        189
+//      d       day-of-month        number        10
+//      E       day-of-week         text          Tue; Tuesday; T
+//      H       hour (00-23)        number        00, 01..23.
+//      h       hour (01-12 AM/PM)  number        01, 02..12.
+//      k       hour (01-24)        number        01, 02..24.
+//      m       minute              number        01, 59
+//      s       seconds             number        01, 59
+//      S       nano-seconds        number        12345678 (SSSSSSSS)
 
 // An epoch day is 0 at 1970-01-01
 
 // ChronoUnit - A standard set of date periods units.
 // This set of units provide unit-based access to manipulate a date, time or date-time.
 // The standard set of units can be extended by implementing TemporalUnit.
+// LocalTime is 24hrs, so use 0-23 to define the hours. Any values out of range will throw a runtime exception.
+// LocalDate parse method must be in the format "9999-99-99"
+// LocalTime parse method must be in the format "15:08:23"
+// LocalDateTime - T separates Date + Time and must be in the format "2050-06-05T14:00:00"
+
+// Common LocalDate methods:
+//  - getDayOfMonth, getDayOfWeek, getDayOfYear, getMonth, getMonthValue, getYear (get are not the plural form)
+//  - isAfter, isBefore
+//  - minusDays, minusMonths, minusWeeks, minusYears
+//  - plusDays, plusMonths, plusWeeks, plusYears
+//  - withDayOfMonth, withDayOfYear, withMonth, withYear (takes current LocalDate and returns a new days withXXXX)
+
+// Common LocalTime methods:
+//  - getHour, getMinute, getSecond, getNano (no plural for get methods)
+//  - minusHours, minusMinutes, minusSeconds, minusNanos
+//  - withHour, withMinute, withSecond, withNano
+// Unlike the getXXX() methods, minusXXX() methods use the plural form: getHour() versus minusHours(), getMinute()
+// versus minusMinutes(), getSecond() versus minusSeconds(), and getNano() versus minusNanos().
 public class DateTimeExamples {
 
     public static void main(String[] args) {
@@ -49,6 +74,9 @@ public class DateTimeExamples {
         invalidPeriodExample();
         smallestTimeInLocalTime();
         chronoUnitExamples();
+        formattingExamples();
+        parseExamples();
+        atDateExamples();
     }
 
     private static void localTimeExamples() {
@@ -246,5 +274,44 @@ public class DateTimeExamples {
         System.out.println(lt.getLong(ChronoField.valueOf("MINUTE_OF_DAY"))); // 122 (2*60) + 2 = 122
         System.out.println(lt.getLong(ChronoField.valueOf("SECOND_OF_DAY"))); // 7335
         System.out.println(lt.getLong(ChronoField.valueOf("SECONDOFDAY"))); // No output, invalid chrono
+    }
+
+
+    private static void formattingExamples() {
+        LocalDateTime ldt = LocalDateTime.of(2015, 5, 10, 11, 22, 33);
+
+        DateTimeFormatter dtf = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT);
+
+        // Notes:
+        // Can only have maximum 2 d - java.lang.IllegalArgumentException: Too many pattern letters: d
+        // Can only have maximum 3 D - java.lang.IllegalArgumentException: Too many pattern letters: D
+        // Can only have maximum 5 E - java.lang.IllegalArgumentException: Too many pattern letters: E
+        // Can only have maximum 2 m - java.lang.IllegalArgumentException: Too many pattern letters: m
+        // Can only have maximum 5 M - java.lang.IllegalArgumentException: Too many pattern letters: M
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("GGG uuuuuu yyyyyy DDD dd EEEEE mm MMM"); // AD 002015 002015 130 10 S 22 May
+        System.out.println(ldt.format(formatter));
+
+        formatter = DateTimeFormatter.ofPattern("G u y D d E m M"); // AD 2015 2015 130 10 Sun 22 5
+        System.out.println(ldt.format(formatter));
+    }
+
+    private static void parseExamples() {
+        String str = "1986-04-08 12:30";
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        LocalDateTime dateTime = LocalDateTime.parse(str, formatter);
+        System.out.println(dateTime); // 1986-04-08T12:30
+
+        str = "AD 2017 5 11 07 02 01 333";
+        formatter = DateTimeFormatter.ofPattern("GG yyyy d MM HH mm ss SSS");
+        dateTime = LocalDateTime.parse(str, formatter);
+        System.out.println(dateTime); // 2017-11-05T07:02:01.333
+    }
+
+    private static void atDateExamples() {
+        LocalTime time = LocalTime.of(14, 10, 0);
+        LocalDate date = LocalDate.of(2016,02,28);
+
+        LocalDateTime dateTime = time.atDate(date); // Returns a LocalDateTime
+        System.out.println(dateTime); // 2016-02-28T14:10
     }
 }

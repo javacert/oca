@@ -72,3 +72,7 @@ General Tips:
     2) If one operand is a long, the whole expression is promoted to long.
     3) If one operand is a float, the entire expression is promoted to float.
     4) If any of the operands is double, the result is double.
+- There no unsigned keyword in java. A char can be used as an unsigned integer if required.
+- Don't be thrown by continue statements at the end on a loop block since they will be redundant.
+- The restrictiveness of access modifiers is as follows: private>default>protected>public
+- Boolean class does not have a no-args constructor.

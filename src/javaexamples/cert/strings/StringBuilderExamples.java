@@ -3,8 +3,19 @@ package javaexamples.cert.strings;
 // Notes:
 // StringBuilder does NOT override the equals method, so it will always be a reference comparison.
 // StringBuilder does NOT have a toCharArray method.
-// StringBuiler does NOT have trim method.
-// String does have that method and also has a constructor that accepts a char array.
+// |-- String does have that method and also has a constructor that accepts a char array.
+// StringBuilder does NOT have trim method.
+// StringBuilder DOES have reverse method, but String does not.
+
+// Some common methods:
+// 1) setLength(int) - Sets the length of this String buffer. If the newLength argument is less than the current
+//    length of the string buffer, the string buffer is truncated to contain exactly the number of characters given
+//    by the newLength argument.
+// 2) ensureCapacity(int) - Ensures that the capacity of the buffer is at least equal to the specified minimum.
+// 3) append(CharSequence s, int start, int end) - Appends a sub-sequence of the specified CharSequence to this sequence.
+// 4) insert(int dstOffset, CharSequence s, int start, int end) - Inserts a sub-sequence of the specified CharSequence into this sequence.
+// 5) replace(int start, int end, String str) - Replaces the characters in a substring of this sequence with characters in the specified String.
+// 6) substring(int start, int end) - Returns a new String that contains a sub-sequence of characters currently contained in this sequence.
 public class StringBuilderExamples {
 
     public static void main(String[] args){

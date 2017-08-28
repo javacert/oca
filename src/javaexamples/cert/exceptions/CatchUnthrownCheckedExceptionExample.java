@@ -45,16 +45,20 @@ class HandleExceptions {
         try {}
         catch (RuntimeException e) {}
     }
+    void method10() {
+        try {}
+        catch (NullPointerException e) {}
+    }
 
     // What happens when a checked exception other than Exception is caught?
-    void method10() {
+    void method11() {
         try {}
         //catch (FileNotFoundException e) {} // --> Won't compile since FileNotFoundException not thrown in the try
         finally {}
     }
 
     // We need to throw the exception (either through a method or directly in the try
-    void method11() {
+    void method12() {
         try {
             throw new FileNotFoundException();
         }

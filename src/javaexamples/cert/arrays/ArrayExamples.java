@@ -6,6 +6,11 @@ import java.util.Arrays;
 // The size of the array must evaluate to an int value.
 // Java accepts an expression to specify the size of an array, as long as it evaluates to an int value.
 // Code to access an array index will fail to compile if you don’t use a char, byte, short, or int.
+
+// Arrays are initialized to default values of their type - some examples:
+// int[] iA = new int[10]; will contain 10 integers with a value of 0.
+// Object[] oA = new Object[10]; will contain 10 object references pointing to null.
+// boolean[] bA = new boolean[10] will contain 10 booleans of value false.
 public class ArrayExamples {
 
     private static final String someString; // static variables need initialized

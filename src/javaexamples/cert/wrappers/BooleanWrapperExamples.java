@@ -27,5 +27,9 @@ public class BooleanWrapperExamples {
         // System.out.println(new Boolean() == false); // Boolean does not have a no-arg constructor
         System.out.println(new Boolean("true") == Boolean.TRUE); // false - both are wrapper objects containing true, but they are not the same objects
         System.out.println(new Boolean("no") == false); // true - boolean unboxed to false primitive (see rule 3)
+
+        System.out.println(Boolean.valueOf(true) == true); // true
+        System.out.println(Boolean.valueOf("trUE") == true); // true
+        System.out.println(Boolean.TRUE == true); // true
     }
 }

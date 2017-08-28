@@ -16,6 +16,8 @@ package javaexamples.cert.statements;
 //    objects in switch statements is case sensitive.
 // The Java compiler generates generally more efficient bytecode from switch statements that use String objects than
 //    from chained if-then-else statements.
+// At most one default label may be associated with the same switch statement.
+// The comparison of String objects in switch statements is case sensitive since it uses String.equals method.
 public class SwitchExamples {
 
     public static void main(String[] args){
@@ -24,6 +26,7 @@ public class SwitchExamples {
         usingContinueWithSwitch();
         switchWithDefaultOnly();
         switchWithNoCasesOrDefault();
+        switchWithEmptyCasesAndEmptyFinally();
         switchStatementWithComplexStatements();
     }
 
@@ -130,6 +133,16 @@ public class SwitchExamples {
 
     private static void switchWithNoCasesOrDefault() {
         switch (1) { }
+    }
+
+    private static void switchWithEmptyCasesAndEmptyFinally() {
+        switch (1) {
+            case 1: {}{}
+            case 2:
+            case 0: {};
+            default:
+            case 4:
+        }
     }
 
     private static void switchStatementWithComplexStatements() {

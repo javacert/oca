@@ -13,6 +13,7 @@ public class ComplexReassignmentStatementsExample {
         example4();
         example5();
         example6();
+        example7();
     }
 
     private static void example1() {
@@ -73,5 +74,13 @@ public class ComplexReassignmentStatementsExample {
         // 2) k = 1 + 3 + (2 * 3) + (3 * 3)
         // 3) k = 1 + 3 + 6 + 9;
         System.out.println(k); // 19
+    }
+
+    private static void example7() {
+        int a = 10;
+        int b = 20;
+        a += (a = 4); // a = a + (a = 4) --> 10 + 4
+        b = b + (b = 5); // 20 + (5)
+        System.out.println(a + ", " + b); // 14, 25
     }
 }

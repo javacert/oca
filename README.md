@@ -76,3 +76,4 @@ General Tips:
 - Don't be thrown by continue statements at the end on a loop block since they will be redundant.
 - The restrictiveness of access modifiers is as follows: private>default>protected>public
 - Boolean class does not have a no-args constructor.
+- Always watch for scope of variables no matter what the question appears to be about!

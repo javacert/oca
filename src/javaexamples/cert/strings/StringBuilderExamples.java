@@ -1,6 +1,7 @@
 package javaexamples.cert.strings;
 
 // Notes:
+// StringBuilder is in the java.lang package
 // StringBuilder does NOT override the equals method, so it will always be a reference comparison.
 // StringBuilder does NOT have a toCharArray method.
 // |-- String does have that method and also has a constructor that accepts a char array.

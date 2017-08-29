@@ -8,6 +8,7 @@ public class PrimitivePromotionExamples {
     public static void main(String[] args){
         numericPromotionExamples();
         promotionInAComparisonStatement();
+        intToFloatExample();
     }
 
     private static void numericPromotionExamples() {
@@ -36,5 +37,23 @@ public class PrimitivePromotionExamples {
         if (i == d) b++; // In the case of i == d, value of i will be promoted to a double i.e. 5.0, and so it returns false.
 
         System.out.println(b); // 1
+    }
+
+    private static void intToFloatExample() {
+        // Float f1 = 10; // Does not compile - assignment doesn't do an explicit cast automatically
+        Float f1 = (float)10;
+
+        // Double d1 = 10; // Does not compile
+        Double d1 = (double)10;
+
+        // Long l1 = 10; // Does not compile
+        Long l1 = (long)10;
+
+        Byte b1 = 10; // This works fine for char, byte and short
+        Short s1 = 10;
+        Character c1 = 10;
+
+        byte b2 = 10;
+        float f2 = 10; // Fine, as long as the values fits - we are not working with autoboxing here - implicit cast is done by the compiler.
     }
 }

@@ -2,7 +2,8 @@ package javaexamples.cert.statements;
 
 // Data types supported are int/Integer, byte/Byte, short/Short, char/Character, String, enum values
 // You cannot use long/Long, double/Double, float/Float, boolean/Boolean (due to exact values of float and double being difficult)
-// You cannot have duplicate case values
+// You cannot have duplicate case values.
+// A switch case cannot have the value null.
 // Case values must be compile time constants, as in they should be final or enums
 // The switch variable must be big enough to hold all the case constants. For example, if the switch variable is of type char,
 //    then none of the case constants can be greater than 65535 because a char's range is from 0 to 65535, or -128 to 127 for a byte

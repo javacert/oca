@@ -34,7 +34,7 @@ public class CommonWrapperMethodExamples {
         constructorExample();
         basicWrapperExamples();
         numericWrapperInheritValueMethodFromNumber();
-
+        moreExamples();
     }
 
     private static void constructorExample() {
@@ -92,5 +92,15 @@ public class CommonWrapperMethodExamples {
         System.out.println(someInteger.intValue());         // 10
         System.out.println(someInteger.shortValue());       // 10
         System.out.println(someInteger.floatValue());       // 10.0
+    }
+
+    private static void moreExamples() {
+        int i1 = Integer.parseInt("1"); // returns primitive
+        boolean b1 = Boolean.parseBoolean("TruE");
+        System.out.println(i1 + " " + b1); // 1 true
+
+        int i2 = Integer.valueOf("2"); // returns wrapper
+        boolean b2 = Boolean.valueOf("False");
+        System.out.println(i2 + " " + b2); // 1 false
     }
 }

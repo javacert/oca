@@ -77,3 +77,6 @@ General Tips:
 - The restrictiveness of access modifiers is as follows: private>default>protected>public
 - Boolean class does not have a no-args constructor.
 - Always watch for scope of variables no matter what the question appears to be about!
+- Watch for GC questions - remember that the exact number of objects GC'd will never be known for certain (look for eligible wording).
+- ALWAYS ALWAYS ALWAYS check constructors for return types.
+- All keywords in Java are lowercase (instanceof).

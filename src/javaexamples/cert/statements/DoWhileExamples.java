@@ -1,5 +1,6 @@
 package javaexamples.cert.statements;
 
+// Don't forget the semi-colon after the while condition - results in a compilation error
 public class DoWhileExamples {
 
     public static void main(String[] args){

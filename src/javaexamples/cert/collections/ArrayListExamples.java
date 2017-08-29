@@ -29,6 +29,7 @@ public class ArrayListExamples {
         arrayListAddBeyondRange();
         arrayListAddAllReferenceTrickA();
         arrayListAddAllReferenceTrickB();
+        addingElementBeyondCurrentLength();
     }
 
     private static void arrayListCanAcceptPrimitives() {
@@ -127,5 +128,14 @@ public class ArrayListExamples {
             System.out.print(val + ":");
 
         // OUTPUT: One:Two:One:Two:
+    }
+
+    private static void addingElementBeyondCurrentLength() {
+        ArrayList<String> seasons = new ArrayList<>();
+        seasons.add(1, "Spring"); // We skipped index 0 - Exception in thread "main" java.lang.IndexOutOfBoundsException: Index: 1, Size: 0
+        seasons.add(2, "Summer");
+        seasons.add(3, "Autumn");
+        seasons.add(4, "Winter");
+        seasons.remove(2);
     }
 }

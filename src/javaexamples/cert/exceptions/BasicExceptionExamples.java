@@ -10,6 +10,8 @@ package javaexamples.cert.exceptions;
 //         --> also note that NumberFormatException extends IllegalArgumentException extends RuntimeException
 // 7) NegativeArraySizeException - thrown by JVM when array initialized with a negative number
 // 8) SecurityException - thrown by the programmer - tricky one again since not thrown by JVM
+// 9) ArrayStoreException - thrown by JVM - Thrown to indicate that an attempt has been made to store the wrong type
+//    of object into an array of objects.
 
 // Exception Type: Checked Exceptions - extends Exception
 // 1) FileNotFoundException - thrown programmatically - public class FileNotFoundException extends IOException

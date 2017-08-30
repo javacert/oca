@@ -17,6 +17,7 @@ package javaexamples.cert.strings;
 // 4) insert(int dstOffset, CharSequence s, int start, int end) - Inserts a sub-sequence of the specified CharSequence into this sequence.
 // 5) replace(int start, int end, String str) - Replaces the characters in a substring of this sequence with characters in the specified String.
 // 6) substring(int start, int end) - Returns a new String that contains a sub-sequence of characters currently contained in this sequence.
+// 7) delete(int start, int end) - deletes characters of length end - start
 public class StringBuilderExamples {
 
     public static void main(String[] args){
@@ -33,6 +34,7 @@ public class StringBuilderExamples {
         appendExample();
         clearingAStringBuilder();
         concatenateStringBuilderWithString();
+        deleteNothingExample();
     }
 
     private static void builderExample1() {
@@ -265,5 +267,12 @@ public class StringBuilderExamples {
         // implicitly.
         String someString = new StringBuilder("ABC") + "DEF";
         System.out.println(someString);
+    }
+
+    private static void deleteNothingExample() {
+        StringBuilder sb = new StringBuilder("abc");
+        System.out.println(sb.delete(1, 1)); // abc - note that this deletes nothing!
+        System.out.println(sb.delete(1, 10)); // a - note that this deletes all the characters and does not throw a RuntimeException
+        System.out.println(sb.delete(2, 1)); // java.lang.StringIndexOutOfBoundsException
     }
 }

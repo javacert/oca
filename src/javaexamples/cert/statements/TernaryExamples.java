@@ -1,5 +1,6 @@
 package javaexamples.cert.statements;
 
+// A ternary operator only evaluates one of the two right hand expressions at run-time.
 public class TernaryExamples {
 
     public static void main(String[] args){

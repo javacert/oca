@@ -17,7 +17,7 @@ public class BasicGenericExamples {
         List<Integer> i1 = new ArrayList<Integer>();
         List<Integer> i2 = new ArrayList<>();
         // The right side is a raw type meaning the ArrayList can hold every object (not only Integer)
-        List<Integer> i3 = new ArrayList();
+        List<Integer> i3 = new ArrayList(); // Produces a warning!
     }
 
     private static void genericsWithArraysAsListExample() {

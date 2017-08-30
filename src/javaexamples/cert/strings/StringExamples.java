@@ -6,6 +6,7 @@ import java.nio.charset.StandardCharsets;
 // String, StringBuilder, and StringBuffer - all are final classes.
 // + is overloaded such that if any one of its two operands is a String then it will convert the other
 // operand to a String and create a new string by concatenating the two.
+// toUpperCase returns a new String object
 public class StringExamples {
 
     public static void main(String[] args){
@@ -18,6 +19,7 @@ public class StringExamples {
         stringCharAtExample();
         stringTrimMethod();
         stringSubStringMethod();
+        stringComparisons();
     }
 
     private static void stringConstructors() {
@@ -29,6 +31,11 @@ public class StringExamples {
         String someString5 = new String(new char[]{'a', 'b', 'c'});
         String someString6 = new String(new byte[]{1, 2, 3}, StandardCharsets.ISO_8859_1);
         String someString7 = new String(new char[]{'a', 'b', 'c'}, 1, 1);
+        String someString8 = new String();
+
+        //public String() {
+        //    this.value = new char[0];
+        //}
     }
 
     private static void stringHasStartsWithMethod() {
@@ -140,5 +147,17 @@ public class StringExamples {
 
     private static void stringSubStringMethod() {
         System.out.println("ABCDEF".substring(3, 4)); // start and end index (remember last index not included) 4-3 = 1 char = D
+    }
+
+    private static void stringComparisons() {
+        String lol = "lol";
+        System.out.println(lol == "lol");               // true
+
+        // toUpperCase first checks if any characters need changed and if not, it returns the same String -
+        // in this case there are difference and a new String(..) is returned
+        System.out.println(lol.toUpperCase() == lol);   // false - toUpperCase first checks if any characters need changed and if not, it returns the same String - in this case there are difference and a new String(..) is returned
+        System.out.println(lol.toLowerCase() == lol);   // true - toLowerCase first checks if any characters need changed and if not, it returns the same String
+        System.out.println(lol.substring(0) == lol);    // true - again since no change return the existing, otherwise return new String
+        System.out.println("xlol".substring(1) == lol); // false - a new String(..) is returned since there is a difference.
     }
 }

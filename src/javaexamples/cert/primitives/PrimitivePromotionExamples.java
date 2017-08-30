@@ -53,7 +53,11 @@ public class PrimitivePromotionExamples {
         Short s1 = 10;
         Character c1 = 10;
 
+        int i1 = 'a'; // Whaaaa, you can assign a char to an int!
+        char c2 = 10;
+        long l2 = 10;
         byte b2 = 10;
         float f2 = 10; // Fine, as long as the values fits - we are not working with autoboxing here - implicit cast is done by the compiler.
+        double d2 = 10;
     }
 }

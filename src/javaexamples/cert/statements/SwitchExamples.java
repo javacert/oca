@@ -1,7 +1,8 @@
 package javaexamples.cert.statements;
 
 // Data types supported are int/Integer, byte/Byte, short/Short, char/Character, String, enum values
-// You cannot use long/Long, double/Double, float/Float, boolean/Boolean (due to exact values of float and double being difficult)
+// You cannot use long/Long, double/Double, float/Float, boolean/Boolean (due to exact values of float and double being difficult) OR Object
+// You CANNOT use null in a switch statement.
 // You cannot have duplicate case values.
 // A switch case cannot have the value null.
 // Case values must be compile time constants, as in they should be final or enums
@@ -29,6 +30,7 @@ public class SwitchExamples {
         switchWithNoCasesOrDefault();
         switchWithEmptyCasesAndEmptyFinally();
         switchStatementWithComplexStatements();
+        objectInASwitchIsNotAllowed();
     }
 
     // The compiler needs the expression to be known at compile time in order to compile a switch
@@ -161,5 +163,13 @@ public class SwitchExamples {
                 s = s + 3;
         }
         System.out.println(s); // 9
+    }
+
+    private static void objectInASwitchIsNotAllowed() {
+        final Object a = new Object();
+        //switch(a){ // --> Incompatible types: Found java.lang.Object, required: char, byte, short, int, Character, Byte, Short, Integer, String or enum
+            //case null: // --> null is not a valid case
+            //case a: // --> Object is not a valid case
+        //}
     }
 }

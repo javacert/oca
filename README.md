@@ -80,3 +80,5 @@ General Tips:
 - Watch for GC questions - remember that the exact number of objects GC'd will never be known for certain (look for eligible wording).
 - ALWAYS ALWAYS ALWAYS check constructors for return types.
 - All keywords in Java are lowercase (instanceof).
+- The java command uses . to separate packages.
+- Java SUPPORTS functional programming.

@@ -1,5 +1,6 @@
 package javaexamples.cert.operators;
 
+// The logical complement ! operator may only be applied to boolean expressions, not numeric ones.
 public class BasicOperatorExamples {
 
     public static void main(String[] args){

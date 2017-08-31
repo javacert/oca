@@ -27,6 +27,8 @@ public class PrintStatementExamples {
 
     private static void printExamples() {
         // System.out.print(); // print() required a parameter
+
+        // println() --> Terminates the current line by writing the line separator string.
         System.out.println(); // println does not required a parameter as part of its overloads
 
         // It will print a new line when you pass nothing.

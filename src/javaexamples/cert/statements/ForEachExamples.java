@@ -5,6 +5,9 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+// Every for-each loop can be rewritten as a do-while loop
+// Every for-each loop can be rewritten as a traditional for loop
+// Every for-each loop can be rewritten as a while loop
 public class ForEachExamples {
 
     public static void main(String[] args){

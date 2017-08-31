@@ -82,3 +82,4 @@ General Tips:
 - All keywords in Java are lowercase (instanceof).
 - The java command uses . to separate packages.
 - Java SUPPORTS functional programming.
+- Always check date classes that they do not contain the form - new LocalDate(2017, 1, 1) - remember their constructors are private

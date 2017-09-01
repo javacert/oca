@@ -147,6 +147,9 @@ public class StringExamples {
 
     private static void stringSubStringMethod() {
         System.out.println("ABCDEF".substring(3, 4)); // start and end index (remember last index not included) 4-3 = 1 char = D
+        System.out.println("ABCDEF".substring(3, 3)); // This selects no characters = " "
+        System.out.println("ABCDEF".substring(1)); // BCDEF
+        System.out.println("ABCDEF".substring(2, 1)); // java.lang.StringIndexOutOfBoundsException: String index out of range: -1
     }
 
     private static void stringComparisons() {

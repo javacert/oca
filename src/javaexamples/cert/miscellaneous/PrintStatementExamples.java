@@ -74,13 +74,14 @@ public class PrintStatementExamples {
     }
 
     private static void passingAWrapperToPrint() {
-        Byte a = 1;
+        Byte a = 1; // int implicity narrowed for byte, short, char
         Short b = 2;
         Integer c = 3;
         Long d = 4L; // Note - have to pass correct type when assigning to wrapper in this way
         Float e = 5.0f; // Note - have to pass correct type when assigning to wrapper in this way
         Double f = 6.0; // Note - have to pass correct type when assigning to wrapper in this way
         Double g = 6.123; // Note - have to pass correct type when assigning to wrapper in this way
+        Character ch = 1; // This is fine, character compatible with int.
 
         // All the following call the toString method in the wrapper object
         System.out.println(a); // 1

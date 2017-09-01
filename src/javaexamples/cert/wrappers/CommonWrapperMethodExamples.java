@@ -27,6 +27,16 @@ package javaexamples.cert.wrappers;
 
 // Wrapper classes are immutable. Adding a primitive value to a wrapper class variable doesn’t modify the value of the
 // object it refers to. The wrapper class variable is assigned a new object.
+
+
+// Wrapper Assignment Rules:
+// 1) Direct assignment (e.g. Float f = 10F;) must use the correct type when assigning but byte/short/char can be
+//    assigned an int value (implicit narrowing e.g. Byte b = 10;) is fine.
+// 2) All wrapper classes have a single parameter constructor which accepts a String representation of the value
+//    (excluding Character which only accepts a char)
+// 3) When using a wrapper constructor, you must pass the correct type or a type that will widen to fit.
+//    e.g. Short s1 = new Short((byte)10); is fine, so is Double d7 = new Double(10L);
+
 public class CommonWrapperMethodExamples {
 
     public static void main(String[] args){
@@ -35,6 +45,8 @@ public class CommonWrapperMethodExamples {
         basicWrapperExamples();
         numericWrapperInheritValueMethodFromNumber();
         moreExamples();
+        assignmentToPrimitives();
+        assignmentThroughConstructors();
     }
 
     private static void constructorExample() {
@@ -102,5 +114,87 @@ public class CommonWrapperMethodExamples {
         int i2 = Integer.valueOf("2"); // returns wrapper
         boolean b2 = Boolean.valueOf("False");
         System.out.println(i2 + " " + b2); // 1 false
+    }
+
+    private static void assignmentToPrimitives() {
+        Byte b = 10;
+        Character c = 10;
+        Short s = 10;
+        Integer i = 10;
+
+        // Long l = 10; // Cannot do!
+        Long l = 10L;
+
+        // Float f = 10; // Cannot do!
+        Float f = 10F;
+
+        // Double d = 10; // Cannot do!
+        Double d = 10.0;
+    }
+
+    private static void assignmentThroughConstructors() {
+        // Boolean b1 = new Boolean(); // No zero arg constructor
+        Boolean b1 = new Boolean("True");
+        Boolean b2 = new Boolean(Boolean.TRUE);
+        Boolean b3 = Boolean.TRUE;
+
+        // Character c1 = new Character(); // No zero arg constructor
+        Character c1 = new Character((char)10);
+        Character c2 = new Character((char)(byte)10);
+        // Character c3 = new Character((short)10); // Will not compile
+        Character c4 = new Character('a');
+        // Character c5 = new Character("a"); // // No constructor which accepts a string
+
+        // Byte by1 = new Byte(); // No zero arg constructor
+        Byte by1 = new Byte((byte)10);
+        Byte by2 = new Byte("10");
+
+        // Short s1 = new Short(); // No zero arg constructor
+        Short s1 = new Short((byte)10); // This works!
+        //Short s1 = new Short((Byte)10); // Does not compile
+        Short s2 = new Short((short)10); // This works!
+        // Short s2 = new Short((int)10); // Does not compile
+        Short s3 = new Short("10");
+
+        // Integer i1 = new Integer(); // No zero arg constructor
+        Integer i1 = new Integer((byte)10);
+        Integer i2 = new Integer((byte)10);
+        Integer i3 = new Integer((short)10);
+        Integer i4 = new Integer(10);
+        Integer i5 = new Integer("10");
+
+        // Long l1 = new Long(); // No zero arg constructor
+        Long l1 = new Long((byte)10);
+        Long l2 = new Long((byte)10);
+        Long l3 = new Long((short)10);
+        Long l4 = new Long((int)10);
+        Long l5 = new Long(10);
+        Long l6 = new Long((long)10);
+        Long l7 = new Long(10L);
+        Long l8 = new Long("10");
+
+        // Float f1 = new Float(); // No zero arg constructor
+        Float f1 = new Float((byte)10);
+        Float f2 = new Float((byte)10);
+        Float f3 = new Float((short)10);
+        Float f4 = new Float((int)10);
+        Float f5 = new Float(10);
+        Float f6 = new Float((long)10);
+        Float f7 = new Float(10L);
+        Float f8 = new Float(10F);
+        Float f9 = new Float("10");
+
+        // Double d1 = new Double(); // No zero arg constructor
+        Double d1 = new Double((byte)10);
+        Double d2 = new Double((byte)10);
+        Double d3 = new Double((short)10);
+        Double d4 = new Double((int)10);
+        Double d5 = new Double(10);
+        Double d6 = new Double((long)10);
+        Double d7 = new Double(10L);
+        Double d8 = new Double(10F);
+        Double d9 = new Double(10.0);
+        Double d10 = new Double("10");
+        Double d11 = new Double("10.0");
     }
 }

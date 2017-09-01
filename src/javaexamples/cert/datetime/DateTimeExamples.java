@@ -77,6 +77,7 @@ public class DateTimeExamples {
         formattingExamples();
         parseExamples();
         atDateExamples();
+        invalidLocalDateAssignment();
     }
 
     private static void localTimeExamples() {
@@ -108,6 +109,7 @@ public class DateTimeExamples {
         System.out.println(localDateOfYearDay); // 2016-01-22
         System.out.println(localDateOfYearDay.getDayOfMonth()); // 22
         System.out.println(localDateOfYearDay.getMonthValue()); // 1 - 22nd day is in January
+        System.out.println(localDateOfYearDay.getMonth()); // JANUARY
     }
 
     private static void localDateTimeExamples() {
@@ -313,5 +315,15 @@ public class DateTimeExamples {
 
         LocalDateTime dateTime = time.atDate(date); // Returns a LocalDateTime
         System.out.println(dateTime); // 2016-02-28T14:10
+    }
+
+    private static void invalidLocalDateAssignment() {
+        // Exception in thread "main" java.time.DateTimeException: Invalid value for DayOfMonth (valid values 1 - 28/31): 40
+        LocalDate date = LocalDate.of(2018, Month.APRIL, 40);
+        System.out.println(date);
+
+        // Exception in thread "main" java.time.format.DateTimeParseException: Text '2017-55-10' could not be parsed: Invalid value for MonthOfYear (valid values 1 - 12): 5
+        date = LocalDate.parse("2017-55-10");
+        System.out.println(date);
     }
 }

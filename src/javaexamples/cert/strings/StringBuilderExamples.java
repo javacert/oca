@@ -35,6 +35,9 @@ public class StringBuilderExamples {
         clearingAStringBuilder();
         concatenateStringBuilderWithString();
         deleteNothingExample();
+        appendingTrueFalse();
+        ensureCapacityExample();
+        increaseCapacityExample();
     }
 
     private static void builderExample1() {
@@ -274,5 +277,38 @@ public class StringBuilderExamples {
         System.out.println(sb.delete(1, 1)); // abc - note that this deletes nothing!
         System.out.println(sb.delete(1, 10)); // a - note that this deletes all the characters and does not throw a RuntimeException
         System.out.println(sb.delete(2, 1)); // java.lang.StringIndexOutOfBoundsException
+    }
+
+
+    private static void appendingTrueFalse() {
+        StringBuilder sb = new StringBuilder("abc");
+        System.out.println(sb.append(true));            // abctrue
+        System.out.println(sb.append(false));           // abctruefalse
+        System.out.println(sb.append(Boolean.TRUE));    // abctruefalsetrue
+        System.out.println(sb.append(Boolean.FALSE));   // abctruefalsetruefalse
+    }
+
+    private static void ensureCapacityExample() {
+        // The ensure capacity method ensures that the capacity is at least equal to the specified minimum. If the current
+        // capacity is less that the argument, then a new internal array is allocated with a greater capacity.
+        // The new capacity is twice the old capacity plus 2.
+
+        // 1) Initial Capacity = 16 + 6 (new StringBuilder("ABCDEF")) = 22
+        StringBuilder sb = new StringBuilder("ABCDEF");
+        sb.delete(4, 6); // Has no impact to initial capacity!
+
+        sb.ensureCapacity(22);
+        System.out.println(sb.capacity()); // 22 - No change since current capacity is already 22
+
+        sb.ensureCapacity(23); // (Current capacity (22) * 2) + 2
+        System.out.println(sb.capacity()); // 46
+    }
+
+    private static void increaseCapacityExample() {
+        StringBuilder sb = new StringBuilder("ABCDEF");
+        System.out.println(sb.capacity()); // 22
+
+        sb.append("12345678901234567890"); // Increase capacity beyond 22 - recalculate capacity: (Current capacity (22) * 2) + 2
+        System.out.println(sb.capacity()); // 46
     }
 }

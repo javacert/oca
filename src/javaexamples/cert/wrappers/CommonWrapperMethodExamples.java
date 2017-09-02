@@ -117,6 +117,10 @@ public class CommonWrapperMethodExamples {
     }
 
     private static void assignmentToPrimitives() {
+
+        // Remember these rules:
+        // 1) Widening and then Boxing (WB) not allowed.
+
         Byte b = 10;
         Character c = 10;
         Short s = 10;
@@ -130,9 +134,19 @@ public class CommonWrapperMethodExamples {
 
         // Double d = 10; // Cannot do!
         Double d = 10.0;
+
+        // 2) Unboxing and then Widening (BW) allowed.
+        Integer i2 = 10;
+        double d2 = i2;
+        double d3 = new Integer(10);
+
+        // 3) Widening between wrapper classes not allowed
+        Integer intToWiden = 10;
+        // Double someDouble = intToWiden; // Will not compile!
     }
 
     private static void assignmentThroughConstructors() {
+
         // Boolean b1 = new Boolean(); // No zero arg constructor
         Boolean b1 = new Boolean("True");
         Boolean b2 = new Boolean(Boolean.TRUE);

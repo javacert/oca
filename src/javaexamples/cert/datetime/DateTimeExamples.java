@@ -47,11 +47,13 @@ import java.time.temporal.ChronoUnit;
 // LocalDateTime - T separates Date + Time and must be in the format "2050-06-05T14:00:00"
 
 // Common LocalDate methods:
-//  - getDayOfMonth, getDayOfWeek, getDayOfYear, getMonth, getMonthValue, getYear (get are not the plural form)
+//  - getDayOfMonth, getDayOfWeek, getDayOfYear, getMonth (e.g. JANUARY), getMonthValue (e.g. 3), getYear (get are not the plural form)
 //  - isAfter, isBefore
 //  - minusDays, minusMonths, minusWeeks, minusYears
 //  - plusDays, plusMonths, plusWeeks, plusYears
 //  - withDayOfMonth, withDayOfYear, withMonth, withYear (takes current LocalDate and returns a new days withXXXX)
+
+// LocalDateTime methods similar to LocalDate.
 
 // Common LocalTime methods:
 //  - getHour, getMinute, getSecond, getNano (no plural for get methods)

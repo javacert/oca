@@ -2,6 +2,8 @@ package javaexamples.cert.wrappers;
 
 // When you create an Integer using the new keyword, it creates a new Integer every time.
 // However, Integer caches values between -128 and 127.
+
+// Integer decode(String nm) --> Decodes a String into an Integer. Accepts decimal, hexadecimal, and octal numbers.
 public class IntegerExamples {
 
     public static void main(String[] args){
@@ -9,6 +11,8 @@ public class IntegerExamples {
         passingNullToAMethodWithAnIntegerWrapper(null);
         usingEqualsWithDifferentWrapperClasses();
         parsingADoubleValue();
+        parsingAnOctalValue();
+        decodeExample();
     }
 
     private static void workingWithNullIntegerWrapper() {
@@ -50,5 +54,13 @@ public class IntegerExamples {
     private static void parsingADoubleValue() {
         System.out.println(Integer.parseInt("12.3")); // java.lang.NumberFormatException: For input string: "12.3"
         System.out.println(Double.parseDouble("12.3")); // 12.3
+    }
+
+    private static void parsingAnOctalValue() {
+        System.out.println(Integer.parseInt("011")); // 11
+    }
+
+    private static void decodeExample() {
+        System.out.println(Integer.decode("12")); // 12
     }
 }

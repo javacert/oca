@@ -9,6 +9,7 @@ public class StringConcatenationExamples {
 
     public static void main(String[] args){
         concatenationExample1();
+        invalidConcatenationExample();
     }
 
     private static void concatenationExample1() {
@@ -28,5 +29,21 @@ public class StringConcatenationExamples {
 
         // Remember * /  done first since they take precedence over +
         System.out.println("" + a * b + "" + a / c); // "" + "30" + "" + "0" = "300"
+    }
+
+    private static void invalidConcatenationExample() {
+        int x = 10, y = 12;
+        // In the following since you are now concatenating a String, you cannot use the - operator
+        //System.out.println("Answer is : " + x - y); // Operator - cannot be applied to java.lang.String
+
+        // This however compiles fine
+        System.out.println(x - y + " is the Answer"); // -2 is the Answer
+
+        // The following works since ++, --, * and / have higher precedence than +
+        System.out.println("Answer is : " + x * y); // Answer is : 120
+        System.out.println("Answer is : " + x / y); // Answer is : 0
+        System.out.println("Answer is : " + x % y); // Answer is : 10
+        System.out.println("Answer is : " + x++); // Answer is : 10
+        System.out.println("Answer is : " + --x); // Answer is : 10
     }
 }

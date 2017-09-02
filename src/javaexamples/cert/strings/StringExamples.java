@@ -7,6 +7,12 @@ import java.nio.charset.StandardCharsets;
 // + is overloaded such that if any one of its two operands is a String then it will convert the other
 // operand to a String and create a new string by concatenating the two.
 // toUpperCase returns a new String object
+
+// Common Methods:
+// 1) String copyValueOf(char data[], int offset, int count) --> Returns the string representation of a specific
+//    subarray of the char array argument.
+// 2) getChars(int srcBegin, int srcEnd, char dst[], int dstBegin) --> Copies characters from this string into the
+//    destination character array.
 public class StringExamples {
 
     public static void main(String[] args){
@@ -20,6 +26,8 @@ public class StringExamples {
         stringTrimMethod();
         stringSubStringMethod();
         stringComparisons();
+        stringCopyValueOf();
+        getCharsExample();
     }
 
     private static void stringConstructors() {
@@ -162,5 +170,22 @@ public class StringExamples {
         System.out.println(lol.toLowerCase() == lol);   // true - toLowerCase first checks if any characters need changed and if not, it returns the same String
         System.out.println(lol.substring(0) == lol);    // true - again since no change return the existing, otherwise return new String
         System.out.println("xlol".substring(1) == lol); // false - a new String(..) is returned since there is a difference.
+    }
+
+    private static void stringCopyValueOf() {
+        char[] chars = {'A', 'B', 'C', 'D', 'E', 'F'};
+        String out = String.copyValueOf(chars, 1, 4); // count is the length of the subarray, not the last index!
+        System.out.println(out); // BCDE
+    }
+
+    private static void getCharsExample() {
+        char[] chars = new char[4];
+        chars[0] = 0;
+        chars[1] = 2;
+        String out = "123456789";
+        out.getChars(0, 3, chars, 0);
+        for(char c : chars) {
+            System.out.println(c); // 1 2 3
+        }
     }
 }

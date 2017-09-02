@@ -83,3 +83,27 @@ General Tips:
 - The java command uses . to separate packages.
 - Java SUPPORTS functional programming.
 - Always check date classes that they do not contain the form - new LocalDate(2017, 1, 1) - remember their constructors are private
+- Only byte code is platform independent in Java. The JRE, JVM, JDK are all platform dependent.
+- Always remember that 2 static methods with the same name and signature in a parent and child class, is not overriding but hiding.
+  You can access both depending on the reference type.
+- 5 Golden Rules of widening, boxing and varargs:
+    1) Primitive Widening > Boxing > Varargs. 
+    2) Widening and Boxing (WB) not allowed. Example:
+            // Long l = 10; // Cannot do! Need widened and then boxed
+            Long l = 10L;
+    3) Unboxing and then Widening (BW) allowed. Example:
+            Integer i2 = 10;
+            double d2 = i2;
+            double d3 = new Integer(10); // Fine!
+    4) While overloading, Widening + vararg and Boxing + vararg can only be used in a mutually exclusive manner i.e. not together. 
+    5) Widening between wrapper classes not allowed. Example:
+            Integer intToWiden = 10;
+            // Double someDouble = intToWiden; // Not allowed.
+- There are 19 specific conversions on primitive types called the widening primitive conversions:
+    1) byte to short, int, long, float or double
+    2) short to int, long, float or double
+    3) char to int, float, long or double
+    3) int to long, float or double
+    4) long to float or double
+    5) float to double
+- Remember that String and date time objects are immutable. Look for application of change without an assignment to a variable!

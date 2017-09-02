@@ -55,12 +55,20 @@ import java.time.temporal.ChronoUnit;
 
 // LocalDateTime methods similar to LocalDate.
 
+// LocalDateTime's toString method generates the String in ISO 8601 format - equivalent to DateTimeFormatter.ISO_DATE_TIME
+
 // Common LocalTime methods:
 //  - getHour, getMinute, getSecond, getNano (no plural for get methods)
 //  - minusHours, minusMinutes, minusSeconds, minusNanos
 //  - withHour, withMinute, withSecond, withNano
 // Unlike the getXXX() methods, minusXXX() methods use the plural form: getHour() versus minusHours(), getMinute()
 // versus minusMinutes(), getSecond() versus minusSeconds(), and getNano() versus minusNanos().
+
+// Period / Duration have static methods and therefore do not support aggregated chaining.
+// Most of the methods of LocalDate (as well as LocalTime and LocalDateTime) return an object of the same class.
+// This allows you to chain the calls as done in this question. However, these  methods return a new object each time
+// but aggregate the change from the previous method in the chain. Period / Duration will simply use the last change in
+// the chain.
 public class DateTimeExamples {
 
     public static void main(String[] args) {
@@ -72,6 +80,10 @@ public class DateTimeExamples {
         trickLocalDateExampleA();
         trickLocalDateExampleB();
         periodExamples();
+        chainingPeriodExample();
+        chainingLocalDateMethods();
+        isoFormattingExamples();
+        isoZonedFormattingExamples();
         trickPeriodExample();
         invalidPeriodExample();
         smallestTimeInLocalTime();
@@ -192,6 +204,50 @@ public class DateTimeExamples {
         Period periodJ = Period.parse("P5D"); // Period.ofDays(5)
         Period periodK = Period.parse("P2Y2M3W4D"); // Period.of(2, 2, 25)
         Period periodL = Period.parse("P-2Y2M"); // Period.of(-2, -2, 0)
+
+        LocalDate ld = LocalDate.of(2015, 1, 1);
+        LocalDate ld2 = ld.plus(Period.of(0, 1, 1));
+        System.out.println(ld2); // 2015-02-02
+    }
+
+    private static void chainingPeriodExample() {
+        // Important to remember that with Period you cannot chain in the following way so it adds all the values,
+        // it simply takes the last value in the train, which is ofDays(1) (ofXXX are static methods of Period class)
+        LocalDate ld = LocalDate.of(2015, 1, 1);
+        LocalDate ld2 = ld.plus(Period.ofYears(1).ofMonths(1).ofWeeks(1).ofDays(1));
+        System.out.println(ld2); // 2015-01-02
+    }
+
+    private static void chainingLocalDateMethods() {
+        // Most of the methods of LocalDate (as well as LocalTime and LocalDateTime) return an object of the same class.
+        // This allows you to chain the calls as done in this question. However, these  methods return a new object.
+        // They don't modify the object on which the method is called.
+        LocalDate dt = java.time.LocalDate.parse("2015-01-01").minusMonths(1).minusDays(1).plusYears(1);
+        System.out.println(dt); // 2015-11-30
+    }
+
+    public static void isoFormattingExamples() {
+
+        // The following output fine:
+        System.out.println(LocalTime.of(10,10,10).format(DateTimeFormatter.ISO_TIME)); // 10:10:10
+        System.out.println(LocalDate.of(2015, Month.JANUARY, 01).format(DateTimeFormatter.ISO_DATE)); // 2015-01-01
+        System.out.println(LocalDateTime.of(2015, Month.JANUARY, 01, 01, 01, 01).format(DateTimeFormatter.ISO_DATE_TIME)); // 2015-01-01T01:01:01
+
+        // There work! You can format just for time or date in LocalDateTime
+        System.out.println(LocalDateTime.of(2015, Month.JANUARY, 01, 01, 01, 01).format(DateTimeFormatter.ISO_TIME)); // 01:01:01
+        System.out.println(LocalDateTime.of(2015, Month.JANUARY, 01, 01, 01, 01).format(DateTimeFormatter.ISO_DATE)); // 2015-01-01
+
+        // The following throw runtime exceptions - make sure and match the ISO type to the object type!
+        System.out.println(LocalTime.of(10,10,10).format(DateTimeFormatter.ISO_DATE)); // Exception in thread "main" java.time.temporal.UnsupportedTemporalTypeException: Unsupported field: Year
+        System.out.println(LocalDate.of(2015, Month.JANUARY, 01).format(DateTimeFormatter.ISO_DATE_TIME)); // Exception in thread "main" java.time.temporal.UnsupportedTemporalTypeException: Unsupported field: HourOfDay
+    }
+
+    public static void isoZonedFormattingExamples() {
+        // Note that LocalDateTime class does not contain Zone information but ISO_ZONED_DATE_TIME requires it.
+        // DateTimeException extends RuntimeException, so it need not be caught or declared in the throws clause.
+        // Exception in thread "main" java.time.temporal.UnsupportedTemporalTypeException: Unsupported field: OffsetSeconds
+        LocalDateTime ldt = LocalDateTime.of(2015, 1, 1, 1, 1,1);
+        System.out.println(DateTimeFormatter.ISO_ZONED_DATE_TIME.format(ldt));
     }
 
     private static void trickPeriodExample() {

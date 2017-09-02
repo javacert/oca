@@ -25,12 +25,17 @@ package javaexamples.cert.exceptions;
 //              2) Initialization of a static variable
 //              3) Execution of a static method (called from either of the previous two items)
 // 2) StackOverflowError - thrown by JVM - class StackOverflowError extends VirtualMachineError
-// 3) NoClassDefErrorFound - thrown by JVM - class NoClassDefFoundError extends LinkageError
+// 3) NoClassDefFoundError - thrown by JVM - class NoClassDefFoundError extends LinkageError
 //         --> When JVM class loader cannot locate a class on the classpath
 
 // Main takeaways:
 // If you have a try statement and both the catch block and the finally block each throw an exception, then it is the
 // exception from the finally block that is propagated to the caller, with the one from the catch being dropped.
+
+// Exceptions are propagated up the call stack until it gets to main and ends with an error, or it is caught by a try/catch block.
+// An exception propagates from method to method, up the call stack, until it's caught. So if a() calls  b(), which calls c(),
+// which calls d(), and if d() throws an exception, the exception will propagate from d to c to b to a, unless one of these
+// methods catches the exception.
 
 // When you use System.out.println(exception), a stack trace is not printed. Just the name of the exception class and the message is printed.
 // When you use exception.printStackTrace(), a complete chain of the names of the methods called, along with the line numbers, is printed.

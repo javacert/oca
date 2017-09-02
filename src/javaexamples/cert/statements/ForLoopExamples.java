@@ -12,6 +12,7 @@ public class ForLoopExamples {
         crazyLoopConstruct();
         isUpdateStatementRunWhenBreakHit();
         forLoopOrdering();
+        moreValidForLoopExamples();
     }
 
     private static void validConstructsForAForLoop() {
@@ -109,5 +110,13 @@ public class ForLoopExamples {
         // x initial value = 0
         // x incremented value = 1
         // x in the update statement = 1
+    }
+
+    private static void moreValidForLoopExamples() {
+        // The following compiles and runs without issue:
+        int i = 0;
+        for (i=1 ;  i<5  ; i++) continue;
+        for (i=0 ;       ; i++) break;
+        for (    ; i<5?false:true ;    );
     }
 }

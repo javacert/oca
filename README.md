@@ -57,9 +57,14 @@ General Tips:
     2) "State", on the other hand, is represented by instance fields. 
        Only a class can have instance fields and therefore, only a class can have a state.
        Interfaces are always implicitly static, even if you don't specify the keyword static explicitly. Therefore, an interface does not have any state.
+    3) Java allows a class to implement multiple interfaces. An interface is a "type" and does not contain any state. 
+       This implies that Java supports multiple type inheritance.
+       A class contains state and extending a class means inheriting the state. 
+       Since Java does not allow a class to extend from multiple classes, it means that Java does not support multiple state inheritance.
     --> This means the following 2 statements are true:
     1) Multiple inheritance of state includes ability to inherit instance fields from multiple classes.
     2) Multiple inheritance of type includes ability to implement multiple interfaces and/or ability to extend from multiple classes.
+    3) Java supports multiple type inheritance but not multiple state inheritance.
 - Widening conversions are:
     1) From a byte to a short, an int, a long, a float, or a double
     2) From a short to an int, a long, a float, or a double
@@ -107,3 +112,17 @@ General Tips:
     4) long to float or double
     5) float to double
 - Remember that String and date time objects are immutable. Look for application of change without an assignment to a variable!
+- Remember that a static method in a class hierarchy will conflict with instance methods in the hierarchy with the same name and signature.
+  However it will NOT conflict with static methods from an interface, since they can only be accessed through the Interface name itself.
+- None of the new date related classes have public constructors. Watch out for use of the new keyword always.
+- final only means that subclasses cannot hide (in case of static methods, and static or non-static fields) or override (in case of instance methods) that method.
+- Exceptions is a mechanism (vague statement examples):
+    1) That you can use to determine what to do when something unexpected happens.
+    2) Once you catch an exception, you can log the details.
+- Any exception thrown in a static block is wrapped into ExceptionInInitializerError and then that ExceptionInInitializerError is thrown.
+- All sub-classes of Throwable are checked except sub-classes of Error and RuntimeException.
+- Period / Duration have static methods and therefore do not support aggregated chaining.
+- Most of the methods of LocalDate (as well as LocalTime and LocalDateTime) return an object of the same class.
+  This allows you to chain the calls as done in this question. However, these  methods return a new object each time
+  but aggregate the change from the previous method in the chain. Period / Duration will simply use the last change in the chain.
+- The native keyword can only be used on methods, not on classes and instance variables.

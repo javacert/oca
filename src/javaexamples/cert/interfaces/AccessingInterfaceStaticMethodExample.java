@@ -26,9 +26,14 @@ class Employee {
     static void defaultPlan() {
         System.out.println("Basic");
     }
+
+    // static void someStaticMethod(){} // Uncomment me and you get a compile error in Programmer!
 }
 
 class Programmer extends Employee implements SomeInterfaceWithAStaticMethod {
+    // Note that static methods in an interface don't conflict with instance methods, but they do with static
+    // methods in the class hierarchy. This is because we only access static methods in an interface through the Interface name.
+    void someStaticMethod(){}
 }
 
 interface SomeInterfaceWithAStaticMethod {

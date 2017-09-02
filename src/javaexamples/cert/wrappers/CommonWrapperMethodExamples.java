@@ -28,6 +28,7 @@ package javaexamples.cert.wrappers;
 // Wrapper classes are immutable. Adding a primitive value to a wrapper class variable doesn’t modify the value of the
 // object it refers to. The wrapper class variable is assigned a new object.
 
+// Wrapper equals method returns false if they refer to instances of different classes.
 
 // Wrapper Assignment Rules:
 // 1) Direct assignment (e.g. Float f = 10F;) must use the correct type when assigning but byte/short/char can be

@@ -3,6 +3,7 @@ package javaexamples.cert.collections;
 import java.util.ArrayList;
 import java.util.List;
 
+// ArrayList imports from java.util, as do all of the collections.
 // ArrayList extends java.util.AbstractList and implements Serializable, Cloneable, Iterable<E>, Collection<E>, List<E>, RandomAccess
 // RandomAccess is a marker interface used by List implementations to indicate that they support fast (generally constant time) random access.
 // You can sort its elements using Collections.sort() method.
@@ -22,6 +23,10 @@ import java.util.List;
 //       we can replace the last element returned by next() or previous() methods.
 // The ArrayList remove method compares the objects for equality before removing it from ArrayList by calling the method equals.
 // For classes such as StringBuilder that do not override the equals method this would have an impact.
+
+// Common Methods:
+// remove(Object) --> method removes the first occurrence of the given element and returns true if found. If this list
+//                    does not contain the element, it is unchanged. Removes the element with the lowest index.
 public class ArrayListExamples {
 
     public static void main(String[] args){

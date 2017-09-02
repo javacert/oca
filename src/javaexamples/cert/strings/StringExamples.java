@@ -28,6 +28,7 @@ public class StringExamples {
         stringComparisons();
         stringCopyValueOf();
         getCharsExample();
+        stringConcatenationWithNumerics();
     }
 
     private static void stringConstructors() {
@@ -187,5 +188,15 @@ public class StringExamples {
         for(char c : chars) {
             System.out.println(c); // 1 2 3
         }
+    }
+
+    private static void stringConcatenationWithNumerics() {
+        // You can concatenate
+        String someString = "abc";
+        someString += 1;
+        someString += null;
+        someString += new Integer(10); // calls toString()
+        someString += new IndexOutOfBoundsException(); // calls toString()
+        System.out.println(someString); // abc1null10java.lang.IndexOutOfBoundsException
     }
 }

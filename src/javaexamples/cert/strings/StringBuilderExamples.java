@@ -36,8 +36,10 @@ public class StringBuilderExamples {
         concatenateStringBuilderWithString();
         deleteNothingExample();
         appendingTrueFalse();
+        settingCapacityExample();
         ensureCapacityExample();
         increaseCapacityExample();
+        setLengthExample();
     }
 
     private static void builderExample1() {
@@ -79,7 +81,6 @@ public class StringBuilderExamples {
         System.out.println("insertBooleanExample = " + sb); // insertBooleanExample = aAatrueA
     }
 
-
     private static void insertExample() {
         StringBuilder sb = new StringBuilder("123");
         char[] name = {'J', 'a', 'v', 'a'}; // (int index, char[] str, int offset, int len)
@@ -87,6 +88,7 @@ public class StringBuilderExamples {
         sb.insert(1, name, 1, 3);
         System.out.println(sb); // 1ava23
     }
+
 
     private static void insertBeyondSizeExample() {
         // Insert must be a valid index otherwise StringIndexOutOfBoundsException is thrown
@@ -279,13 +281,24 @@ public class StringBuilderExamples {
         System.out.println(sb.delete(2, 1)); // java.lang.StringIndexOutOfBoundsException
     }
 
-
     private static void appendingTrueFalse() {
         StringBuilder sb = new StringBuilder("abc");
         System.out.println(sb.append(true));            // abctrue
         System.out.println(sb.append(false));           // abctruefalse
         System.out.println(sb.append(Boolean.TRUE));    // abctruefalsetrue
         System.out.println(sb.append(Boolean.FALSE));   // abctruefalsetruefalse
+    }
+
+    private static void settingCapacityExample() {
+        StringBuilder sb1 = new StringBuilder(100); // public StringBuilder(int capacity)
+
+        StringBuilder sb2 = new StringBuilder(); // default capacity is 16
+        sb2.ensureCapacity(20); // (Current capacity (16) * 2) + 2 = 34
+        System.out.println(sb2.capacity());
+
+        StringBuilder sb3 = new StringBuilder();
+        sb3.ensureCapacity(100); // 100
+        System.out.println(sb3.capacity());
     }
 
     private static void ensureCapacityExample() {
@@ -310,5 +323,12 @@ public class StringBuilderExamples {
 
         sb.append("12345678901234567890"); // Increase capacity beyond 22 - recalculate capacity: (Current capacity (22) * 2) + 2
         System.out.println(sb.capacity()); // 46
+    }
+
+    private static void setLengthExample() {
+        StringBuilder sb = new StringBuilder("12345678");
+        sb.setLength(5); // "12345"
+        sb.setLength(10); // "12345     "
+        System.out.println(sb.length()); // 10
     }
 }

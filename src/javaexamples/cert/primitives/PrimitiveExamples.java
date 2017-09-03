@@ -113,10 +113,12 @@ public class PrimitiveExamples {
         double b = 1.1D; // You can have lower or upper case, both are the same
         double c = 43e1; // 430.0 - watch for this one!
         double d = 290e2; // 29000.0 - watch for this one as well!
+        double e = .75; // You don't require the leading zero!
         System.out.println(a); // 1.1
         System.out.println(b); // 1.1
         System.out.println(c); // 1.1
         System.out.println(d); // 1.1
+        System.out.println(e); // 0.75
     }
 
     private static void byteExamples() {

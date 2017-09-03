@@ -65,6 +65,7 @@ General Tips:
     1) Multiple inheritance of state includes ability to inherit instance fields from multiple classes.
     2) Multiple inheritance of type includes ability to implement multiple interfaces and/or ability to extend from multiple classes.
     3) Java supports multiple type inheritance but not multiple state inheritance.
+    4) If you see a class implementing 2 or more interfaces, then assume this illustrates Java's support for multiple inheritance of type.
 - Widening conversions are:
     1) From a byte to a short, an int, a long, a float, or a double
     2) From a short to an int, a long, a float, or a double
@@ -92,7 +93,7 @@ General Tips:
 - Always remember that 2 static methods with the same name and signature in a parent and child class, is not overriding but hiding.
   You can access both depending on the reference type.
 - 5 Golden Rules of widening, boxing and varargs:
-    1) Primitive Widening > Boxing > Varargs. 
+    1) Primitive Widening > Boxing > Varargs. - significant when overloading! 
     2) Widening and Boxing (WB) not allowed. Example:
             // Long l = 10; // Cannot do! Need widened and then boxed
             Long l = 10L;
@@ -100,7 +101,7 @@ General Tips:
             Integer i2 = 10;
             double d2 = i2;
             double d3 = new Integer(10); // Fine!
-    4) While overloading, Widening + vararg and Boxing + vararg can only be used in a mutually exclusive manner i.e. not together. 
+    4) While overloading, Widening + vararg and Boxing + vararg can only be used in a mutually exclusive manner i.e. not together.
     5) Widening between wrapper classes not allowed. Example:
             Integer intToWiden = 10;
             // Double someDouble = intToWiden; // Not allowed.
@@ -126,3 +127,4 @@ General Tips:
   This allows you to chain the calls as done in this question. However, these  methods return a new object each time
   but aggregate the change from the previous method in the chain. Period / Duration will simply use the last change in the chain.
 - The native keyword can only be used on methods, not on classes and instance variables.
+- A subclass is free to have a static or instance method with the same signature as that of a private instance or static method of a super class.

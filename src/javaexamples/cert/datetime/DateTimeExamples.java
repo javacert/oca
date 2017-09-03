@@ -69,6 +69,8 @@ import java.time.temporal.ChronoUnit;
 // This allows you to chain the calls as done in this question. However, these  methods return a new object each time
 // but aggregate the change from the previous method in the chain. Period / Duration will simply use the last change in
 // the chain.
+
+// LocalDate, LocalTime, and LocalDateTime implement TemporalAccessor.
 public class DateTimeExamples {
 
     public static void main(String[] args) {

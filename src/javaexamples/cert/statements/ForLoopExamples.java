@@ -1,5 +1,12 @@
 package javaexamples.cert.statements;
 
+// Some Rules:
+// 1) The second expression in a for loop must return a boolean.
+// 2) The third part (i.e. the update part) of the for loop does not allow every kind of statement.
+//    It allows only the following statements here: Assignment, PreIncrementExpression, PreDecrementExpression,
+//    PostIncrementExpression, PostDecrementExpression, MethodInvocation, and ClassInstanceCreationExpression.
+//    --> You cannot have boolean statements (e.g. Math.random()<0.5)
+//    --> You CAN have method calls (e.g. Math.random())
 public class ForLoopExamples {
 
     public static void main(String[] args){
@@ -118,5 +125,8 @@ public class ForLoopExamples {
         for (i=1 ;  i<5  ; i++) continue;
         for (i=0 ;       ; i++) break;
         for (    ; i<5?false:true ;    );
+
+        // Infinite loop but valid since it is a method invocation (see rules at top)
+        for(;;Math.random()){System.out.println("true"); }
     }
 }

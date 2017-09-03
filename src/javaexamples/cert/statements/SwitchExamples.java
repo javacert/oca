@@ -31,6 +31,7 @@ public class SwitchExamples {
         switchWithEmptyCasesAndEmptyFinally();
         switchStatementWithComplexStatements();
         objectInASwitchIsNotAllowed();
+        wrapperUsageIsAllowed();
     }
 
     // The compiler needs the expression to be known at compile time in order to compile a switch
@@ -171,5 +172,36 @@ public class SwitchExamples {
             //case null: // --> null is not a valid case
             //case a: // --> Object is not a valid case
         //}
+    }
+
+    private static void wrapperUsageIsAllowed() {
+
+        Integer conditionA = new Integer("1");
+        switch (conditionA) {
+            case 1:
+                System.out.println("1"); // Prints 1
+                break;
+            case 2:
+                System.out.println("2");
+                break;
+            case 3:
+                System.out.println("3");
+                break;
+        }
+
+        // Remember, Unboxing and then Widening (BW) IS allowed.
+        Byte conditionB = 2;
+        switch (conditionB) {
+            case 1:
+                System.out.println("A");
+                break;
+            case 2:
+                System.out.println("B"); // Prints B
+                break;
+            case 3:
+                System.out.println("C");
+                break;
+        }
+
     }
 }

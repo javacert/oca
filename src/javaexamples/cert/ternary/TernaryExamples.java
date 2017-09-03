@@ -26,6 +26,10 @@ public class TernaryExamples {
         System.out.println(false ? "Hello" : 10); // 10
 
         // System.out.println(false ? someVoidMethod() : 10); // Will not compile since method returns void.
+
+        //for (; ; ) {
+        //    Math.random() < .05 ? break :continue; // --> break, continue not valid in this context since we expect a value.
+        //}
     }
 
     static void someVoidMethod(){

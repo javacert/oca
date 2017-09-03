@@ -37,6 +37,9 @@ package javaexamples.cert.exceptions;
 // which calls d(), and if d() throws an exception, the exception will propagate from d to c to b to a, unless one of these
 // methods catches the exception.
 
+// Exception thrown by a catch cannot be caught by the following catch blocks at the same level. i.e. a new try/catch is needed
+// otherwise is propagated up the call stack.
+
 // When you use System.out.println(exception), a stack trace is not printed. Just the name of the exception class and the message is printed.
 // When you use exception.printStackTrace(), a complete chain of the names of the methods called, along with the line numbers, is printed.
 

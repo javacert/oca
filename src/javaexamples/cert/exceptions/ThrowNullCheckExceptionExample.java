@@ -2,6 +2,8 @@ package javaexamples.cert.exceptions;
 
 // This example shows that the following will not compile, not because e is null, (throws a NullPointer at runtime),
 // but because we are throwing a checked exception but not handling it with a try/catch.
+
+// A NullPointerException will be thrown if the expression given to the throw statement results in a null pointer.
 public class ThrowNullCheckExceptionExample {
 
     public static void main(String args[]) {

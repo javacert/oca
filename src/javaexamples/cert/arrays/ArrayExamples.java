@@ -33,6 +33,7 @@ public class ArrayExamples {
         arraysFillExample();
         doFinalConstantsThrowCompileError();
         getClassIsArrayMethod();
+        compilerKnowsDifferenceBetweenMultDimensionalArrays();
     }
 
     private static void anonymousInitializer() {
@@ -185,5 +186,12 @@ public class ArrayExamples {
     public static void getClassIsArrayMethod() {
         int[] someArray = new int[]{1, 2, 3};
         System.out.println(someArray.getClass().isArray()); // true
+    }
+
+    private static void compilerKnowsDifferenceBetweenMultDimensionalArrays() {
+        int[][] array = {{0}, {0, 1}, {0, 1, 2}, {0, 1, 2, 3}, {0, 1, 2, 3, 4}};
+        int[] arr1 = array[4];
+        //System.out.println(arr1[4][1]); // Does not compile, compiler knows arr1 is a single dimension array!
+        System.out.println(array[4][1]);
     }
 }

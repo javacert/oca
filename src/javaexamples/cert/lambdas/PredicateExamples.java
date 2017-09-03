@@ -3,6 +3,14 @@ package javaexamples.cert.lambdas;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
+// Rules:
+// 1) When your method body comprises only a single expression, you must omit the semi-colon.
+// 2) It is ok to omit the parameter types in case of a functional interface because the compiler can determine the
+//    type of the parameters by looking at the interface method. You can include them if you wish
+// 3) If you enclose your method body within curly braces, you must write complete lines of code including the semi-colon.
+//    If the method is supposed to return a value, then you must include a return statement just like you do in a regular
+//    method if you are using the curly braces syntax.
+// --> (parameter list) OR single_variable_without_type -> { regular lines of code } OR just_an_expression_without_semicolon
 public class PredicateExamples {
 
     public static void main(String[] args){

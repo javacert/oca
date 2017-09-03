@@ -7,6 +7,7 @@ package javaexamples.cert.strings;
 // |-- String does have that method and also has a constructor that accepts a char array.
 // StringBuilder does NOT have trim method.
 // StringBuilder DOES have reverse method, but String does not.
+// StringBuilder's toString() will always return a new String object - watch for its usage in comparison with Strings.
 
 // Some common methods:
 // 1) setLength(int) - Sets the length of this String buffer. If the newLength argument is less than the current

@@ -134,6 +134,7 @@ public class CommonWrapperMethodExamples {
         Float f = 10F;
 
         // Double d = 10; // Cannot do!
+        // Double d = 10L; // Cannot do!
         Double d = 10.0;
 
         // 2) Unboxing and then Widening (BW) allowed.

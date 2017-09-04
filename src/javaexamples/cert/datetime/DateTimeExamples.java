@@ -71,6 +71,8 @@ import java.time.temporal.ChronoUnit;
 // the chain.
 
 // LocalDate, LocalTime, and LocalDateTime implement TemporalAccessor.
+
+// Watch for ChronoField fields - HOUR_OF_DAY is correct but HOUROFDAY is not - look for underscores in the name if more than 1 work in description.
 public class DateTimeExamples {
 
     public static void main(String[] args) {
@@ -94,6 +96,8 @@ public class DateTimeExamples {
         parseExamples();
         atDateExamples();
         invalidLocalDateAssignment();
+        withExamples();
+        modifyingADate();
     }
 
     private static void localTimeExamples() {
@@ -335,9 +339,12 @@ public class DateTimeExamples {
         lt = LocalTime.of(2, 2, 15);
         System.out.println(lt.getLong(ChronoField.valueOf("MINUTE_OF_DAY"))); // 122 (2*60) + 2 = 122
         System.out.println(lt.getLong(ChronoField.valueOf("SECOND_OF_DAY"))); // 7335
-        System.out.println(lt.getLong(ChronoField.valueOf("SECONDOFDAY"))); // No output, invalid chrono
-    }
+        //System.out.println(lt.getLong(ChronoField.valueOf("SECONDOFDAY"))); // No output, invalid chrono - No enum constant java.time.temporal.ChronoField.SECONDOFDAY
 
+        System.out.println(newDate.get(ChronoField.YEAR)); // 2016
+        System.out.println(newDate.get(ChronoField.MONTH_OF_YEAR)); // 11
+        System.out.println(newDate.get(ChronoField.DAY_OF_MONTH)); // 9
+    }
 
     private static void formattingExamples() {
         LocalDateTime ldt = LocalDateTime.of(2015, 5, 10, 11, 22, 33);
@@ -385,5 +392,22 @@ public class DateTimeExamples {
         // Exception in thread "main" java.time.format.DateTimeParseException: Text '2017-55-10' could not be parsed: Invalid value for MonthOfYear (valid values 1 - 12): 5
         date = LocalDate.parse("2017-55-10");
         System.out.println(date);
+    }
+
+    private static void withExamples() {
+        LocalDate date1 = LocalDate.of(2014, 3, 18);
+        LocalDate date2 = date1.withYear(2011);
+        LocalDate date3 = date2.withDayOfMonth(25);
+        LocalDate date4 = date3.with(ChronoField.MONTH_OF_YEAR, 9); // Observe that we can use ChronoField with with method.
+
+        // Exception in thread "main" java.time.temporal.UnsupportedTemporalTypeException: Unsupported field: HourOfDay
+        LocalDate date5 = date3.with(ChronoField.HOUR_OF_DAY, 9); // LocalDate does not have HOUR_OF_DAY
+    }
+
+    private static void modifyingADate() {
+        LocalDate date1 = LocalDate.of(2014, 3, 18);
+        LocalDate date2 = date1.plusWeeks(1);
+        LocalDate date3 = date2.minusYears(3);
+        LocalDate date4 = date3.plus(6, ChronoUnit.MONTHS);
     }
 }

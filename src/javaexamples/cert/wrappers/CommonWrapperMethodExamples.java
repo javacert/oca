@@ -256,4 +256,37 @@ public class CommonWrapperMethodExamples {
         Integer intToNarrow = 10;
         //Byte someByte = intToNarrow; // Will not compile!
     }
+
+    //private static Double returningANarrowPrimitiveA() {
+    //    return (short)10; // Widening and then boxing not allowed
+    //}
+
+    //private static Double returningANarrowPrimitiveB() {
+    //    return (long)10; // Widening and then boxing not allowed
+    //}
+
+    private static Short narrowingIsFineWhenReturningFromAMethodA() {
+        return 10; // Narrowing and then boxing is allowed.
+    }
+
+    private static Byte narrowingIsFineWhenReturningFromAMethodB() {
+        return 'a'; // Narrowing and then boxing is allowed.
+    }
+
+    //private static Short narrowingFromWrapperClassA() {
+    //    return new Integer(10); // Narrowing between wrapper classes is not allowed.
+    //}
+
+    //private static Byte narrowingFromWrapperClassB() {
+    //    return new Character('a'); // Narrowing between wrapper classes is not allowed.
+    //}
+
+    //private static Integer wideningFromWrapperClassA() {
+    //    return new Short((short)10);
+    //}
+
+    //private static Character wideningFromWrapperClassB() {
+    //    return new Byte((byte)10);
+    //}
+
 }

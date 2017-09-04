@@ -65,6 +65,24 @@ Widening and Narrowing Rules for Primitives:
         double e = (long)10;
         double f = (float)10;
 
+7) Both narrowing and widening are fine when returning from a method call:
+
+    private static double wideningIsFineWhenReturningFromAMethodA() {
+        return (short)10;
+    }
+
+    private static double wideningIsFineWhenReturningFromAMethodB() {
+        return (long)10;
+    }
+
+    private static short narrowingIsFineWhenReturningFromAMethodA() {
+        return 10;
+    }
+
+    private static byte narrowingIsFineWhenReturningFromAMethodB() {
+        return 'a';
+    }
+
 Widening and Narrowing Rules for Wrappers
 
 1) Narrowing and then boxing is allowed.
@@ -138,3 +156,43 @@ Widening and Narrowing Rules for Wrappers
         Double d9 = new Double(10.0);
         Double d10 = new Double("10");
         Double d11 = new Double("10.0");
+
+8) Returning a primitive from a method - widening and then boxing is NOT allowed
+
+    //private static Double returningANarrowPrimitiveA() {
+    //    return (short)10; // Widening and then boxing not allowed
+    //}
+
+    //private static Double returningANarrowPrimitiveB() {
+    //    return (long)10; // Widening and then boxing not allowed
+    //}
+
+9) Returning a primitive from a method - narrowing and then boxing is allowed.
+
+    private static Short narrowingIsFineWhenReturningFromAMethodA() {
+        return 10; // Narrowing and then boxing is allowed.
+    }
+
+    private static Byte narrowingIsFineWhenReturningFromAMethodB() {
+        return 'a'; // Narrowing and then boxing is allowed.
+    }
+
+10) Returning a wrapper from a method - narrowing between wrapper classes is not allowed - Returning from a method - narrowing between wrapper classes is not allowed - it would require an unbox to primitive, then narrowing, then a box to the wrapper type.
+
+    //private static Short narrowingFromWrapperClassA() {
+    //    return new Integer(10); // Narrowing between wrapper classes is not allowed.
+    //}
+
+    //private static Byte narrowingFromWrapperClassB() {
+    //    return new Character('a'); // Narrowing between wrapper classes is not allowed.
+    //}
+
+11) Widening between wrapper classes is not allowed - it would require an unbox to primitive, a widen, then a box to the wrapper type.
+
+    //private static Integer wideningFromWrapperClassA() {
+    //    return new Short((short)10);
+    //}
+
+    //private static Character wideningFromWrapperClassB() {
+    //    return new Byte((byte)10);
+    //}

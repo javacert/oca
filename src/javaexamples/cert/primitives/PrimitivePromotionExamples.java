@@ -12,6 +12,10 @@ public class PrimitivePromotionExamples {
         doublePromotionExample();
         implicitNarrowingWhenNotCompileTimeConstants((byte)10,(char)10,(short)10,10);
         doublePromotionWhenNotCompileTimeConstants((byte)10,(char)10,(short)10,10,10,10);
+        wideningIsFineWhenReturningFromAMethodA();
+        wideningIsFineWhenReturningFromAMethodB();
+        narrowingIsFineWhenReturningFromAMethodA();
+        narrowingIsFineWhenReturningFromAMethodB();
     }
 
     private static void numericPromotionExamples() {
@@ -92,5 +96,21 @@ public class PrimitivePromotionExamples {
         double d4 = i;
         double d5 = l;
         double d6 = f;
+    }
+
+    private static double wideningIsFineWhenReturningFromAMethodA() {
+        return (short)10;
+    }
+
+    private static double wideningIsFineWhenReturningFromAMethodB() {
+        return (long)10;
+    }
+
+    private static short narrowingIsFineWhenReturningFromAMethodA() {
+        return 10;
+    }
+
+    private static byte narrowingIsFineWhenReturningFromAMethodB() {
+        return 'a';
     }
 }

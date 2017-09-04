@@ -9,6 +9,9 @@ public class PrimitivePromotionExamples {
         numericPromotionExamples();
         promotionInAComparisonStatement();
         intToFloatExample();
+        doublePromotionExample();
+        implicitNarrowingWhenNotCompileTimeConstants((byte)10,(char)10,(short)10,10);
+        doublePromotionWhenNotCompileTimeConstants((byte)10,(char)10,(short)10,10,10,10);
     }
 
     private static void numericPromotionExamples() {
@@ -59,5 +62,35 @@ public class PrimitivePromotionExamples {
         byte b2 = 10;
         float f2 = 10; // Fine, as long as the values fits - we are not working with autoboxing here - implicit cast is done by the compiler.
         double d2 = 10;
+    }
+
+    private static void doublePromotionExample() {
+        double a = (byte)10;
+        double b = (char)10;
+        double c = (short)10;
+        double d = (int)10;
+        double e = (long)10;
+        double f = (float)10;
+    }
+
+    private static void implicitNarrowingWhenNotCompileTimeConstants(byte b, char c, short s, int i) {
+        //byte b1 = b; // b is not a compile time constant
+        //byte b2 = c; // c is not a compile time constant
+        //byte b3 = s; // s is not a compile time constant
+        //byte b4 = i; // i is not a compile time constant
+
+        byte b1 = (byte)10;
+        byte b2 = (byte)'a';
+        byte b3 = (short)10;
+        byte b4 = (int)10;
+    }
+
+    private static void doublePromotionWhenNotCompileTimeConstants(byte b, char c, short s, int i, long l, float f) {
+        double d1 = b;
+        double d2 = c;
+        double d3 = s;
+        double d4 = i;
+        double d5 = l;
+        double d6 = f;
     }
 }

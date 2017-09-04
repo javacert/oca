@@ -48,6 +48,8 @@ public class CommonWrapperMethodExamples {
         moreExamples();
         assignmentToPrimitives();
         assignmentThroughConstructors();
+        implicitNarrowingNotPermittedThroughConstructors();
+        narrowingBetweenWrapperClasses();
     }
 
     private static void constructorExample() {
@@ -127,6 +129,26 @@ public class CommonWrapperMethodExamples {
         Short s = 10;
         Integer i = 10;
 
+        // Implicit Narrowing is permitted when assigning in this way.
+        // Narrowing and then boxing is allowed.
+        Byte b2 = (byte)10;
+        Byte b3 = (char)10;
+        Byte b4 = (short)10;
+        Byte b5 = (int)10;
+        // Byte b6 = (long)10; // Cannot do implicit narrowing with a long!
+
+        Character c2 = (byte)10;
+        Character c3 = (char)10;
+        Character c4 = (short)10;
+        Character c5 = (int)10;
+        // Character c6 = (long)10; // Cannot do implicit narrowing with a long!
+
+        Short s2 = (byte)10;
+        Short s3 = (char)10;
+        Short s4 = (short)10;
+        Short s5 = (int)10;
+        // Short s6 = (long)10; // Cannot do implicit narrowing with a long!
+
         // Long l = 10; // Cannot do!
         Long l = 10L;
 
@@ -163,7 +185,10 @@ public class CommonWrapperMethodExamples {
 
         // Byte by1 = new Byte(); // No zero arg constructor
         Byte by1 = new Byte((byte)10);
-        Byte by2 = new Byte("10");
+        //Byte by2 = new Byte((char)10); // Narrowing not permitted
+        //Byte by3 = new Byte((short)10); // Narrowing not permitted
+        //Byte by4 = new Byte((int)10); // Narrowing not permitted
+        Byte by5 = new Byte("10");
 
         // Short s1 = new Short(); // No zero arg constructor
         Short s1 = new Short((byte)10); // This works!
@@ -212,5 +237,23 @@ public class CommonWrapperMethodExamples {
         Double d9 = new Double(10.0);
         Double d10 = new Double("10");
         Double d11 = new Double("10.0");
+    }
+
+    private static void implicitNarrowingNotPermittedThroughConstructors() {
+        // Byte by1 = new Byte(); // No zero arg constructor
+        Byte by1 = new Byte((byte) 10);
+        //Byte by2 = new Byte((char)10); // Narrowing not permitted
+        //Byte by3 = new Byte((short)10); // Narrowing not permitted
+        //Byte by4 = new Byte((int)10); // Narrowing not permitted
+        Byte by5 = new Byte("10");
+        System.out.println(by5); // 10
+    }
+
+    private static void narrowingBetweenWrapperClasses() {
+        Double doubleToNarrow = 10.0;
+        //Integer someInteger = doubleToNarrow; // Will not compile!
+
+        Integer intToNarrow = 10;
+        //Byte someByte = intToNarrow; // Will not compile!
     }
 }

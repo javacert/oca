@@ -47,19 +47,42 @@ public class PrimitiveExamples {
         doubleExamples();
         longExamples();
 
-        // passIntToShortMethod(10); // Can't pass an int to a method expecting a short - see text above for why.
+        // passIntToByteMethod((short)10);
+        // passIntToByteMethod(10);
+        // passIntToByteMethod((char)10);
+        passIntToByteMethod((byte)10);
+
+        // passIntToCharMethod((short)10);
+        // passIntToCharMethod(10);
+        // passIntToCharMethod((byte)10);
+        passIntToCharMethod((char)10);
+
+        // passIntToShortMethod((char)10);
+        // passIntToShortMethod(10);
+        passIntToShortMethod((byte)10);
         passIntToShortMethod((short)10);
 
-        passIntToLongMethod(10); // Both work fine since long can hold a short and an int
+        passIntToIntMethod((byte)10);
+        passIntToIntMethod((short)10);
+        passIntToIntMethod((char)10);
+        passIntToIntMethod(10);
+
+        passIntToLongMethod((byte)10);
         passIntToLongMethod((short)10);
+        passIntToLongMethod((char)10);
+        passIntToLongMethod(10); // Both work fine since long can hold a short and an int
 
         passIntToFloatMethod(10);
         passIntToFloatMethod((short)10);
         passIntToFloatMethod(1.1f);
         // passIntToFloatMethod(1.1d);
 
-        passIntToDoubleMethod(10);
+        passIntToDoubleMethod((byte)10);
         passIntToDoubleMethod((short)10);
+        passIntToDoubleMethod((char)10);
+        passIntToDoubleMethod(10);
+        passIntToDoubleMethod((long)10);
+        passIntToDoubleMethod((float)10);
         passIntToDoubleMethod(1.1f);
 
         double someIntReturnA = returnShortFromIntMethod();
@@ -143,7 +166,16 @@ public class PrimitiveExamples {
         System.out.println(2L * 2l * 2); // 8 - public void println(long x)
     }
 
+    private static void passIntToByteMethod(byte x) {
+    }
+
+    private static void passIntToCharMethod(char x) {
+    }
+
     private static void passIntToShortMethod(short x) {
+    }
+
+    private static void passIntToIntMethod(int x) {
     }
 
     private static void passIntToLongMethod(long x) {

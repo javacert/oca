@@ -1,0 +1,140 @@
+Widening and Narrowing Rules for Primitives:
+
+1) An implicit narrowing primitive conversion may be used if all of the following conditions are satisfied:
+	1. The expression is a compile time constant expression of type byte, char, short, or int.
+	2. The type of the variable is byte, short, or char.
+	3. The value of the expression (which is known at compile time, because it is a constant expression) is representable in the type of the variable.
+
+2) Implicit Narrowing does not apply when you call a method, e.g.
+
+    private static void passIntToShortMethod(short x) {
+    }
+
+    // passIntToShortMethod((char)10);
+    // passIntToShortMethod(10);
+    passIntToShortMethod((byte)10);
+    passIntToShortMethod((short)10);
+
+3) Implicit widening will apply when you call a method. Remember when overloading the following rule is applied to determine the correct method to call : Primitive Widening > Boxing > Varargs.
+
+        passIntToDoubleMethod((byte)10);
+        passIntToDoubleMethod((short)10);
+        passIntToDoubleMethod((char)10);
+        passIntToDoubleMethod(10);
+        passIntToDoubleMethod((long)10);
+        passIntToDoubleMethod((float)10);
+        passIntToDoubleMethod(1.1f);
+
+4) Widening would also apply in the following scenario.
+
+    private static void doublePromotionWhenNotCompileTimeConstants(byte b, char c, short s, int i, long l, float f) {
+        double d1 = b;
+        double d2 = c;
+        double d3 = s;
+        double d4 = i;
+        double d5 = l;
+        double d6 = f;
+    }
+
+    doublePromotionWhenNotCompileTimeConstants((byte)10,(char)10,(short)10,10,10,10);
+    ---> Note the first three must be cast since we cannot do implicit narrowing from int to byte, char, short in a method call.
+
+5) However when narrowing you must be using a compile time constant. For example, the following would not compile because of this rule:
+    ---> The expression is a compile time constant expression of type byte, char, short, or int.
+
+    private static void implicitNarrowingWhenNotCompileTimeConstants(byte b, char c, short s, int i) {
+        //byte b1 = b; // b is not a compile time constant
+        //byte b2 = c; // c is not a compile time constant
+        //byte b3 = s; // s is not a compile time constant
+        //byte b4 = i; // i is not a compile time constant
+
+        byte b1 = (byte)10;
+        byte b2 = (byte)'a';
+        byte b3 = (short)10;
+        byte b4 = (int)10;
+    }
+
+    implicitNarrowingWhenNotCompileTimeConstants((byte)10,(char)10,(short)10,10);
+
+6) Widening is applied to all primitives - all of the following are valid.
+
+        double a = (byte)10;
+        double b = (char)10;
+        double c = (short)10;
+        double d = (int)10;
+        double e = (long)10;
+        double f = (float)10;
+
+Widening and Narrowing Rules for Wrappers
+
+1) Narrowing and then boxing is allowed.
+
+        Byte b2 = (byte)10;
+        Byte b3 = (char)10;
+        Byte b4 = (short)10;
+        Byte b5 = (int)10;
+        // Byte b6 = (long)10; // Cannot do implicit narrowing with a long!
+
+        Character c2 = (byte)10;
+        Character c3 = (char)10;
+        Character c4 = (short)10;
+        Character c5 = (int)10;
+        // Character c6 = (long)10; // Cannot do implicit narrowing with a long!
+
+        Short s2 = (byte)10;
+        Short s3 = (char)10;
+        Short s4 = (short)10;
+        Short s5 = (int)10;
+        // Short s6 = (long)10; // Cannot do implicit narrowing with a long!
+
+2) Widening and then Boxing (WB) is not allowed.
+
+        // Long l = 10; // Cannot do!
+        Long l = 10L;
+
+        // Integer i2 = (byte)10; // Cannot do!
+
+3) Unboxing and then Widening (BW) is allowed.
+
+        Integer i2 = 10;
+        double d2 = i2;
+        double d3 = new Integer(10);
+
+4) Widening between wrapper classes is not allowed.
+
+        Integer intToWiden = 10;
+        // Double someDouble = intToWiden; // Will not compile!
+
+5) Narrowing between wrapper classes is not allowed.
+
+	// Double unboxed to double, but cannot be narrowed since double cannot be narrowed to an int
+        Double doubleToNarrow = 10.0;
+        //Integer someInteger = doubleToNarrow; // Will not compile!
+
+	// It won't work for types that would typically be narrowed.
+        Integer intToNarrow = 10;
+        //Byte someByte = intToNarrow; // Will not compile!
+
+6) Narrowing is NOT permitted when calling a wrapper constructor.
+
+        // Byte by1 = new Byte(); // No zero arg constructor
+        Byte by1 = new Byte((byte) 10);
+        //Byte by2 = new Byte((char)10); // Narrowing not permitted
+        //Byte by3 = new Byte((short)10); // Narrowing not permitted
+        //Byte by4 = new Byte((int)10); // Narrowing not permitted
+        Byte by5 = new Byte("10");
+        System.out.println(by5); // 10
+
+7) Widening is permitted when calling a wrapper constructor.
+
+        Double d1 = new Double((byte)10);
+        Double d2 = new Double((byte)10);
+        Double d3 = new Double((short)10);
+        Double d4 = new Double((int)10);
+        Double d5 = new Double(10);
+        Double d6 = new Double((long)10);
+        Double d7 = new Double(10L);
+        Double d8 = new Double(10F);
+        Double d9 = new Double(10.0);
+        Double d10 = new Double("10");
+        Double d11 = new Double("10.0");

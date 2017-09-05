@@ -32,3 +32,65 @@ Additional Last Minute Notes:
 
             String []strings = {"N", "L", "n", "O", "S", "z", "a", "10", "2", "1", "S1", "S2", "S10", "s10", "SA", "Sa"};
             Arrays.sort(strings); // 1 10 2 L N O S S1 S10 S2 SA Sa a n s10 z
+
+5) Date Time symbols:
+
+            Symbol  Meaning             Presentation  Examples
+            ------  -------             ------------  -------
+            G       era                 text          AD; Anno Domini; A
+            u       year                year          2004; 04
+            y       year-of-era         year          2004; 04
+            M       month-of-year       number        01
+            D       day-of-year         number        189
+            d       day-of-month        number        10
+            E       day-of-week         text          Tue; Tuesday; T
+            H       hour (00-23)        number        00, 01..23.
+            h       hour (01-12 AM/PM)  number        01, 02..12.
+            k       hour (01-24)        number        01, 02..24.
+            m       minute              number        01, 59
+            s       seconds             number        01, 59
+            S       nano-seconds        number        12345678 (SSSSSSSS)
+
+6) Initialization Order:
+
+    1 - First all static items are initialized (variable declarations and static initializers), superclass first right to child class (if the class hasn't been previously initialised)..
+    2 - The super() call in the child constructor, whether explicit or implicit right up to top most parent.
+    3 - Then all instance member variables are initialized (variable declarations and instance initializers) in order they appear in file.
+    4 - Remaining body of constructor after super() is executed.
+    5 - Moves up the hierarchy to the class being instantiated.
+
+7) A static method in an interface can’t be called using a reference variable. It must be called using the interface name.
+   Unlike an interface, if you define a static method in a base class, it can be accessed using either a reference variable or the class name.
+
+8) Interface rules to note:
+
+    1) In Java 8, we can have static and default methods in interfaces but there are some rules
+       -- you cannot override Object class methods using the default method
+    2) Both static and default methods are public
+    3) A static method in an interface can't be called using a reference variable. It must be called using the interface name.
+       -- Unlike an interface, if you define a static method in a base class, it can be accessed using either a reference
+          variable or the class name.
+    4) You can declare a top-level interface with only the following non-access modifiers: abstract & strictfp
+    5) A Top-level interface can't be defined as private or protected.
+    6) All members of an interface - variables, methods, inner interfaces, and inner classes (yes, an interface can define
+       a class within it) are inherently public because that's the only modifier they can accept.
+    7) The variables of an interface are implicitly public, final, and static. You must initialize all variables in
+       an interface, or your code won't compile.
+    8) Interface methods are implicitly abstract. To define default or static methods, you must explicitly use the
+       keyword default or static with the method declaration in an interface.
+    9) You must implement an abstract method of an interface using the explicit access modifier public. Remember you are
+       overriding and must follow the rules of overriding (Access modifier can only be the same of less restrictive).
+    10) While overriding a default method, you must not use the keyword default.
+        Rules for overriding default and regular methods are the same.
+    11) The static methods in a class and the interface that it implements are not related to each other.
+        A static method in a class does not hide or override the static method in the interface that it implements
+        like it would in a standard class.
+    12) You cannot use super keyword in an interface's method to invoke a method defined in its super interface.
+         -- To invoke an interface's default method, you need to use the name of that interface as well. Interface.super.getId();
+
+9) You cannot shadow a static method from an interface either - they are completely distinct.
+
+10) A class (or an interface) can invoke a default method of an interface that is explicitly mentioned in the class's
+    implements clause (or the interface's extends clause) by using the same syntax i.e. <InterfaceName>.super.<methodName>.
+
+11)

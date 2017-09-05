@@ -1,0 +1,34 @@
+Additional Last Minute Notes:
+
+1) Up-casting is casting to a supertype, while down-casting is casting to a subtype. Up to Parent, down to child.
+
+2) Boxing vs Unboxing. In this example
+
+            Integer i1 = 1000;
+            int i2 = 1000;
+            boolean compared = (i1 == i2);
+            But what does it do?
+
+            Unbox i1:
+            boolean compared = (i1.intvalue() == i2);
+
+            or box i2:
+            boolean compared = (i1 == new Integer(i2));
+
+    In this example the Integer is unboxed into an int.
+
+    If the operands of an equality operator are both of numeric type, or one is of numeric type and the other is convertible
+    (§5.1.8) to numeric type, binary numeric promotion is performed on the operands (§5.6.2).
+
+    When an operator applies binary numeric promotion to a pair of operands, each of which must denote a value that is
+    convertible to a numeric type, the following rules apply, in order:
+        - If any operand is of a reference type, it is subjected to unboxing conversion.
+
+3) Unlike most objects, String literals always have a reference to them from the String Constant Pool.
+   That means that they always have a reference to them and are, therefore, not eligible for garbage collection.
+   Only String literals (not Strings created with new and which have not been interned remain on the String pool).
+
+4) Natural ordering - Numeric, then Capitals, then lowercase:
+
+            String []strings = {"N", "L", "n", "O", "S", "z", "a", "10", "2", "1", "S1", "S2", "S10", "s10", "SA", "Sa"};
+            Arrays.sort(strings); // 1 10 2 L N O S S1 S10 S2 SA Sa a n s10 z

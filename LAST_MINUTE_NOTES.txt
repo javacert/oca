@@ -93,4 +93,9 @@ Additional Last Minute Notes:
 10) A class (or an interface) can invoke a default method of an interface that is explicitly mentioned in the class's
     implements clause (or the interface's extends clause) by using the same syntax i.e. <InterfaceName>.super.<methodName>.
 
-11)
+11) String concatenation and addition have the same precedence. Java evaluates the + operator from left to right
+    - therefore if you have numeric additions followed by String concatenation, then the numeric values will be added together!
+    However watch for something like this: System.out.println(x + "printing: " + ++x * y++ + ++x * ++y);
+    We will still be concatenating as a string, but * will have higher precedence so it would evaluate to:
+    System.out.println(x + "printing: " + (++x * y++) + (++x * ++y));
+    This would output "1printing 29" because we concatenate the 2 and then the 9!

@@ -41,6 +41,10 @@ public class ForLoopExamples {
         for(int x = 10, y = 6; x < y; System.out.println(x--)){ // 2 10
 
         }
+
+        for(boolean bool1 = true, bool2 = false; bool1 == false;){
+            bool1 = false;
+        }
     }
 
     private static void addingMultipleTermsToForStatement() {

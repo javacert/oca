@@ -21,7 +21,7 @@ public class TernaryExamples {
         // The following won't compile since 10 is an int
         // String someString = true ? "Hello" : 10;
 
-        // However ternary can return different types as shown here
+        // However ternary can return different types as shown here if you do not assign it to anything.
         System.out.println(true ? "Hello" : 10); // Hello
         System.out.println(false ? "Hello" : 10); // 10
 

@@ -1,6 +1,7 @@
 package javaexamples.cert.exceptions;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 // This example demonstrates what you can actually throw when you declare an exception.
 // 1) You cannot throw a broader (superclass) exception.
@@ -10,6 +11,20 @@ import java.io.FileNotFoundException;
 public class ThrowingExceptionsDifferentToThrowsDeclaration {
 
     public static void main(String[] args){
+        ThrowingExceptionsDifferentToThrowsDeclaration t = new ThrowingExceptionsDifferentToThrowsDeclaration();
+        try {
+            t.methodE();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            t.methodE();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void methodA() throws FileNotFoundException {
@@ -31,12 +46,21 @@ public class ThrowingExceptionsDifferentToThrowsDeclaration {
         throw new SomeMoreSpecificException();
     }
 
-    public void methodE() throws FileNotFoundException {
+    public void methodE() throws IOException, ClassNotFoundException {
+        // You CAN throw a more specific exception
+        if (true){
+            throw new FileNotFoundException();
+        } else {
+            throw new ClassNotFoundException(); // You must declare me!
+        }
+    }
+
+    public void methodF() throws FileNotFoundException {
         // You can throw any RuntimeExceptions that you want!
         throw new NullPointerException();
     }
 
-    public void methodF() throws FileNotFoundException {
+    public void methodG() throws FileNotFoundException {
         // You can throw any Error that you want!
         throw new StackOverflowError();
     }

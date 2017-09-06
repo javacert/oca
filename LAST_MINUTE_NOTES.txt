@@ -99,3 +99,46 @@ Additional Last Minute Notes:
     We will still be concatenating as a string, but * will have higher precedence so it would evaluate to:
     System.out.println(x + "printing: " + (++x * y++) + (++x * ++y));
     This would output "1printing 29" because we concatenate the 2 and then the 9!
+
+12) For Loop - The third part (i.e. the update part) of the for loop does not allow every kind of statement.
+    It allows only the following statements here: Assignment, PreIncrementExpression, PreDecrementExpression,
+    PostIncrementExpression, PostDecrementExpression, MethodInvocation, and ClassInstanceCreationExpression.
+        --> You cannot have boolean statements (e.g. Math.random()<0.5)
+        --> You CAN have method calls (e.g. Math.random())
+
+13) ForEach Loop -This is an important example around reassigning reference variables in a forEach loop.
+    Watch out for code that uses an enhanced forEach loop and its loop variable to change the values of its
+    elements in the collection that it iterates.
+
+    The loop variable in the enhanced for loop refers to a copy of the array or list element.
+    If you modify the state of the loop variable, the modified object state will be reflected in the array.
+    But if you assign a new object to the loop variable, it won’t be reflected in the list or the array
+    that’s being iterated.
+
+    Use the for-each loop to iterate over arrays and collections. Don’t use it to initialize, modify, or filter them
+
+14) If you declare a superclass exception (e.g. IOException) in a method declaration (throws) you can throw a subclass of that class
+    (e.g. FileNotFoundException) in the method. Any exception thrown that is not in IOException hierarchy need to be added to the throws declaration.
+    For checked exceptions only.
+
+    public void methodE() throws IOException {
+        // You CAN throw a more specific exception
+        throw new FileNotFoundException();
+        // If you throw any other checked exception not in IOException you need to declare in the throws
+    }
+
+    And catch using:
+
+    try {
+        t.methodE();
+    } catch (IOException e) {
+        e.printStackTrace();
+    } catch (ClassNotFoundException e) {
+        e.printStackTrace();
+    }
+
+    try {
+        t.methodE();
+    } catch (Exception e) {
+        e.printStackTrace();
+    }

@@ -16,6 +16,7 @@ public class PrimitivePromotionExamples {
         wideningIsFineWhenReturningFromAMethodB();
         narrowingIsFineWhenReturningFromAMethodA();
         narrowingIsFineWhenReturningFromAMethodB();
+        invalidAssignmentExample();
     }
 
     private static void numericPromotionExamples() {
@@ -112,5 +113,12 @@ public class PrimitivePromotionExamples {
 
     private static byte narrowingIsFineWhenReturningFromAMethodB() {
         return 'a';
+    }
+
+    private static void invalidAssignmentExample() {
+        short s = 10;
+        //char c = s;
+        //s = c;
+        char c = 10; // For narrowing must be a compile time constant!!!!!
     }
 }

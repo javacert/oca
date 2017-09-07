@@ -1,9 +1,6 @@
 package javaexamples.cert.statements;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 // Every for-each loop can be rewritten as a do-while loop
 // Every for-each loop can be rewritten as a traditional for loop
@@ -11,10 +8,11 @@ import java.util.Map;
 public class ForEachExamples {
 
     public static void main(String[] args){
-        whatCanYouUseWithAForEach();
+/*        whatCanYouUseWithAForEach();
         cannotUsePredefinedVariable();
         arrayNotCorrectlyInitialized(null);
-        watchForUnreachableCodeWithContinueBreak();
+        watchForUnreachableCodeWithContinueBreak();*/
+        youCannotReassignPrimitivesOrReferenceVariables();
     }
 
     private static void whatCanYouUseWithAForEach() {
@@ -83,5 +81,30 @@ public class ForEachExamples {
             }
             //System.out.println("You can never reach me so I will throw a compiler error!"); // Unreachable Statement!
         }
+    }
+
+    private static void youCannotReassignPrimitivesOrReferenceVariables() {
+
+        // 1) You cannot modify the value since forEach loops makes a copy of the array.
+        int[] intArray = new int[]{1, 2, 3};
+        for (int i : intArray){
+            i = 10;
+        }
+        System.out.println(Arrays.toString(intArray)); // [1, 2, 3]
+
+        // 2) You cannot modify the reference since forEach loops makes a copy of the array.
+        Integer[] integerArray = new Integer[]{1, 2, 3};
+        for (int integerRef : integerArray){
+            integerRef = new Integer(10);
+        }
+        System.out.println(Arrays.toString(integerArray)); // [1, 2, 3]
+
+        // 3) Although you cannot modify the reference, you can modify the contents of the object.
+        StringBuilder[] sbArray = new StringBuilder[]{new StringBuilder("abc"), new StringBuilder("abc"), new StringBuilder("abc")};
+
+        for (StringBuilder sb : sbArray){
+            sb.append("def");
+        }
+        System.out.println(Arrays.toString(sbArray)); // [abcdef, abcdef, abcdef]
     }
 }

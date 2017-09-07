@@ -37,3 +37,8 @@ class _____ {
 class $$$ {
 
 }
+
+class £ {
+
+    int £ = 0;
+}
